@@ -1,0 +1,338 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2a9d8f;
+            --secondary-color: #e9c46a;
+            --dark-color: #264653;
+            --light-color: #f8f9fa;
+            --accent-color: #f4a261;
+            --success-color: #52b788;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .navbar {
+            background-color: var(--dark-color) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--secondary-color) !important;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary-color) !important;
+        }
+        
+        .register-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .register-header {
+            background: linear-gradient(135deg, var(--dark-color) 0%, var(--success-color) 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .register-form {
+            padding: 40px;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .btn-register {
+            background-color: var(--success-color);
+            border: none;
+            padding: 12px 0;
+            font-weight: 600;
+            width: 100%;
+            color: white;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-register:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .register-image {
+            background: url('https://images.unsplash.com/photo-1560693225-b8507d6f3aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            min-height: 300px;
+        }
+        
+        .form-floating > .form-control::placeholder {
+            color: transparent;
+        }
+        
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 20px 0;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .error-feedback {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 5px;
+        }
+        
+        .form-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background-color: var(--success-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+        
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .register-image {
+                min-height: 200px;
+            }
+            
+            .register-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">TropiConnect</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">For Farmers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">For Buyers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Register Section -->
+    <div class="container">
+        <div class="register-container">
+            <div class="row g-0">
+                <div class="col-md-7">
+                    <div class="register-header">
+                        <h2><i class="fas fa-briefcase me-2"></i> Buyer Registration</h2>
+                        <p class="mb-0">Connect with African farmers and source quality agricultural products</p>
+                    </div>
+                    <div class="register-form">
+                        <div class="form-step">
+                            <div class="step-number">1</div>
+                            <h3 class="step-title">Account Information</h3>
+                        </div>
+                        
+                        <form method="post" action="#">
+                            {% csrf_token %}
+                            
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Choose a username" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Contact Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Your business email" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="password1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password1" name="password1" placeholder="Create a password" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="password2" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm your password" required>
+                            </div>
+                            
+                            <div class="form-step mt-4">
+                                <div class="step-number">2</div>
+                                <h3 class="step-title">Company Information</h3>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="company_name" class="form-label">Company Name</label>
+                                <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Your company name" required>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="country" class="form-label">Country</label>
+                                    <select class="form-select" id="country" name="country" required>
+                                        <option value="" selected disabled>Select your country</option>
+                                        <option value="US">United States</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="AU">Australia</option>
+                                        <option value="FR">France</option>
+                                        <option value="DE">Germany</option>
+                                        <option value="NL">Netherlands</option>
+                                        <option value="JP">Japan</option>
+                                        <option value="CN">China</option>
+                                        <option value="IN">India</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="city" class="form-label">City</label>
+                                    <input type="text" class="form-control" id="city" name="city" placeholder="Your city" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-step mt-4">
+                                <div class="step-number">3</div>
+                                <h3 class="step-title">Product Interests</h3>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="introduction" class="form-label">Introduction & Product Interests</label>
+                                <textarea class="form-control" id="introduction" name="introduction" rows="5" placeholder="Please introduce your company and describe what types of agricultural products you're interested in sourcing from Africa..." required></textarea>
+                                <div class="form-text">
+                                    Your introduction will help us match you with suitable farmers. Be specific about product categories, quality requirements, and typical order volumes.
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Product Categories of Interest (select all that apply)</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="coffee" name="categories" value="coffee">
+                                            <label class="form-check-label" for="coffee">Coffee</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="cocoa" name="categories" value="cocoa">
+                                            <label class="form-check-label" for="cocoa">Cocoa</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="fruits" name="categories" value="fruits">
+                                            <label class="form-check-label" for="fruits">Tropical Fruits</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="nuts" name="categories" value="nuts">
+                                            <label class="form-check-label" for="nuts">Nuts & Seeds</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="spices" name="categories" value="spices">
+                                            <label class="form-check-label" for="spices">Spices</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="grains" name="categories" value="grains">
+                                            <label class="form-check-label" for="grains">Grains & Cereals</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="cotton" name="categories" value="cotton">
+                                            <label class="form-check-label" for="cotton">Cotton & Textiles</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="checkbox" id="other" name="categories" value="other">
+                                            <label class="form-check-label" for="other">Other</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
+                                <label class="form-check-label" for="terms">
+                                    I agree to TropiConnect's <a href="#" class="text-decoration-none">Terms of Service</a> and <a href="#" class="text-decoration-none">Privacy Policy</a>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-register">
+                                Create Buyer Account <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                            
+                            <div class="text-center mt-3">
+                                Already have an account? <a href="#" class="text-decoration-none">Sign in</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-5 d-none d-md-block">
+                    <div class="register-image h-100"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 TropiConnect. All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
