@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth import login, authenticate
+from .forms import FarmerRegistrationForm
 
 def home(request):
     """
@@ -9,11 +12,22 @@ def home(request):
     })
 
 def register_farmer(request):
-    """
-    View function for farmer registration (UI only)
-    """
+    if request.method == 'POST':
+        form = FarmerRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            messages.success(request, "Registration successful! Please log in.")
+            return redirect('home') 
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
+    else:
+        form = FarmerRegistrationForm()
+    
     return render(request, 'supplychain/register_farmer.html', {
-        'title': 'Farmer Registration'
+        'title': 'Farmer Registration',
+        'form': form
     })
 
 def register_buyer(request):

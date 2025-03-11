@@ -132,10 +132,10 @@
                         <a class="nav-link" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">For Farmers</a>
+                        <a class="nav-link active" href="{% url 'register_farmer' %}">For Farmers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">For Buyers</a>
+                        <a class="nav-link" href="{% url 'register_buyer' %}">For Buyers</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About Us</a>
@@ -158,46 +158,103 @@
                         <p class="mb-0">Join our network of African farmers and access global markets</p>
                     </div>
                     <div class="register-form">
-                        <form method="post" action="#">
+                        <form method="post">
                             {% csrf_token %}
                             
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }}">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                                <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+                                {{ form.username }}
+                                {% if form.username.errors %}
+                                    <div class="error-feedback">
+                                        {% for error in form.username.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             </div>
                             
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="forename" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="forename" name="forename" placeholder="First Name" required>
+                                    <label for="{{ form.first_name.id_for_label }}" class="form-label">First Name</label>
+                                    {{ form.first_name }}
+                                    {% if form.first_name.errors %}
+                                        <div class="error-feedback">
+                                            {% for error in form.first_name.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="surname" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="surname" name="surname" placeholder="Last Name" required>
+                                    <label for="{{ form.last_name.id_for_label }}" class="form-label">Last Name</label>
+                                    {{ form.last_name }}
+                                    {% if form.last_name.errors %}
+                                        <div class="error-feedback">
+                                            {% for error in form.last_name.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
                             
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+                                <label for="{{ form.email.id_for_label }}" class="form-label">Email Address</label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                    <div class="error-feedback">
+                                        {% for error in form.email.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             </div>
                             
                             <div class="mb-3">
-                                <label for="phone_number" class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" required>
+                                <label for="{{ form.phone_number.id_for_label }}" class="form-label">Phone Number</label>
+                                {{ form.phone_number }}
+                                {% if form.phone_number.errors %}
+                                    <div class="error-feedback">
+                                        {% for error in form.phone_number.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             </div>
                             
                             <div class="mb-3">
-                                <label for="password1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password1" name="password1" placeholder="Password" required>
+                                <label for="{{ form.password1.id_for_label }}" class="form-label">Password</label>
+                                {{ form.password1 }}
+                                {% if form.password1.errors %}
+                                    <div class="error-feedback">
+                                        {% for error in form.password1.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                                 <div class="form-text">
                                     Your password must be 8+ characters and can't be entirely numeric.
                                 </div>
                             </div>
                             
                             <div class="mb-3">
-                                <label for="password2" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Password" required>
+                                <label for="{{ form.password2.id_for_label }}" class="form-label">Confirm Password</label>
+                                {{ form.password2 }}
+                                {% if form.password2.errors %}
+                                    <div class="error-feedback">
+                                        {% for error in form.password2.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             </div>
                             
                             <button type="submit" class="btn btn-register">
