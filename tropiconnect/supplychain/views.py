@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from .forms import FarmerRegistrationForm
+from .forms import BuyerRegistrationForm
 
 def home(request):
     """
@@ -31,9 +32,20 @@ def register_farmer(request):
     })
 
 def register_buyer(request):
-    """
-    View function for buyer registration (UI only)
-    """
+    if request.method == 'POST':
+        form = BuyerRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            messages.success(request, "Registration successful! You can now login.")
+            return redirect('home')  
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
+    else:
+        form = BuyerRegistrationForm()
+    
     return render(request, 'supplychain/register_buyer.html', {
-        'title': 'Buyer Registration'
+        'title': 'Buyer Registration',
+        'form': form
     })

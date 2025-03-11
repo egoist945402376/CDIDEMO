@@ -69,3 +69,62 @@ class FarmerShippingMethod(models.Model):
     
     class Meta:
         unique_together = ('farmer', 'shipping_method')
+
+
+class BuyerProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='buyer_profile')
+    company_name = models.CharField(max_length=200)
+    country = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    introduction = models.TextField(help_text="Introduce your company and describe your main agricultural interests")
+    date_joined = models.DateTimeField(default=timezone.now)
+    company_logo = models.ImageField(upload_to='company_logos/', null=True, blank=True)
+    website = models.URLField(blank=True, null=True)
+    
+    def __str__(self):
+        return self.company_name
+
+class ProductNeed(models.Model):
+    UNIT_CHOICES = [
+        ('kg', 'Kilogram'),
+        ('ton', 'Metric Ton'),
+        ('lb', 'Pound'),
+    ]
+    
+    STATUS_CHOICES = [
+        ('active', 'Active'),
+        ('fulfilled', 'Fulfilled'),
+        ('expired', 'Expired'),
+        ('cancelled', 'Cancelled'),
+    ]
+    
+    buyer = models.ForeignKey(BuyerProfile, on_delete=models.CASCADE, related_name='product_needs')
+    product_category = models.ForeignKey('ProductCategory', on_delete=models.PROTECT)
+    product_name = models.CharField(max_length=200)
+    description = models.TextField()
+    quantity = models.DecimalField(max_digits=10, decimal_places=2)
+    unit = models.CharField(max_length=10, choices=UNIT_CHOICES, default='kg')
+    price_per_kg = models.DecimalField(max_digits=10, decimal_places=2, help_text="Price offered per kilogram in USD")
+    date_posted = models.DateTimeField(auto_now_add=True)
+    date_needed_by = models.DateField()
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='active')
+    
+    def __str__(self):
+        return f"{self.product_name} - {self.quantity} {self.unit} - {self.buyer.company_name}"
+    
+    class Meta:
+        ordering = ['-date_posted']
+        verbose_name = "Product Need"
+        verbose_name_plural = "Product Needs"
+
+class BuyerInterest(models.Model):
+    buyer = models.ForeignKey(BuyerProfile, on_delete=models.CASCADE, related_name='interests')
+    category = models.ForeignKey('ProductCategory', on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return f"{self.buyer.company_name} - {self.category.name}"
+    
+    class Meta:
+        unique_together = ('buyer', 'category')
+        verbose_name = "Buyer Interest"
+        verbose_name_plural = "Buyer Interests"
