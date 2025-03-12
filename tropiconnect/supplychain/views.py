@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from .forms import FarmerRegistrationForm
 from .forms import BuyerRegistrationForm
-from .models import FarmerProfile
+from .models import FarmerProfile, BuyerProfile
 
 def home(request):
     """
@@ -75,3 +75,26 @@ def farmer_login(request):
             messages.error(request, "Invalid username or password.")
     
     return render(request, 'supplychain/farmer_login.html', {'title': 'Farmer Login'})
+
+def buyer_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        company_name = request.POST.get('company_name')
+        
+        user = authenticate(username=username, password=password)
+        
+        if user is not None:
+            try:
+                buyer = BuyerProfile.objects.get(user=user)
+                if buyer.company_name == company_name:
+                    login(request, user)
+                    return redirect('buyer_dashboard') 
+                else:
+                    messages.error(request, "Company name doesn't match.")
+            except BuyerProfile.DoesNotExist:
+                messages.error(request, "Buyer profile not found.")
+        else:
+            messages.error(request, "Invalid username or password.")
+    
+    return render(request, 'supplychain/buyer_login.html', {'title': 'Buyer Login'})
