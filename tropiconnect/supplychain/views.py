@@ -8,6 +8,7 @@ from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct
 from .models import BuyerProfile, ProductNeed
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
+from .forms import ProfilePictureForm
 
 
 def home(request):
@@ -165,3 +166,28 @@ def buyer_dashboard(request):
     }
     
     return render(request, 'supplychain/buyer_dashboard.html', context)
+
+
+@login_required
+def update_profile_picture(request):
+    """View for updating the farmer's profile picture."""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+    except FarmerProfile.DoesNotExist:
+        raise PermissionDenied("You do not have access to this page.")
+    
+    if request.method == 'POST':
+        form = ProfilePictureForm(request.POST, request.FILES, instance=farmer)
+        if form.is_valid():
+            form.save()
+            return redirect('farmer_dashboard')
+    else:
+        form = ProfilePictureForm(instance=farmer)
+    
+    context = {
+        'title': 'Update Profile Picture',
+        'form': form,
+        'farmer': farmer
+    }
+    
+    return render(request, 'supplychain/update_profile_picture.html', context)

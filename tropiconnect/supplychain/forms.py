@@ -70,6 +70,17 @@ class BuyerRegistrationForm(UserCreationForm):
         return user
 
 
+class ProfilePictureForm(forms.ModelForm):
+    class Meta:
+        model = FarmerProfile
+        fields = ['profile_picture']
+        widgets = {
+            'profile_picture': forms.FileInput(attrs={
+                'class': 'form-control', 
+                'accept': 'image/*'
+            })
+        }
+
 
 
 def __init__(self, *args, **kwargs):

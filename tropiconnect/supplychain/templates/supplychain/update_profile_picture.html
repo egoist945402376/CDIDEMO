@@ -1,0 +1,49 @@
+{% extends "supplychain/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Update Profile Picture</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="mb-4 text-center">
+                            {% if farmer.profile_picture %}
+                                <img src="{{ farmer.profile_picture.url }}" alt="Current profile picture" class="rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                                <p class="mb-3">Current Profile Picture</p>
+                            {% else %}
+                                <div class="bg-light rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 150px; height: 150px;">
+                                    <i class="bi bi-person-fill text-primary" style="font-size: 80px;"></i>
+                                </div>
+                                <p class="mb-3">No Profile Picture Yet</p>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.profile_picture.id_for_label }}" class="form-label">Choose New Profile Picture</label>
+                            {{ form.profile_picture }}
+                            {% if form.profile_picture.errors %}
+                                <div class="text-danger mt-1">
+                                    {{ form.profile_picture.errors }}
+                                </div>
+                            {% endif %}
+                            <div class="form-text">Recommended size: 300x300 pixels. Max file size: 2MB.</div>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Upload New Picture</button>
+                            <a href="{% url 'farmer_dashboard' %}" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
