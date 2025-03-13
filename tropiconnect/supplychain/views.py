@@ -4,6 +4,10 @@ from django.contrib.auth import login, authenticate
 from .forms import FarmerRegistrationForm
 from .forms import BuyerRegistrationForm
 from .models import FarmerProfile, BuyerProfile
+from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct
+from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
+
 
 def home(request):
     """
@@ -98,3 +102,41 @@ def buyer_login(request):
             messages.error(request, "Invalid username or password.")
     
     return render(request, 'supplychain/buyer_login.html', {'title': 'Buyer Login'})
+
+
+@login_required
+def farmer_dashboard(request):
+    """
+    Dashboard view for farmers. Only accessible to users with a farmer profile.
+    Displays personal information, farm details, and products.
+    """
+    try:
+        # Try to get the farmer profile for the logged-in user
+        farmer = FarmerProfile.objects.get(user=request.user)
+    except FarmerProfile.DoesNotExist:
+        # If no farmer profile exists for this user, they shouldn't access this page
+        raise PermissionDenied("You do not have access to this page.")
+    
+    # Get the farms associated with this farmer
+    farms = Farm.objects.filter(farmer=farmer)
+    
+    # Initialize a dictionary to store farms and their photos
+    farm_data = []
+    for farm in farms:
+        photos = FarmPhoto.objects.filter(farm=farm)
+        farm_data.append({
+            'farm': farm,
+            'photos': photos
+        })
+    
+    # Get the products associated with this farmer
+    products = FarmerProduct.objects.filter(farmer=farmer)
+    
+    context = {
+        'title': 'Farmer Dashboard',
+        'farmer': farmer,
+        'farm_data': farm_data,
+        'products': products,
+    }
+    
+    return render(request, 'supplychain/farmer_dashboard.html', context)

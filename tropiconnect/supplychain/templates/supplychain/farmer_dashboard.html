@@ -1,0 +1,219 @@
+{% extends "supplychain/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Dashboard Header -->
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <div class="bg-primary text-white rounded-lg p-4 shadow">
+                <div class="d-flex align-items-center">
+                    <div class="farmer-avatar me-4">
+                        {% if farmer.profile_picture %}
+                            <img src="{{ farmer.profile_picture.url }}" alt="{{ farmer.first_name }}" class="rounded-circle" width="80" height="80">
+                        {% else %}
+                            <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                <i class="bi bi-person-fill text-primary" style="font-size: 40px;"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h1 class="h3 mb-0">{{ farmer.first_name }} {{ farmer.last_name }}'s Dashboard</h1>
+                        <p class="mb-0">Welcome back to TropiConnect!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Personal Information Card -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-person-lines-fill me-2"></i>Personal Information</h5>
+                        <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i> Edit</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Username:</strong> {{ farmer.user.username }}</p>
+                            <p><strong>First Name:</strong> {{ farmer.first_name }}</p>
+                            <p><strong>Last Name:</strong> {{ farmer.last_name }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Email:</strong> {{ farmer.user.email }}</p>
+                            <p><strong>Phone:</strong> {{ farmer.phone_number }}</p>
+                            <p><strong>Member Since:</strong> {{ farmer.date_joined|date:"F d, Y" }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bio Section -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-file-person me-2"></i>About Me</h5>
+                        <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i> Edit</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% if farmer.bio %}
+                        <p>{{ farmer.bio }}</p>
+                    {% else %}
+                        <div class="alert alert-light mb-0">
+                            <p class="mb-0">You haven't added your bio yet. Tell buyers about yourself, your farming practices, and what makes your produce special.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Farms Section -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-house me-2"></i>My Farms</h5>
+                        <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-lg"></i> Add Farm</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% if farm_data %}
+                        <div class="row">
+                            {% for farm_item in farm_data %}
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100">
+                                        <div id="farm-{{ farm_item.farm.id }}-carousel" class="carousel slide" data-bs-ride="carousel">
+                                            <div class="carousel-inner">
+                                                {% if farm_item.photos %}
+                                                    {% for photo in farm_item.photos %}
+                                                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                                            <img src="{{ photo.photo.url }}" class="d-block w-100" alt="{{ photo.caption }}" style="height: 200px; object-fit: cover;">
+                                                            {% if photo.caption %}
+                                                                <div class="carousel-caption d-none d-md-block">
+                                                                    <p>{{ photo.caption }}</p>
+                                                                </div>
+                                                            {% endif %}
+                                                        </div>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <div class="carousel-item active">
+                                                        <div class="bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                                                            <i class="bi bi-image text-secondary" style="font-size: 64px;"></i>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            {% if farm_item.photos.count > 1 %}
+                                                <button class="carousel-control-prev" type="button" data-bs-target="#farm-{{ farm_item.farm.id }}-carousel" data-bs-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Previous</span>
+                                                </button>
+                                                <button class="carousel-control-next" type="button" data-bs-target="#farm-{{ farm_item.farm.id }}-carousel" data-bs-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Next</span>
+                                                </button>
+                                            {% endif %}
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ farm_item.farm.farm_name }}</h5>
+                                            <p class="card-text text-muted"><i class="bi bi-geo-alt-fill"></i> {{ farm_item.farm.location }}</p>
+                                            <p class="card-text">{{ farm_item.farm.description|truncatechars:150 }}</p>
+                                            {% if farm_item.farm.established_year %}
+                                                <p class="card-text"><small class="text-muted">Established: {{ farm_item.farm.established_year }}</small></p>
+                                            {% endif %}
+                                        </div>
+                                        <div class="card-footer bg-white">
+                                            <div class="d-flex justify-content-between">
+                                                <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i> Edit</a>
+                                                <a href="#" class="btn btn-sm btn-outline-success"><i class="bi bi-images"></i> Add Photos</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="alert alert-light">
+                            <p class="mb-0">You haven't added any farms yet. Add your first farm to showcase your operations to potential buyers.</p>
+                        </div>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Add Your First Farm</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-basket me-2"></i>My Products</h5>
+                        <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-lg"></i> Add Product</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% if products %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
+                                        <th>Description</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for product in products %}
+                                        <tr>
+                                            <td>{{ product.product_name }}</td>
+                                            <td>{{ product.category.name }}</td>
+                                            <td>
+                                                {% if product.is_available %}
+                                                    <span class="badge bg-success">Available</span>
+                                                {% else %}
+                                                    <span class="badge bg-secondary">Unavailable</span>
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ product.description|truncatechars:100 }}</td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
+                                                    <a href="#" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-light">
+                            <p class="mb-0">You haven't added any products yet. Add your products to attract potential buyers.</p>
+                        </div>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Add Your First Product</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
