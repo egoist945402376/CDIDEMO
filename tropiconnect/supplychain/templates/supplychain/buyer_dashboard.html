@@ -1,0 +1,155 @@
+{% extends "supplychain/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Dashboard Header -->
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <div class="bg-primary text-white rounded-lg p-4 shadow">
+                <div class="d-flex align-items-center">
+                    <div class="company-logo me-4">
+                        {% if buyer.company_logo %}
+                            <img src="{{ buyer.company_logo.url }}" alt="{{ buyer.company_name }}" class="rounded" width="100" height="100" style="object-fit: contain;">
+                        {% else %}
+                            <div class="bg-light rounded d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                                <i class="bi bi-building text-primary" style="font-size: 48px;"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h1 class="h3 mb-0">{{ buyer.company_name }}'s Dashboard</h1>
+                        <p class="mb-0">Welcome back to TropiConnect!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Company Information Card -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-building me-2"></i>Company Information</h5>
+                        <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i> Edit</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Username:</strong> {{ buyer.user.username }}</p>
+                            <p><strong>Company Name:</strong> {{ buyer.company_name }}</p>
+                            <p><strong>Country:</strong> {{ buyer.country }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Email:</strong> {{ buyer.user.email }}</p>
+                            <p><strong>City:</strong> {{ buyer.city }}</p>
+                            <p>
+                                <strong>Website:</strong> 
+                                {% if buyer.website %}
+                                    <a href="{{ buyer.website }}" target="_blank" rel="noopener noreferrer">{{ buyer.website }}</a>
+                                {% else %}
+                                    <span class="text-muted">Not provided</span>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Introduction Section -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-info-circle me-2"></i>Company Introduction</h5>
+                        <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i> Edit</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% if buyer.introduction %}
+                        <p>{{ buyer.introduction }}</p>
+                    {% else %}
+                        <div class="alert alert-light mb-0">
+                            <p class="mb-0">You haven't added your company introduction yet. Tell farmers about your company and what agricultural products you're interested in sourcing.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Needs Section -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-cart me-2"></i>My Product Needs</h5>
+                        <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-lg"></i> Add Product Need</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% if product_needs %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Category</th>
+                                        <th>Quantity</th>
+                                        <th>Price (USD/kg)</th>
+                                        <th>Needed By</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for need in product_needs %}
+                                        <tr>
+                                            <td>{{ need.product_name }}</td>
+                                            <td>{{ need.product_category.name }}</td>
+                                            <td>{{ need.quantity }} {{ need.get_unit_display }}</td>
+                                            <td>${{ need.price_per_kg }}</td>
+                                            <td>{{ need.date_needed_by|date:"M d, Y" }}</td>
+                                            <td>
+                                                {% if need.status == 'active' %}
+                                                    <span class="badge bg-success">Active</span>
+                                                {% elif need.status == 'fulfilled' %}
+                                                    <span class="badge bg-primary">Fulfilled</span>
+                                                {% elif need.status == 'expired' %}
+                                                    <span class="badge bg-warning text-dark">Expired</span>
+                                                {% else %}
+                                                    <span class="badge bg-secondary">Cancelled</span>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
+                                                    <a href="#" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-light">
+                            <p class="mb-0">You haven't added any product needs yet. Create your first product need to let farmers know what you're looking to source.</p>
+                        </div>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Add Your First Product Need</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -5,6 +5,7 @@ from .forms import FarmerRegistrationForm
 from .forms import BuyerRegistrationForm
 from .models import FarmerProfile, BuyerProfile
 from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct
+from .models import BuyerProfile, ProductNeed
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 
@@ -140,3 +141,27 @@ def farmer_dashboard(request):
     }
     
     return render(request, 'supplychain/farmer_dashboard.html', context)
+
+@login_required
+def buyer_dashboard(request):
+    """
+    Dashboard view for buyers. Only accessible to users with a buyer profile.
+    Displays company information and product needs.
+    """
+    try:
+        # Try to get the buyer profile for the logged-in user
+        buyer = BuyerProfile.objects.get(user=request.user)
+    except BuyerProfile.DoesNotExist:
+        # If no buyer profile exists for this user, they shouldn't access this page
+        raise PermissionDenied("You do not have access to this page.")
+    
+    # Get the product needs associated with this buyer
+    product_needs = ProductNeed.objects.filter(buyer=buyer)
+    
+    context = {
+        'title': 'Buyer Dashboard',
+        'buyer': buyer,
+        'product_needs': product_needs,
+    }
+    
+    return render(request, 'supplychain/buyer_dashboard.html', context)
