@@ -82,6 +82,20 @@ class ProfilePictureForm(forms.ModelForm):
         }
 
 
+class CompanyLogoForm(forms.ModelForm):
+    """Form used for updating company logo"""
+    class Meta:
+        model = BuyerProfile
+        fields = ['company_logo']
+        widgets = {
+            'company_logo': forms.FileInput(attrs={
+                'class': 'form-control', 
+                'accept': 'image/*'
+            })
+        }
+
+
+
 
 def __init__(self, *args, **kwargs):
     super(FarmerRegistrationForm, self).__init__(*args, **kwargs)

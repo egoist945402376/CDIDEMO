@@ -10,6 +10,7 @@ urlpatterns = [
     path('farmer/dashboard/', views.farmer_dashboard, name='farmer_dashboard'),
     path('buyer/dashboard/', views.buyer_dashboard, name='buyer_dashboard'),
     path('dashboard/update-profile-picture/', views.update_profile_picture, name='update_profile_picture'),
+    path('dashboard/update-company-logo/', views.update_company_logo, name='update_company_logo'),
     #path('buyer/dashboard/', views.buyer_dashboard, name='buyer_dashboard'),
     #path('farmer/dashboard/', views.farmer_dashboard, name='farmer_dashboard'),
 ]
