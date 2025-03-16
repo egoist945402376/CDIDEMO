@@ -9,6 +9,8 @@ from .models import BuyerProfile, ProductNeed
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from .forms import ProfilePictureForm, CompanyLogoForm
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 
 
 def home(request):
@@ -216,3 +218,7 @@ def update_company_logo(request):
     }
     
     return render(request, 'supplychain/update_company_logo.html', context)
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
