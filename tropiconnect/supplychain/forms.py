@@ -95,6 +95,32 @@ class CompanyLogoForm(forms.ModelForm):
         }
 
 
+class FarmerProfileEditForm(forms.ModelForm):
+    email = forms.EmailField(required=True)
+    
+    class Meta:
+        model = FarmerProfile
+        fields = ['phone_number', 'bio']
+        widgets = {
+            'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
+            'bio': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+        }
+    
+    def __init__(self, *args, **kwargs):
+        super(FarmerProfileEditForm, self).__init__(*args, **kwargs)
+        if self.instance and self.instance.user:
+            self.fields['email'].initial = self.instance.user.email
+    
+    def save(self, commit=True):
+        profile = super(FarmerProfileEditForm, self).save(commit=False)
+        if commit:
+            if profile.user:
+                profile.user.email = self.cleaned_data['email']
+                profile.user.save()
+            profile.save()
+        return profile
+
+
 
 
 def __init__(self, *args, **kwargs):

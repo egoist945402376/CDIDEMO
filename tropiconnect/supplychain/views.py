@@ -8,7 +8,7 @@ from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct
 from .models import BuyerProfile, ProductNeed
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from .forms import ProfilePictureForm, CompanyLogoForm
+from .forms import ProfilePictureForm, CompanyLogoForm, FarmerProfileEditForm
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 
@@ -222,3 +222,29 @@ def update_company_logo(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+
+@login_required
+def edit_farmer_profile(request):
+    """View for editing farmer's profile information."""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+    except FarmerProfile.DoesNotExist:
+        raise PermissionDenied("You do not have access to this page.")
+    
+    if request.method == 'POST':
+        form = FarmerProfileEditForm(request.POST, instance=farmer)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your profile has been updated successfully!")
+            return redirect('farmer_dashboard')
+    else:
+        form = FarmerProfileEditForm(instance=farmer)
+    
+    context = {
+        'title': 'Edit Profile',
+        'form': form,
+        'farmer': farmer
+    }
+    
+    return render(request, 'supplychain/edit_farmer_profile.html', context)
