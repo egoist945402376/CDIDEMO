@@ -15,6 +15,9 @@ urlpatterns = [
     path('dashboard/update-company-logo/', views.update_company_logo, name='update_company_logo'),
     path('logout/', views.logout_view, name='logout'),
     path('farmer/dashboard/edit-profile/', views.edit_farmer_profile, name='edit_farmer_profile'),
+    path('farmer/dashboard/farm/<int:farm_id>/add-photo/', views.add_farm_photo, name='add_farm_photo'),
+    path('farmer/dashboard/photo/<int:photo_id>/delete/', views.delete_farm_photo, name='delete_farm_photo'),
+    path('farmer/dashboard/add-farm/', views.add_farm, name='add_farm'),
     #path('buyer/dashboard/', views.buyer_dashboard, name='buyer_dashboard'),
     #path('farmer/dashboard/', views.farmer_dashboard, name='farmer_dashboard'),
 ]

@@ -87,7 +87,7 @@
                 <div class="card-header bg-white">
                     <div class="d-flex justify-content-between align-items-center">
                         <h5 class="mb-0"><i class="bi bi-house me-2"></i>My Farms</h5>
-                        <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-lg"></i> Add Farm</a>
+                        <a href="{% url 'add_farm' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-lg"></i> Add Farm</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -139,7 +139,7 @@
                                         <div class="card-footer bg-white">
                                             <div class="d-flex justify-content-between">
                                                 <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i> Edit</a>
-                                                <a href="#" class="btn btn-sm btn-outline-success"><i class="bi bi-images"></i> Add Photos</a>
+                                                <a href="{% url 'add_farm_photo' farm_item.farm.id %}" class="btn btn-sm btn-outline-success"><i class="bi bi-images"></i> Add Photos</a>
                                             </div>
                                         </div>
                                     </div>
@@ -157,6 +157,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 
     <!-- Products Section -->

@@ -8,7 +8,9 @@ from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct
 from .models import BuyerProfile, ProductNeed
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from .forms import ProfilePictureForm, CompanyLogoForm, FarmerProfileEditForm
+from .forms import ProfilePictureForm, CompanyLogoForm, FarmerProfileEditForm, FarmPhotoForm, FarmForm
+from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct
+from .models import BuyerProfile, ProductNeed
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 
@@ -248,3 +250,81 @@ def edit_farmer_profile(request):
     }
     
     return render(request, 'supplychain/edit_farmer_profile.html', context)
+
+
+@login_required
+def add_farm_photo(request, farm_id):
+    """View for adding photos to a farm."""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+        farm = Farm.objects.get(id=farm_id, farmer=farmer)
+    except (FarmerProfile.DoesNotExist, Farm.DoesNotExist):
+        raise PermissionDenied("You do not have access to this farm.")
+    
+    photo_count = FarmPhoto.objects.filter(farm=farm).count()
+    
+    if request.method == 'POST':
+        form = FarmPhotoForm(request.POST, request.FILES)
+        if form.is_valid():
+            if photo_count >= 3:
+                messages.error(request, "You can only have a maximum of 3 photos per farm. Please delete some photos first.")
+            else:
+                photo = form.save(commit=False)
+                photo.farm = farm
+                photo.save()
+                messages.success(request, "Photo added successfully!")
+            return redirect('farmer_dashboard')
+    else:
+        form = FarmPhotoForm()
+    
+    context = {
+        'title': f'Add Photo to {farm.farm_name}',
+        'form': form,
+        'farm': farm,
+        'photo_count': photo_count,
+        'photos': FarmPhoto.objects.filter(farm=farm)
+    }
+    
+    return render(request, 'supplychain/add_farm_photo.html', context)
+
+@login_required
+def delete_farm_photo(request, photo_id):
+    """View for deleting a farm photo."""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+        photo = FarmPhoto.objects.get(id=photo_id, farm__farmer=farmer)
+    except (FarmerProfile.DoesNotExist, FarmPhoto.DoesNotExist):
+        raise PermissionDenied("You do not have access to this photo.")
+    
+    if request.method == 'POST':
+        photo.delete()
+        messages.success(request, "Photo deleted successfully!")
+    
+    return redirect('farmer_dashboard')
+
+
+@login_required
+def add_farm(request):
+    """View for adding a new farm."""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+    except FarmerProfile.DoesNotExist:
+        raise PermissionDenied("You do not have access to this page.")
+    
+    if request.method == 'POST':
+        form = FarmForm(request.POST)
+        if form.is_valid():
+            farm = form.save(commit=False)
+            farm.farmer = farmer
+            farm.save()
+            messages.success(request, "Farm added successfully!")
+            return redirect('farmer_dashboard')
+    else:
+        form = FarmForm()
+    
+    context = {
+        'title': 'Add New Farm',
+        'form': form
+    }
+    
+    return render(request, 'supplychain/add_farm.html', context)

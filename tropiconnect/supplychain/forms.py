@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import FarmerProfile
 from .models import BuyerProfile
+from .models import FarmPhoto
+from .models import Farm
 
 class FarmerRegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -120,6 +122,32 @@ class FarmerProfileEditForm(forms.ModelForm):
             profile.save()
         return profile
 
+class FarmPhotoForm(forms.ModelForm):
+    class Meta:
+        model = FarmPhoto
+        fields = ['photo', 'caption']
+        widgets = {
+            'photo': forms.FileInput(attrs={
+                'class': 'form-control', 
+                'accept': 'image/*'
+            }),
+            'caption': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Add a caption for this photo (optional)'
+            })
+        }
+
+
+class FarmForm(forms.ModelForm):
+    class Meta:
+        model = Farm
+        fields = ['farm_name', 'location', 'description', 'established_year']
+        widgets = {
+            'farm_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'location': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
+            'established_year': forms.NumberInput(attrs={'class': 'form-control'})
+        }
 
 
 
