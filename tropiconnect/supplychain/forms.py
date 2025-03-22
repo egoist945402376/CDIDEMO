@@ -5,6 +5,8 @@ from .models import FarmerProfile
 from .models import BuyerProfile
 from .models import FarmPhoto
 from .models import Farm
+from .models import ProductCategory
+from .models import FarmerProduct
 
 class FarmerRegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -149,6 +151,18 @@ class FarmForm(forms.ModelForm):
             'established_year': forms.NumberInput(attrs={'class': 'form-control'})
         }
 
+
+class FarmerProductForm(forms.ModelForm):
+    class Meta:
+        model = FarmerProduct
+        fields = ['product_name', 'category', 'description', 'is_available', 'photo']
+        widgets = {
+            'product_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'category': forms.Select(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
+            'is_available': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'photo': forms.FileInput(attrs={'class': 'form-control', 'accept': 'image/*'})
+        }
 
 
 def __init__(self, *args, **kwargs):

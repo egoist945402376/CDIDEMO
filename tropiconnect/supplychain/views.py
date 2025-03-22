@@ -8,8 +8,8 @@ from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct
 from .models import BuyerProfile, ProductNeed
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from .forms import ProfilePictureForm, CompanyLogoForm, FarmerProfileEditForm, FarmPhotoForm, FarmForm
-from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct
+from .forms import ProfilePictureForm, CompanyLogoForm, FarmerProfileEditForm, FarmPhotoForm, FarmForm, FarmerProductForm
+from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct, ProductCategory, ShippingMethod
 from .models import BuyerProfile, ProductNeed
 from django.contrib.auth import logout
 from django.shortcuts import redirect
@@ -328,3 +328,32 @@ def add_farm(request):
     }
     
     return render(request, 'supplychain/add_farm.html', context)
+
+@login_required
+def add_product(request):
+    """View for adding a new product."""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+    except FarmerProfile.DoesNotExist:
+        raise PermissionDenied("You do not have access to this page.")
+    
+    if request.method == 'POST':
+        form = FarmerProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.farmer = farmer
+            product.save()
+            messages.success(request, "Product added successfully!")
+            return redirect('farmer_dashboard')
+    else:
+        form = FarmerProductForm()
+    
+    categories = ProductCategory.objects.all()
+    
+    context = {
+        'title': 'Add New Product',
+        'form': form,
+        'categories': categories
+    }
+    
+    return render(request, 'supplychain/add_product.html', context)

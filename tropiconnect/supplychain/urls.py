@@ -18,6 +18,7 @@ urlpatterns = [
     path('farmer/dashboard/farm/<int:farm_id>/add-photo/', views.add_farm_photo, name='add_farm_photo'),
     path('farmer/dashboard/photo/<int:photo_id>/delete/', views.delete_farm_photo, name='delete_farm_photo'),
     path('farmer/dashboard/add-farm/', views.add_farm, name='add_farm'),
+    path('farmer/dashboard/add-product/', views.add_product, name='add_product'),
     #path('buyer/dashboard/', views.buyer_dashboard, name='buyer_dashboard'),
     #path('farmer/dashboard/', views.farmer_dashboard, name='farmer_dashboard'),
 ]
