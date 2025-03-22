@@ -357,3 +357,19 @@ def add_product(request):
     }
     
     return render(request, 'supplychain/add_product.html', context)
+
+
+@login_required
+def delete_product(request, product_id):
+    """View for deleting a product."""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+        product = FarmerProduct.objects.get(id=product_id, farmer=farmer)
+    except (FarmerProfile.DoesNotExist, FarmerProduct.DoesNotExist):
+        raise PermissionDenied("You do not have access to this product.")
+    
+    if request.method == 'POST':
+        product.delete()
+        messages.success(request, "Product deleted successfully!")
+    
+    return redirect('farmer_dashboard')
