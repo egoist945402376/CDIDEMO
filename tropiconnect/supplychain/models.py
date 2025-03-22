@@ -49,6 +49,7 @@ class FarmerProduct(models.Model):
     product_name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     is_available = models.BooleanField(default=True)
+    photo = models.ImageField(upload_to='farm_product_photos/', null=True, blank=True)
     
     def __str__(self):
         return self.product_name
@@ -69,6 +70,31 @@ class FarmerShippingMethod(models.Model):
     
     class Meta:
         unique_together = ('farmer', 'shipping_method')
+
+
+class FarmerCertification(models.Model):
+    farmer = models.ForeignKey(FarmerProfile, on_delete=models.CASCADE, related_name='certifications')
+    certification_name = models.CharField(max_length=200, verbose_name="Certification Name")
+    issuing_organization = models.CharField(max_length=200, verbose_name="Issuing Organization")
+    issue_date = models.DateField(verbose_name="Issue Date")
+    expiry_date = models.DateField(null=True, blank=True, verbose_name="Expiry Date")
+    certificate_image = models.ImageField(upload_to='farmer_certifications/', null=True, blank=True,verbose_name="Certificate Image")
+    description = models.TextField(blank=True, verbose_name="Description")
+    date_added = models.DateTimeField(default=timezone.now)
+    
+    class Meta:
+        ordering = ['-issue_date']
+        verbose_name = "Farmer Certification"
+        verbose_name_plural = "Farmer Certifications"
+    
+    def __str__(self):
+        return f"{self.certification_name} - {self.farmer.first_name} {self.farmer.last_name}"
+    
+    def is_valid(self):
+        """Check if the certification is still valid based on expiry date"""
+        if not self.expiry_date:
+            return True
+        return self.expiry_date >= timezone.now().date()
 
 
 class BuyerProfile(models.Model):
