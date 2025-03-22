@@ -400,3 +400,25 @@ def edit_product(request, product_id):
     }
     
     return render(request, 'supplychain/edit_product.html', context)
+
+
+
+@login_required
+def farmer_home_page(request):
+    """Home page for farmers. Only accessible to users with a farmer profile."""
+    try:
+        # Check if the logged-in user has a farmer profile
+        farmer = FarmerProfile.objects.get(user=request.user)
+    except FarmerProfile.DoesNotExist:
+        # If no farmer profile exists for this user, redirect them to a generic page
+        messages.error(request, "You need a farmer account to access this page.")
+        return redirect('home')  # Redirect to your general home page
+    
+    # You could fetch real data here for the agricultural news and buyer recommendations
+    
+    context = {
+        'title': 'Farmer Home',
+        'farmer': farmer
+    }
+    
+    return render(request, 'supplychain/farmer_home_page.html', context)
