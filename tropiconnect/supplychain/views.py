@@ -9,6 +9,8 @@ from .models import BuyerProfile, ProductNeed
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from .forms import ProfilePictureForm, CompanyLogoForm, FarmerProfileEditForm, FarmPhotoForm, FarmForm, FarmerProductForm
+from .forms import FarmerCertificationForm
+from .models import FarmerCertification
 from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct, ProductCategory, ShippingMethod
 from .models import BuyerProfile, ProductNeed
 from django.contrib.auth import logout
@@ -422,3 +424,71 @@ def farmer_home_page(request):
     }
     
     return render(request, 'supplychain/farmer_home_page.html', context)
+
+
+@login_required
+def farmer_add_certification(request):
+    """View for adding a new certification."""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+    except FarmerProfile.DoesNotExist:
+        raise PermissionDenied("You do not have access to this page.")
+    
+    if request.method == 'POST':
+        form = FarmerCertificationForm(request.POST, request.FILES)
+        if form.is_valid():
+            certification = form.save(commit=False)
+            certification.farmer = farmer
+            certification.save()
+            messages.success(request, "Certification added successfully!")
+            return redirect('farmer_dashboard')
+    else:
+        form = FarmerCertificationForm()
+    
+    context = {
+        'title': 'Add New Certification',
+        'form': form
+    }
+    
+    return render(request, 'supplychain/farmer_add_certification.html', context)
+
+@login_required
+def farmer_edit_certification(request, certification_id):
+    """View for editing an existing certification."""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+        certification = FarmerCertification.objects.get(id=certification_id, farmer=farmer)
+    except (FarmerProfile.DoesNotExist, FarmerCertification.DoesNotExist):
+        raise PermissionDenied("You do not have access to this certification.")
+    
+    if request.method == 'POST':
+        form = FarmerCertificationForm(request.POST, request.FILES, instance=certification)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Certification updated successfully!")
+            return redirect('farmer_dashboard')
+    else:
+        form = FarmerCertificationForm(instance=certification)
+    
+    context = {
+        'title': 'Edit Certification',
+        'form': form,
+        'certification': certification
+    }
+    
+    return render(request, 'supplychain/farmer_edit_certification.html', context)
+
+@login_required
+def farmer_delete_certification(request, certification_id):
+    """View for deleting a certification."""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+        certification = FarmerCertification.objects.get(id=certification_id, farmer=farmer)
+    except (FarmerProfile.DoesNotExist, FarmerCertification.DoesNotExist):
+        raise PermissionDenied("You do not have access to this certification.")
+    
+    if request.method == 'POST':
+        certification.delete()
+        messages.success(request, "Certification deleted successfully!")
+    
+    return redirect('farmer_dashboard')

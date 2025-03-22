@@ -7,7 +7,7 @@ from .models import FarmPhoto
 from .models import Farm
 from .models import ProductCategory
 from .models import FarmerProduct
-
+from .models import FarmerCertification
 class FarmerRegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
     first_name = forms.CharField(required=True)
@@ -162,6 +162,21 @@ class FarmerProductForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
             'is_available': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
             'photo': forms.FileInput(attrs={'class': 'form-control', 'accept': 'image/*'})
+        }
+
+
+class FarmerCertificationForm(forms.ModelForm):
+    class Meta:
+        model = FarmerCertification
+        fields = ['certification_name', 'issuing_organization', 'issue_date', 
+                  'expiry_date', 'certificate_image', 'description']
+        widgets = {
+            'certification_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'issuing_organization': forms.TextInput(attrs={'class': 'form-control'}),
+            'issue_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'expiry_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'certificate_image': forms.FileInput(attrs={'class': 'form-control', 'accept': 'image/*'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }
 
 
