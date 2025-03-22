@@ -373,3 +373,30 @@ def delete_product(request, product_id):
         messages.success(request, "Product deleted successfully!")
     
     return redirect('farmer_dashboard')
+
+
+@login_required
+def edit_product(request, product_id):
+    """View for editing an existing product."""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+        product = FarmerProduct.objects.get(id=product_id, farmer=farmer)
+    except (FarmerProfile.DoesNotExist, FarmerProduct.DoesNotExist):
+        raise PermissionDenied("You do not have access to this product.")
+    
+    if request.method == 'POST':
+        form = FarmerProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Product updated successfully!")
+            return redirect('farmer_dashboard')
+    else:
+        form = FarmerProductForm(instance=product)
+    
+    context = {
+        'title': 'Edit Product',
+        'form': form,
+        'product': product
+    }
+    
+    return render(request, 'supplychain/edit_product.html', context)

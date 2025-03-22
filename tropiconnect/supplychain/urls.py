@@ -20,6 +20,7 @@ urlpatterns = [
     path('farmer/dashboard/add-farm/', views.add_farm, name='add_farm'),
     path('farmer/dashboard/add-product/', views.add_product, name='add_product'),
     path('farmer/dashboard/product/<int:product_id>/delete/', views.delete_product, name='delete_product'),
+    path('farmer/dashboard/product/<int:product_id>/edit/', views.edit_product, name='edit_product'),
     #path('buyer/dashboard/', views.buyer_dashboard, name='buyer_dashboard'),
     #path('farmer/dashboard/', views.farmer_dashboard, name='farmer_dashboard'),
 ]
