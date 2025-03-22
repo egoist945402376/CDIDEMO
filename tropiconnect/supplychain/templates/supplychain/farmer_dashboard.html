@@ -186,32 +186,32 @@
                                 </thead>
                                 <tbody>
                                     {% for product in products %}
-                                        <tr>
-                                            <td class="text-center">
+                                        <tr style="height: 80px; vertical-align: middle;">
+                                            <td class="text-center py-3">
                                                 {% if product.photo %}
-                                                    <img src="{{ product.photo.url }}" alt="{{ product.product_name }}" class="img-thumbnail" style="width: 60px; height: 60px; object-fit: cover;">
+                                                    <img src="{{ product.photo.url }}" alt="{{ product.product_name }}" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
                                                 {% else %}
-                                                    <div class="bg-light d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
-                                                        <i class="bi bi-image text-secondary"></i>
+                                                    <div class="bg-light d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                                                        <i class="bi bi-image text-secondary" style="font-size: 1.5rem;"></i>
                                                     </div>
                                                 {% endif %}
                                             </td>
-                                            <td>{{ product.product_name }}</td>
-                                            <td>{{ product.category.name }}</td>
-                                            <td>
+                                            <td class="py-3 fs-6">{{ product.product_name }}</td>
+                                            <td class="py-3 fs-6">{{ product.category.name }}</td>
+                                            <td class="py-3">
                                                 {% if product.is_available %}
-                                                    <span class="badge bg-success">Available</span>
+                                                    <span class="badge bg-success fs-6">Available</span>
                                                 {% else %}
-                                                    <span class="badge bg-secondary">Unavailable</span>
+                                                    <span class="badge bg-secondary fs-6">Unavailable</span>
                                                 {% endif %}
                                             </td>
-                                            <td>{{ product.description|truncatechars:100 }}</td>
-                                            <td>
+                                            <td class="py-3 fs-6">{{ product.description|truncatechars:100 }}</td>
+                                            <td class="py-3">
                                                 <div class="btn-group">
-                                                    <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i></a>
+                                                    <a href="#" class="btn btn-sm btn-outline-primary" style="padding: 8px 12px;"><i class="bi bi-pencil-square"></i></a>
                                                     <form method="post" action="{% url 'delete_product' product.id %}" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this product?');">
                                                         {% csrf_token %}
-                                                        <button type="submit" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                                        <button type="submit" class="btn btn-sm btn-outline-danger" style="padding: 8px 12px;"><i class="bi bi-trash"></i></button>
                                                     </form>
                                                 </div>
                                             </td>
