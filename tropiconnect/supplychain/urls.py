@@ -26,6 +26,10 @@ urlpatterns = [
     path('farmer/dashboard/certification/<int:certification_id>/edit/', views.farmer_edit_certification, name='farmer_edit_certification'),
     path('farmer/dashboard/certification/<int:certification_id>/delete/', views.farmer_delete_certification, name='farmer_delete_certification'),
     path('buyer/dashboard/edit-profile/', views.edit_buyer_profile, name='edit_buyer_profile'),
+    path('buyer/dashboard/add-product-need/', views.add_product_need, name='add_product_need'),
+    path('buyer/dashboard/product-need/<int:need_id>/edit/', views.edit_product_need, name='edit_product_need'),
+    path('buyer/dashboard/product-need/<int:need_id>/delete/', views.delete_product_need, name='delete_product_need'),
+    path('buyer/dashboard/product-need/<int:need_id>/update-status/', views.update_product_need_status, name='update_product_need_status'),
     #path('buyer/dashboard/', views.buyer_dashboard, name='buyer_dashboard'),
     #path('farmer/dashboard/', views.farmer_dashboard, name='farmer_dashboard'),
 ]

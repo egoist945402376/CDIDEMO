@@ -5,9 +5,10 @@ from .models import FarmerProfile
 from .models import BuyerProfile
 from .models import FarmPhoto
 from .models import Farm
-from .models import ProductCategory
+from .models import ProductNeed
 from .models import FarmerProduct
 from .models import FarmerCertification
+import datetime
 class FarmerRegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
     first_name = forms.CharField(required=True)
@@ -207,6 +208,41 @@ class BuyerProfileEditForm(forms.ModelForm):
                 profile.user.save()
             profile.save()
         return profile
+
+class ProductNeedForm(forms.ModelForm):
+    class Meta:
+        model = ProductNeed
+        fields = ['product_name', 'product_category', 'description', 'quantity', 
+                  'unit', 'price_per_kg', 'date_needed_by']
+        widgets = {
+            'product_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'product_category': forms.Select(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
+            'quantity': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
+            'unit': forms.Select(attrs={'class': 'form-control'}),
+            'price_per_kg': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
+            'date_needed_by': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'})
+        }
+    
+    def clean_date_needed_by(self):
+        date_needed_by = self.cleaned_data.get('date_needed_by')
+        if date_needed_by and date_needed_by < datetime.date.today():
+            raise forms.ValidationError("The needed by date cannot be in the past.")
+        return date_needed_by
+    
+    def clean_quantity(self):
+        quantity = self.cleaned_data.get('quantity')
+        if quantity <= 0:
+            raise forms.ValidationError("Quantity must be greater than zero.")
+        return quantity
+    
+    def clean_price_per_kg(self):
+        price = self.cleaned_data.get('price_per_kg')
+        if price <= 0:
+            raise forms.ValidationError("Price must be greater than zero.")
+        return price
+
+
 
 
 

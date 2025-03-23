@@ -8,7 +8,7 @@ from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct
 from .models import BuyerProfile, ProductNeed
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from .forms import ProfilePictureForm, CompanyLogoForm, FarmerProfileEditForm, FarmPhotoForm, FarmForm, FarmerProductForm
+from .forms import ProfilePictureForm, CompanyLogoForm, FarmerProfileEditForm, FarmPhotoForm, FarmForm, FarmerProductForm, ProductNeedForm
 from .forms import FarmerCertificationForm
 from .forms import BuyerProfileEditForm
 from .models import FarmerCertification
@@ -519,3 +519,94 @@ def edit_buyer_profile(request):
     }
     
     return render(request, 'supplychain/edit_buyer_profile.html', context)
+
+@login_required
+def add_product_need(request):
+    """View for adding a new product need."""
+    try:
+        buyer = BuyerProfile.objects.get(user=request.user)
+    except BuyerProfile.DoesNotExist:
+        raise PermissionDenied("You do not have access to this page.")
+    
+    if request.method == 'POST':
+        form = ProductNeedForm(request.POST)
+        if form.is_valid():
+            product_need = form.save(commit=False)
+            product_need.buyer = buyer
+            product_need.status = 'active'
+            product_need.save()
+            messages.success(request, "Product need added successfully!")
+            return redirect('buyer_dashboard')
+    else:
+        form = ProductNeedForm()
+    
+    categories = ProductCategory.objects.all()
+    
+    context = {
+        'title': 'Add New Product Need',
+        'form': form,
+        'categories': categories
+    }
+    
+    return render(request, 'supplychain/add_product_need.html', context)
+
+@login_required
+def edit_product_need(request, need_id):
+    """View for editing an existing product need."""
+    try:
+        buyer = BuyerProfile.objects.get(user=request.user)
+        product_need = ProductNeed.objects.get(id=need_id, buyer=buyer)
+    except (BuyerProfile.DoesNotExist, ProductNeed.DoesNotExist):
+        raise PermissionDenied("You do not have access to this product need.")
+    
+    if request.method == 'POST':
+        form = ProductNeedForm(request.POST, instance=product_need)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Product need updated successfully!")
+            return redirect('buyer_dashboard')
+    else:
+        form = ProductNeedForm(instance=product_need)
+    
+    context = {
+        'title': 'Edit Product Need',
+        'form': form,
+        'product_need': product_need
+    }
+    
+    return render(request, 'supplychain/edit_product_need.html', context)
+
+@login_required
+def delete_product_need(request, need_id):
+    """View for deleting a product need."""
+    try:
+        buyer = BuyerProfile.objects.get(user=request.user)
+        product_need = ProductNeed.objects.get(id=need_id, buyer=buyer)
+    except (BuyerProfile.DoesNotExist, ProductNeed.DoesNotExist):
+        raise PermissionDenied("You do not have access to this product need.")
+    
+    if request.method == 'POST':
+        product_need.delete()
+        messages.success(request, "Product need deleted successfully!")
+    
+    return redirect('buyer_dashboard')
+
+@login_required
+def update_product_need_status(request, need_id):
+    """View for updating the status of a product need."""
+    try:
+        buyer = BuyerProfile.objects.get(user=request.user)
+        product_need = ProductNeed.objects.get(id=need_id, buyer=buyer)
+    except (BuyerProfile.DoesNotExist, ProductNeed.DoesNotExist):
+        raise PermissionDenied("You do not have access to this product need.")
+    
+    if request.method == 'POST':
+        status = request.POST.get('status')
+        if status in [choice[0] for choice in ProductNeed.STATUS_CHOICES]:
+            product_need.status = status
+            product_need.save()
+            messages.success(request, f"Product need status updated to {dict(ProductNeed.STATUS_CHOICES)[status]}!")
+        else:
+            messages.error(request, "Invalid status selected.")
+    
+    return redirect('buyer_dashboard')
