@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from .forms import ProfilePictureForm, CompanyLogoForm, FarmerProfileEditForm, FarmPhotoForm, FarmForm, FarmerProductForm
 from .forms import FarmerCertificationForm
+from .forms import BuyerProfileEditForm
 from .models import FarmerCertification
 from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct, ProductCategory, ShippingMethod
 from .models import BuyerProfile, ProductNeed
@@ -492,3 +493,29 @@ def farmer_delete_certification(request, certification_id):
         messages.success(request, "Certification deleted successfully!")
     
     return redirect('farmer_dashboard')
+
+
+@login_required
+def edit_buyer_profile(request):
+    """View for editing buyer's profile information."""
+    try:
+        buyer = BuyerProfile.objects.get(user=request.user)
+    except BuyerProfile.DoesNotExist:
+        raise PermissionDenied("You do not have access to this page.")
+    
+    if request.method == 'POST':
+        form = BuyerProfileEditForm(request.POST, instance=buyer)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your profile has been updated successfully!")
+            return redirect('buyer_dashboard')
+    else:
+        form = BuyerProfileEditForm(instance=buyer)
+    
+    context = {
+        'title': 'Edit Company Profile',
+        'form': form,
+        'buyer': buyer
+    }
+    
+    return render(request, 'supplychain/edit_buyer_profile.html', context)

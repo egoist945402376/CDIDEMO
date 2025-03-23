@@ -25,6 +25,7 @@ urlpatterns = [
     path('farmer/dashboard/add-certification/', views.farmer_add_certification, name='farmer_add_certification'),
     path('farmer/dashboard/certification/<int:certification_id>/edit/', views.farmer_edit_certification, name='farmer_edit_certification'),
     path('farmer/dashboard/certification/<int:certification_id>/delete/', views.farmer_delete_certification, name='farmer_delete_certification'),
+    path('buyer/dashboard/edit-profile/', views.edit_buyer_profile, name='edit_buyer_profile'),
     #path('buyer/dashboard/', views.buyer_dashboard, name='buyer_dashboard'),
     #path('farmer/dashboard/', views.farmer_dashboard, name='farmer_dashboard'),
 ]

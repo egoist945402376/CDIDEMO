@@ -179,6 +179,36 @@ class FarmerCertificationForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }
 
+class BuyerProfileEditForm(forms.ModelForm):
+    email = forms.EmailField(required=True)
+    
+    class Meta:
+        model = BuyerProfile
+        fields = ['phone_number', 'company_name', 'country', 'city', 'introduction', 'website']
+        widgets = {
+            'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
+            'company_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'country': forms.TextInput(attrs={'class': 'form-control'}),
+            'city': forms.TextInput(attrs={'class': 'form-control'}),
+            'introduction': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+            'website': forms.URLInput(attrs={'class': 'form-control'})
+        }
+    
+    def __init__(self, *args, **kwargs):
+        super(BuyerProfileEditForm, self).__init__(*args, **kwargs)
+        if self.instance and self.instance.user:
+            self.fields['email'].initial = self.instance.user.email
+    
+    def save(self, commit=True):
+        profile = super(BuyerProfileEditForm, self).save(commit=False)
+        if commit:
+            if profile.user:
+                profile.user.email = self.cleaned_data['email']
+                profile.user.save()
+            profile.save()
+        return profile
+
+
 
 def __init__(self, *args, **kwargs):
     super(FarmerRegistrationForm, self).__init__(*args, **kwargs)
