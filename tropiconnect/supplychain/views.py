@@ -12,6 +12,8 @@ from .forms import ProfilePictureForm, CompanyLogoForm, FarmerProfileEditForm, F
 from .forms import FarmerCertificationForm
 from .forms import BuyerProfileEditForm
 from .models import FarmerCertification
+from .forms import CompanyCertificationForm
+from .models import CompanyCertification
 from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct, ProductCategory, ShippingMethod
 from .models import BuyerProfile, ProductNeed
 from django.contrib.auth import logout
@@ -608,5 +610,72 @@ def update_product_need_status(request, need_id):
             messages.success(request, f"Product need status updated to {dict(ProductNeed.STATUS_CHOICES)[status]}!")
         else:
             messages.error(request, "Invalid status selected.")
+    
+    return redirect('buyer_dashboard')
+
+@login_required
+def add_company_certification(request):
+    """View for adding a new company certification."""
+    try:
+        buyer = BuyerProfile.objects.get(user=request.user)
+    except BuyerProfile.DoesNotExist:
+        raise PermissionDenied("You do not have access to this page.")
+    
+    if request.method == 'POST':
+        form = CompanyCertificationForm(request.POST, request.FILES)
+        if form.is_valid():
+            certification = form.save(commit=False)
+            certification.buyer = buyer
+            certification.save()
+            messages.success(request, "Certification added successfully!")
+            return redirect('buyer_dashboard')
+    else:
+        form = CompanyCertificationForm()
+    
+    context = {
+        'title': 'Add New Company Certification',
+        'form': form
+    }
+    
+    return render(request, 'supplychain/add_company_certification.html', context)
+
+@login_required
+def edit_company_certification(request, certification_id):
+    """View for editing an existing company certification."""
+    try:
+        buyer = BuyerProfile.objects.get(user=request.user)
+        certification = CompanyCertification.objects.get(id=certification_id, buyer=buyer)
+    except (BuyerProfile.DoesNotExist, CompanyCertification.DoesNotExist):
+        raise PermissionDenied("You do not have access to this certification.")
+    
+    if request.method == 'POST':
+        form = CompanyCertificationForm(request.POST, request.FILES, instance=certification)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Certification updated successfully!")
+            return redirect('buyer_dashboard')
+    else:
+        form = CompanyCertificationForm(instance=certification)
+    
+    context = {
+        'title': 'Edit Company Certification',
+        'form': form,
+        'certification': certification
+    }
+    
+    return render(request, 'supplychain/edit_company_certification.html', context)
+
+@login_required
+def delete_company_certification(request, certification_id):
+    """View for deleting a company certification."""
+    try:
+        buyer = BuyerProfile.objects.get(user=request.user)
+        certification = CompanyCertification.objects.get(id=certification_id, buyer=buyer)
+    except (BuyerProfile.DoesNotExist, CompanyCertification.DoesNotExist):
+        raise PermissionDenied("You do not have access to this certification.")
+    
+    if request.method == 'POST':
+        certification.delete()
+        messages.success(request, "Certification deleted successfully!")
     
     return redirect('buyer_dashboard')

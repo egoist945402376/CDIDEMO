@@ -8,6 +8,7 @@ from .models import Farm
 from .models import ProductNeed
 from .models import FarmerProduct
 from .models import FarmerCertification
+from .models import CompanyCertification
 import datetime
 class FarmerRegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -242,6 +243,23 @@ class ProductNeedForm(forms.ModelForm):
             raise forms.ValidationError("Price must be greater than zero.")
         return price
 
+
+class CompanyCertificationForm(forms.ModelForm):
+    class Meta:
+        model = CompanyCertification
+        fields = ['certification_name', 'issuing_organization', 'issue_date', 
+                  'expiry_date', 'certificate_image', 'description', 
+                  'certification_number', 'certification_type']
+        widgets = {
+            'certification_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'issuing_organization': forms.TextInput(attrs={'class': 'form-control'}),
+            'issue_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'expiry_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'certificate_image': forms.FileInput(attrs={'class': 'form-control', 'accept': 'image/*'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'certification_number': forms.TextInput(attrs={'class': 'form-control'}),
+            'certification_type': forms.TextInput(attrs={'class': 'form-control'}),
+        }
 
 
 

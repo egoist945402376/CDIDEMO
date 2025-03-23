@@ -155,3 +155,30 @@ class BuyerInterest(models.Model):
         unique_together = ('buyer', 'category')
         verbose_name = "Buyer Interest"
         verbose_name_plural = "Buyer Interests"
+
+
+class CompanyCertification(models.Model):
+    buyer = models.ForeignKey(BuyerProfile, on_delete=models.CASCADE, related_name='certifications')
+    certification_name = models.CharField(max_length=200, verbose_name="Certification Name")
+    issuing_organization = models.CharField(max_length=200, verbose_name="Issuing Organization")
+    issue_date = models.DateField(verbose_name="Issue Date")
+    expiry_date = models.DateField(null=True, blank=True, verbose_name="Expiry Date")
+    certificate_image = models.ImageField(upload_to='company_certifications/', null=True, blank=True, verbose_name="Certificate Image")
+    description = models.TextField(blank=True, verbose_name="Description")
+    date_added = models.DateTimeField(default=timezone.now)
+    certification_number = models.CharField(max_length=100, blank=True, verbose_name="Certification Number")
+    certification_type = models.CharField(max_length=100, blank=True, verbose_name="Certification Type")
+    
+    class Meta:
+        ordering = ['-issue_date']
+        verbose_name = "Company Certification"
+        verbose_name_plural = "Company Certifications"
+    
+    def __str__(self):
+        return f"{self.certification_name} - {self.buyer.company_name}"
+    
+    def is_valid(self):
+        """Check if the certification is still valid based on expiry date"""
+        if not self.expiry_date:
+            return True
+        return self.expiry_date >= timezone.now().date()

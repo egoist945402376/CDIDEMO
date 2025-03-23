@@ -30,6 +30,9 @@ urlpatterns = [
     path('buyer/dashboard/product-need/<int:need_id>/edit/', views.edit_product_need, name='edit_product_need'),
     path('buyer/dashboard/product-need/<int:need_id>/delete/', views.delete_product_need, name='delete_product_need'),
     path('buyer/dashboard/product-need/<int:need_id>/update-status/', views.update_product_need_status, name='update_product_need_status'),
+    path('buyer/dashboard/add-certification/', views.add_company_certification, name='add_company_certification'),
+    path('buyer/dashboard/certification/<int:certification_id>/edit/', views.edit_company_certification, name='edit_company_certification'),
+    path('buyer/dashboard/certification/<int:certification_id>/delete/', views.delete_company_certification, name='delete_company_certification'),
     #path('buyer/dashboard/', views.buyer_dashboard, name='buyer_dashboard'),
     #path('farmer/dashboard/', views.farmer_dashboard, name='farmer_dashboard'),
 ]
