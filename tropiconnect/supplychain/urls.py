@@ -33,6 +33,7 @@ urlpatterns = [
     path('buyer/dashboard/add-certification/', views.add_company_certification, name='add_company_certification'),
     path('buyer/dashboard/certification/<int:certification_id>/edit/', views.edit_company_certification, name='edit_company_certification'),
     path('buyer/dashboard/certification/<int:certification_id>/delete/', views.delete_company_certification, name='delete_company_certification'),
+    path('buyer/home/', views.buyer_home_page, name='buyer_home'),
     #path('buyer/dashboard/', views.buyer_dashboard, name='buyer_dashboard'),
     #path('farmer/dashboard/', views.farmer_dashboard, name='farmer_dashboard'),
 ]

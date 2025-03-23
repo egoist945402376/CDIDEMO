@@ -679,3 +679,21 @@ def delete_company_certification(request, certification_id):
         messages.success(request, "Certification deleted successfully!")
     
     return redirect('buyer_dashboard')
+
+@login_required
+def buyer_home_page(request):
+    """Home page for buyers. Only accessible to users with a buyer profile."""
+    try:
+        # Check if the logged-in user has a buyer profile
+        buyer = BuyerProfile.objects.get(user=request.user)
+    except BuyerProfile.DoesNotExist:
+        # If no buyer profile exists for this user, redirect them to a generic page
+        messages.error(request, "You need a buyer account to access this page.")
+        return redirect('home')
+    
+    context = {
+        'title': 'Buyer Home',
+        'buyer': buyer
+    }
+    
+    return render(request, 'supplychain/buyer_home_page.html', context)
