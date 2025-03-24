@@ -422,25 +422,43 @@ def farmer_home_page(request):
     product_categories = ProductCategory.objects.all()
     
     selected_category = request.GET.get('category', '')
+    is_random = request.GET.get('random', '') == 'true'
     
     if selected_category:
         try:
             category = ProductCategory.objects.get(id=selected_category)
-            product_needs = ProductNeed.objects.filter(
+            all_needs = ProductNeed.objects.filter(
                 product_category=category,
                 status='active'
-            ).order_by('-date_posted')[:3]
+            )
+            
+            if is_random and all_needs.count() > 3:
+                import random
+                need_ids = list(all_needs.values_list('id', flat=True))
+                random_ids = random.sample(need_ids, min(3, len(need_ids)))
+                product_needs = ProductNeed.objects.filter(id__in=random_ids)
+            else:
+                product_needs = all_needs.order_by('-date_posted')[:3]
         except ProductCategory.DoesNotExist:
             product_needs = []
     else:
-        product_needs = ProductNeed.objects.filter(status='active').order_by('-date_posted')[:3]
+        all_needs = ProductNeed.objects.filter(status='active')
+        
+        if is_random and all_needs.count() > 3:
+            import random
+            need_ids = list(all_needs.values_list('id', flat=True))
+            random_ids = random.sample(need_ids, min(3, len(need_ids)))
+            product_needs = ProductNeed.objects.filter(id__in=random_ids)
+        else:
+            product_needs = all_needs.order_by('-date_posted')[:3]
     
     context = {
         'title': 'Farmer Home',
         'farmer': farmer,
         'product_categories': product_categories,
         'selected_category': selected_category,
-        'product_needs': product_needs
+        'product_needs': product_needs,
+        'is_random': is_random
     }
     
     return render(request, 'supplychain/farmer_home_page.html', context)

@@ -253,6 +253,28 @@
             </div>
         </div>
         
+        <!-- Results Header with Refresh Button -->
+        {% if product_needs %}
+        <div class="row mb-3">
+            <div class="col-12 d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">
+                    {% if selected_category %}
+                        {% for category in product_categories %}
+                            {% if selected_category == category.id|stringformat:"s" %}
+                                {{ category.name }} Buyer Needs
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        Latest Buyer Needs
+                    {% endif %}
+                </h4>
+                <a href="{% url 'farmer_home' %}?category={{ selected_category }}&random=true" class="btn btn-outline-primary">
+                    <i class="bi bi-shuffle me-2"></i>Refresh Results
+                </a>
+            </div>
+        </div>
+        {% endif %}
+
         <!-- Buyer Product Needs Results -->
         <div class="row g-4 mt-2" id="buyerResults">
             {% if product_needs %}
