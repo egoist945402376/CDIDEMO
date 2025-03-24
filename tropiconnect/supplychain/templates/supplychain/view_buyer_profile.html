@@ -1,0 +1,263 @@
+{% extends "supplychain/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Buyer Header -->
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <div class="bg-primary text-white rounded-lg p-4 shadow">
+                <div class="d-flex align-items-center">
+                    <div class="company-logo me-4">
+                        {% if buyer.company_logo %}
+                            <img src="{{ buyer.company_logo.url }}" alt="{{ buyer.company_name }}" class="rounded" width="100" height="100" style="object-fit: contain;">
+                        {% else %}
+                            <div class="bg-light rounded d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                                <i class="bi bi-building text-primary" style="font-size: 48px;"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h1 class="h3 mb-0">{{ buyer.company_name }}</h1>
+                        <p class="mb-0"><i class="bi bi-geo-alt-fill"></i> {{ buyer.city }}, {{ buyer.country }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <a href="{% url 'farmer_home' %}" class="btn btn-outline-primary"><i class="bi bi-arrow-left me-2"></i>Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Company Information Card -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0"><i class="bi bi-building me-2"></i>Company Information</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Contact Email:</strong> {{ buyer.user.email }}</p>
+                            <p><strong>Phone Number:</strong> {{ buyer.phone_number }}</p>
+                            {% if buyer.website %}
+                                <p>
+                                    <strong>Website:</strong> 
+                                    <a href="{{ buyer.website }}" target="_blank" rel="noopener noreferrer">{{ buyer.website }}</a>
+                                </p>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Joined TropiConnect:</strong> {{ buyer.date_joined|date:"F d, Y" }}</p>
+                            
+                            {% if buyer_interests %}
+                                <p><strong>Interested in:</strong>
+                                    {% for interest in buyer_interests %}
+                                        <span class="badge bg-primary me-1">{{ interest.category.name }}</span>
+                                    {% endfor %}
+                                </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Introduction Section -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0"><i class="bi bi-info-circle me-2"></i>Company Introduction</h5>
+                </div>
+                <div class="card-body">
+                    {% if buyer.introduction %}
+                        <p>{{ buyer.introduction }}</p>
+                    {% else %}
+                        <div class="alert alert-light mb-0">
+                            <p class="mb-0">This buyer has not provided a company introduction yet.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certifications Section -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0"><i class="bi bi-award me-2"></i>Company Certifications</h5>
+                </div>
+                <div class="card-body">
+                    {% if buyer.certifications.all %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Certificate</th>
+                                        <th>Name</th>
+                                        <th>Issuing Organization</th>
+                                        <th>Validity</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for cert in buyer.certifications.all %}
+                                        <tr style="vertical-align: middle;">
+                                            <td class="text-center py-3">
+                                                {% if cert.certificate_image %}
+                                                    <img src="{{ cert.certificate_image.url }}" alt="{{ cert.certification_name }}" class="img-thumbnail" style="width: 80px; height: 60px; object-fit: cover;">
+                                                {% else %}
+                                                    <div class="bg-light d-flex align-items-center justify-content-center" style="width: 80px; height: 60px;">
+                                                        <i class="bi bi-file-earmark-text text-secondary" style="font-size: 1.5rem;"></i>
+                                                    </div>
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ cert.certification_name }}</td>
+                                            <td>{{ cert.issuing_organization }}</td>
+                                            <td>{{ cert.issue_date|date:"M d, Y" }} {% if cert.expiry_date %} to {{ cert.expiry_date|date:"M d, Y" }}{% endif %}</td>
+                                            <td>
+                                                {% if cert.is_valid %}
+                                                    <span class="badge bg-success">Valid</span>
+                                                {% else %}
+                                                    <span class="badge bg-danger">Expired</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-light mb-0">
+                            <p class="mb-0">This buyer has not added any company certifications yet.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Active Product Needs Section -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0"><i class="bi bi-cart me-2"></i>Active Product Needs</h5>
+                </div>
+                <div class="card-body">
+                    {% if product_needs %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Category</th>
+                                        <th>Quantity</th>
+                                        <th>Price (USD/kg)</th>
+                                        <th>Needed By</th>
+                                        <th>Posted Date</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for need in product_needs %}
+                                        <tr>
+                                            <td>{{ need.product_name }}</td>
+                                            <td>{{ need.product_category.name }}</td>
+                                            <td>{{ need.quantity }} {{ need.get_unit_display }}</td>
+                                            <td>${{ need.price_per_kg }}</td>
+                                            <td>{{ need.date_needed_by|date:"M d, Y" }}</td>
+                                            <td>{{ need.date_posted|date:"M d, Y" }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#need{{ need.id }}Modal">
+                                                    <i class="bi bi-eye"></i> View
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Product Need Modal -->
+                                        <div class="modal fade" id="need{{ need.id }}Modal" tabindex="-1" aria-labelledby="need{{ need.id }}ModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="need{{ need.id }}ModalLabel">{{ need.product_name }} - Product Need Details</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-6">
+                                                                <p><strong>Product:</strong> {{ need.product_name }}</p>
+                                                                <p><strong>Category:</strong> {{ need.product_category.name }}</p>
+                                                                <p><strong>Quantity:</strong> {{ need.quantity }} {{ need.get_unit_display }}</p>
+                                                                <p><strong>Price:</strong> ${{ need.price_per_kg }}/kg</p>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <p><strong>Needed By:</strong> {{ need.date_needed_by|date:"F d, Y" }}</p>
+                                                                <p><strong>Posted:</strong> {{ need.date_posted|date:"F d, Y" }}</p>
+                                                                <p><strong>Status:</strong> <span class="badge bg-success">Active</span></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <h6>Description</h6>
+                                                            <p>{{ need.description }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactBuyerModal">Contact Buyer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-light mb-0">
+                            <p class="mb-0">This buyer does not have any active product needs at the moment.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="text-center mb-4">
+        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#contactBuyerModal">
+            <i class="bi bi-envelope me-2"></i>Contact This Buyer
+        </button>
+    </div>
+</div>
+
+<!-- Contact Buyer Modal -->
+<div class="modal fade" id="contactBuyerModal" tabindex="-1" aria-labelledby="contactBuyerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactBuyerModalLabel">Contact {{ buyer.company_name }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>To contact this buyer, please ensure your farm and product profiles are complete with accurate information. Buyers will review your profile before responding to inquiries.</p>
+                <div class="alert alert-warning">
+                    <p class="mb-0">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        This is a demo application. In a real-world application, you would have a messaging system or request contact information.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{% url 'farmer_dashboard' %}" class="btn btn-primary">Update My Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

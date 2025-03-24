@@ -233,44 +233,19 @@
             <div class="col-lg-10 mx-auto">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body p-4">
-                        <form id="buyerFilterForm" class="row g-3">
-                            <div class="col-md-4">
-                                <label for="productCategory" class="form-label">Product Category</label>
-                                <select id="productCategory" class="form-select">
-                                    <option value="" selected>All Categories</option>
-                                    <option value="coffee">Coffee</option>
-                                    <option value="cocoa">Cocoa</option>
-                                    <option value="tropical-fruits">Tropical Fruits</option>
-                                    <option value="tea">Tea</option>
-                                    <option value="spices">Spices</option>
-                                    <option value="nuts">Nuts</option>
-                                    <option value="vegetables">Vegetables</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="region" class="form-label">Buyer Region</label>
-                                <select id="region" class="form-select">
-                                    <option value="" selected>All Regions</option>
-                                    <option value="europe">Europe</option>
-                                    <option value="north-america">North America</option>
-                                    <option value="asia">Asia</option>
-                                    <option value="middle-east">Middle East</option>
-                                    <option value="oceania">Oceania</option>
-                                    <option value="africa">Africa</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="orderVolume" class="form-label">Minimum Order Volume</label>
-                                <select id="orderVolume" class="form-select">
-                                    <option value="" selected>Any Volume</option>
-                                    <option value="small">Small (< 100kg)</option>
-                                    <option value="medium">Medium (100kg - 1000kg)</option>
-                                    <option value="large">Large (1000kg+)</option>
+                        <form id="buyerFilterForm" class="row g-3" method="get" action="{% url 'farmer_home' %}">
+                            <div class="col-md-8 mx-auto">
+                                <label for="category" class="form-label">Product Category</label>
+                                <select id="category" name="category" class="form-select">
+                                    <option value="" {% if not selected_category %}selected{% endif %}>All Categories</option>
+                                    {% for category in product_categories %}
+                                        <option value="{{ category.id }}" {% if selected_category == category.id|stringformat:"s" %}selected{% endif %}>{{ category.name }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                             <div class="col-12 text-center mt-4">
-                                <button type="submit" class="btn btn-primary px-4 py-2">Find Buyers</button>
-                                <button type="reset" class="btn btn-outline-secondary px-4 py-2 ms-2">Reset Filters</button>
+                                <button type="submit" class="btn btn-primary px-4 py-2">Find Buyer Needs</button>
+                                <a href="{% url 'farmer_home' %}" class="btn btn-outline-secondary px-4 py-2 ms-2">Reset Filter</a>
                             </div>
                         </form>
                     </div>
@@ -278,88 +253,92 @@
             </div>
         </div>
         
-        <!-- Buyer Results -->
+        <!-- Buyer Product Needs Results -->
         <div class="row g-4 mt-2" id="buyerResults">
-            <!-- Example Buyers - In a real application, these would be populated dynamically -->
-            <div class="col-lg-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="flex-shrink-0">
-                                <img src="{% static 'img/company-logo-1.jpg' %}" alt="European Fruits Co." class="rounded-circle" width="60">
+            {% if product_needs %}
+                {% for need in product_needs %}
+                    <div class="col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="flex-shrink-0">
+                                        {% if need.buyer.company_logo %}
+                                            <img src="{{ need.buyer.company_logo.url }}" alt="{{ need.buyer.company_name }}" class="rounded-circle" width="60" height="60" style="object-fit: cover;">
+                                        {% else %}
+                                            <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                                <i class="bi bi-building text-primary" style="font-size: 30px;"></i>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h5 class="mb-1">
+                                            <a href="{% url 'view_buyer_profile' need.buyer.id %}" class="text-decoration-none">{{ need.buyer.company_name }}</a>
+                                        </h5>
+                                        <p class="mb-0 text-muted"><i class="bi bi-geo-alt-fill"></i> {{ need.buyer.city }}, {{ need.buyer.country }}</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <span class="badge bg-primary me-1">{{ need.product_category.name }}</span>
+                                    <span class="badge bg-success me-1">{{ need.product_name }}</span>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="mb-1"><strong>Quantity:</strong> {{ need.quantity }} {{ need.get_unit_display }}</p>
+                                    <p class="mb-1"><strong>Price:</strong> ${{ need.price_per_kg }}/kg</p>
+                                    <p class="mb-1"><strong>Needed by:</strong> {{ need.date_needed_by|date:"M d, Y" }}</p>
+                                </div>
+                                <p class="card-text">{{ need.description|truncatechars:100 }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-success">
+                                        <i class="bi bi-clock"></i> Posted: {{ need.date_posted|date:"M d, Y" }}
+                                    </span>
+                                    <a href="{% url 'view_buyer_profile' need.buyer.id %}" class="btn btn-sm btn-outline-primary">View Buyer</a>
+                                </div>
                             </div>
-                            <div class="flex-grow-1 ms-3">
-                                <h5 class="mb-1">European Fruits Co.</h5>
-                                <p class="mb-0 text-muted"><i class="bi bi-geo-alt-fill"></i> Amsterdam, Netherlands</p>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <span class="badge bg-primary me-1">Tropical Fruits</span>
-                            <span class="badge bg-success me-1">Organic</span>
-                        </div>
-                        <p class="card-text">Looking for regular suppliers of high-quality tropical fruits including mangoes, pineapples, and papayas for distribution across Western Europe.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-success"><i class="bi bi-box-seam"></i> Large Volume Buyer</span>
-                            <a href="#" class="btn btn-sm btn-outline-primary">View Profile</a>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="flex-shrink-0">
-                                <img src="{% static 'img/company-logo-2.jpg' %}" alt="Premium Coffee Imports" class="rounded-circle" width="60">
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                                <h5 class="mb-1">Premium Coffee Imports</h5>
-                                <p class="mb-0 text-muted"><i class="bi bi-geo-alt-fill"></i> Seattle, USA</p>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <span class="badge bg-primary me-1">Coffee</span>
-                            <span class="badge bg-info me-1">Fair Trade</span>
-                        </div>
-                        <p class="card-text">Specialty coffee roaster seeking direct relationships with farmers producing high-altitude Arabica coffee beans with unique flavor profiles.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-primary"><i class="bi bi-box-seam"></i> Medium Volume Buyer</span>
-                            <a href="#" class="btn btn-sm btn-outline-primary">View Profile</a>
-                        </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-12">
+                    <div class="alert alert-info text-center">
+                        <h4 class="alert-heading">No matching orders found</h4>
+                        <p>Currently, there are no active product needs for the selected category. Please check back later or try a different category.</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="flex-shrink-0">
-                                <img src="{% static 'img/company-logo-3.jpg' %}" alt="Asian Spice Traders" class="rounded-circle" width="60">
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                                <h5 class="mb-1">Asian Spice Traders</h5>
-                                <p class="mb-0 text-muted"><i class="bi bi-geo-alt-fill"></i> Singapore</p>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <span class="badge bg-primary me-1">Spices</span>
-                            <span class="badge bg-warning me-1">Exotic</span>
-                        </div>
-                        <p class="card-text">Major distributor of premium spices seeking consistent suppliers of vanilla, cardamom, cloves, and cinnamon for Asian luxury food markets.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-success"><i class="bi bi-box-seam"></i> Large Volume Buyer</span>
-                            <a href="#" class="btn btn-sm btn-outline-primary">View Profile</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endif %}
         </div>
         
-        <div class="text-center mt-4">
-            <a href="#" class="btn btn-primary">View All Buyers</a>
-        </div>
+        {% if product_needs %}
+            <div class="text-center mt-4">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactBuyerModal">Contact These Buyers</button>
+            </div>
+        {% endif %}
     </div>
 </section>
+
+<!-- Contact Buyers Modal -->
+<div class="modal fade" id="contactBuyerModal" tabindex="-1" aria-labelledby="contactBuyerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactBuyerModalLabel">Contact Buyers</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>To contact these buyers, please ensure your farm and product profiles are complete with accurate information. Buyers will review your profile before responding to inquiries.</p>
+                <div class="alert alert-warning">
+                    <p class="mb-0">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        This is a demo application. In a real-world application, you would have a messaging system or request contact information.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{% url 'farmer_dashboard' %}" class="btn btn-primary">Update My Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Training & Resources Section -->
 <section class="py-5">

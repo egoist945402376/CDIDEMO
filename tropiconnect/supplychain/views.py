@@ -417,13 +417,30 @@ def farmer_home_page(request):
     except FarmerProfile.DoesNotExist:
         # If no farmer profile exists for this user, redirect them to a generic page
         messages.error(request, "You need a farmer account to access this page.")
-        return redirect('home')  # Redirect to your general home page
+        return redirect('home')
     
-    # You could fetch real data here for the agricultural news and buyer recommendations
+    product_categories = ProductCategory.objects.all()
+    
+    selected_category = request.GET.get('category', '')
+    
+    if selected_category:
+        try:
+            category = ProductCategory.objects.get(id=selected_category)
+            product_needs = ProductNeed.objects.filter(
+                product_category=category,
+                status='active'
+            ).order_by('-date_posted')[:3]
+        except ProductCategory.DoesNotExist:
+            product_needs = []
+    else:
+        product_needs = ProductNeed.objects.filter(status='active').order_by('-date_posted')[:3]
     
     context = {
         'title': 'Farmer Home',
-        'farmer': farmer
+        'farmer': farmer,
+        'product_categories': product_categories,
+        'selected_category': selected_category,
+        'product_needs': product_needs
     }
     
     return render(request, 'supplychain/farmer_home_page.html', context)
@@ -697,3 +714,27 @@ def buyer_home_page(request):
     }
     
     return render(request, 'supplychain/buyer_home_page.html', context)
+
+@login_required
+def view_buyer_profile(request, buyer_id):
+    """View for farmers to see a buyer's profile."""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+        buyer = BuyerProfile.objects.get(id=buyer_id)
+    except FarmerProfile.DoesNotExist:
+        messages.error(request, "You need a farmer account to access this page.")
+        return redirect('home')
+    except BuyerProfile.DoesNotExist:
+        messages.error(request, "Buyer not found.")
+        return redirect('farmer_home')
+    
+    product_needs = ProductNeed.objects.filter(buyer=buyer, status='active').order_by('-date_posted')
+    
+    
+    context = {
+        'title': f'{buyer.company_name} Profile',
+        'buyer': buyer,
+        'product_needs': product_needs,
+    }
+    
+    return render(request, 'supplychain/view_buyer_profile.html', context)
