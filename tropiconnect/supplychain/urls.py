@@ -35,6 +35,7 @@ urlpatterns = [
     path('buyer/dashboard/certification/<int:certification_id>/delete/', views.delete_company_certification, name='delete_company_certification'),
     path('buyer/home/', views.buyer_home_page, name='buyer_home'),
     path('buyer/<int:buyer_id>/profile/', views.view_buyer_profile, name='view_buyer_profile'),
+    path('farmer/<int:farmer_id>/profile/', views.view_farmer_profile, name='view_farmer_profile'),
     #path('buyer/dashboard/', views.buyer_dashboard, name='buyer_dashboard'),
     #path('farmer/dashboard/', views.farmer_dashboard, name='farmer_dashboard'),
 ]

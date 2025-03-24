@@ -726,12 +726,88 @@ def buyer_home_page(request):
         messages.error(request, "You need a buyer account to access this page.")
         return redirect('home')
     
+    product_categories = ProductCategory.objects.all()
+
+    selected_category = request.GET.get('category', '')
+    is_random = request.GET.get('random', '') == 'true'
+    
+    if selected_category:
+        try:
+            category = ProductCategory.objects.get(id=selected_category)
+            all_products = FarmerProduct.objects.filter(
+                category=category,
+                is_available=True
+            )
+            
+            if is_random and all_products.count() > 3:
+                import random
+                product_ids = list(all_products.values_list('id', flat=True))
+                random_ids = random.sample(product_ids, min(3, len(product_ids)))
+                farmer_products = FarmerProduct.objects.filter(id__in=random_ids)
+            else:
+                farmer_products = all_products[:3]
+        except ProductCategory.DoesNotExist:
+            farmer_products = []
+    else:
+        all_products = FarmerProduct.objects.filter(is_available=True)
+        
+        if is_random and all_products.count() > 3:
+            import random
+            product_ids = list(all_products.values_list('id', flat=True))
+            random_ids = random.sample(product_ids, min(3, len(product_ids)))
+            farmer_products = FarmerProduct.objects.filter(id__in=random_ids)
+        else:
+            farmer_products = all_products[:3]
+    
     context = {
         'title': 'Buyer Home',
-        'buyer': buyer
+        'buyer': buyer,
+        'product_categories': product_categories,
+        'selected_category': selected_category,
+        'farmer_products': farmer_products,
+        'is_random': is_random
     }
     
     return render(request, 'supplychain/buyer_home_page.html', context)
+
+
+@login_required
+def view_farmer_profile(request, farmer_id):
+    """View for buyers to see a farmer's profile."""
+    try:
+        buyer = BuyerProfile.objects.get(user=request.user)
+        farmer = FarmerProfile.objects.get(id=farmer_id)
+    except BuyerProfile.DoesNotExist:
+        messages.error(request, "You need a buyer account to access this page.")
+        return redirect('home')
+    except FarmerProfile.DoesNotExist:
+        messages.error(request, "Farmer not found.")
+        return redirect('buyer_home')
+    
+    farms = Farm.objects.filter(farmer=farmer)
+    
+    products = FarmerProduct.objects.filter(farmer=farmer, is_available=True)
+    
+    certifications = FarmerCertification.objects.filter(farmer=farmer)
+    
+    farm_data = []
+    for farm in farms:
+        photos = FarmPhoto.objects.filter(farm=farm)
+        farm_data.append({
+            'farm': farm,
+            'photos': photos
+        })
+    
+    context = {
+        'title': f'{farmer.first_name} {farmer.last_name}\'s Profile',
+        'farmer': farmer,
+        'farm_data': farm_data,
+        'products': products,
+        'certifications': certifications
+    }
+    
+    return render(request, 'supplychain/view_farmer_profile.html', context)
+
 
 @login_required
 def view_buyer_profile(request, buyer_id):
