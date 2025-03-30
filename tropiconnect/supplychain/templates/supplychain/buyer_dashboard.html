@@ -243,5 +243,110 @@
             </div>
         </div>
     </div>
+    <!-- Farmer Reviews Section -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-star me-2"></i>Farmer Reviews</h5>
+                        <span class="badge bg-primary">{{ farmer_reviews.count }} Total</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% if farmer_reviews %}
+                        <div class="row">
+                            {% for review in farmer_reviews %}
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100 border {% if review.rating >= 4 %}border-success{% elif review.rating >= 3 %}border-warning{% else %}border-danger{% endif %}">
+                                        <div class="card-header bg-white">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="d-flex align-items-center">
+                                                    {% if review.farmer.profile_picture %}
+                                                        <img src="{{ review.farmer.profile_picture.url }}" alt="{{ review.farmer.first_name }}" class="rounded-circle me-2" width="40" height="40">
+                                                    {% else %}
+                                                        <div class="bg-light rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 40px; height: 40px;">
+                                                            <i class="bi bi-person-fill text-secondary"></i>
+                                                        </div>
+                                                    {% endif %}
+                                                    <div>
+                                                        <h6 class="mb-0">{{ review.farmer.first_name }} {{ review.farmer.last_name }}</h6>
+                                                        <small class="text-muted">{{ review.created_at|date:"F d, Y" }}</small>
+                                                    </div>
+                                                </div>
+                                                <div class="rating">
+                                                    {% for i in "12345" %}
+                                                        {% if forloop.counter <= review.rating %}
+                                                            <i class="bi bi-star-fill text-warning"></i>
+                                                        {% else %}
+                                                            <i class="bi bi-star text-muted"></i>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">{{ review.content }}</p>
+                                            
+                                            {% if review.product or review.quantity or review.price %}
+                                                <div class="mt-3 p-3 bg-light rounded">
+                                                    <h6 class="mb-2">Transaction Details:</h6>
+                                                    <div class="d-flex flex-wrap">
+                                                        {% if review.product %}
+                                                            <div class="me-3 mb-2">
+                                                                <small class="text-muted d-block">Product:</small>
+                                                                <span class="badge bg-info">{{ review.product.product_name }}</span>
+                                                            </div>
+                                                        {% endif %}
+                                                        
+                                                        {% if review.quantity %}
+                                                            <div class="me-3 mb-2">
+                                                                <small class="text-muted d-block">Quantity:</small>
+                                                                <span>{{ review.quantity }}</span>
+                                                            </div>
+                                                        {% endif %}
+                                                        
+                                                        {% if review.price %}
+                                                            <div class="mb-2">
+                                                                <small class="text-muted d-block">Price:</small>
+                                                                <span>${{ review.price }}</span>
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        
+                                        {% if review.review_image %}
+                                            <div class="text-center my-2">
+                                                <img src="{{ review.review_image.url }}" alt="Review image" class="img-fluid rounded" style="max-height: 200px;">
+                                            </div>
+                                        {% endif %}
+                                        
+                                        <div class="card-footer bg-white text-end">
+                                            <a href="{% url 'view_farmer_profile' review.farmer.id %}" class="btn btn-sm btn-outline-primary">
+                                                <i class="bi bi-eye"></i> View Farmer
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        
+                        {% if farmer_reviews.count > 6 %}
+                            <div class="text-center mt-3">
+                                <a href="#" class="btn btn-outline-primary">View All Reviews</a>
+                            </div>
+                        {% endif %}
+                        
+                    {% else %}
+                        <div class="alert alert-light">
+                            <p class="mb-0">You haven't received any reviews from farmers yet. Reviews will appear here once farmers rate their experience with your company.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

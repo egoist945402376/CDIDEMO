@@ -15,7 +15,7 @@ from .models import FarmerCertification
 from .forms import CompanyCertificationForm
 from .models import CompanyCertification
 from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct, ProductCategory, ShippingMethod
-from .models import BuyerProfile, ProductNeed
+from .models import BuyerProfile, ProductNeed, BuyerToFarmerReview, BuyerInterest, FarmerToBuyerReview
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 
@@ -117,21 +117,13 @@ def buyer_login(request):
 
 @login_required
 def farmer_dashboard(request):
-    """
-    Dashboard view for farmers. Only accessible to users with a farmer profile.
-    Displays personal information, farm details, and products.
-    """
     try:
-        # Try to get the farmer profile for the logged-in user
         farmer = FarmerProfile.objects.get(user=request.user)
     except FarmerProfile.DoesNotExist:
-        # If no farmer profile exists for this user, they shouldn't access this page
         raise PermissionDenied("You do not have access to this page.")
     
-    # Get the farms associated with this farmer
     farms = Farm.objects.filter(farmer=farmer)
     
-    # Initialize a dictionary to store farms and their photos
     farm_data = []
     for farm in farms:
         photos = FarmPhoto.objects.filter(farm=farm)
@@ -140,38 +132,36 @@ def farmer_dashboard(request):
             'photos': photos
         })
     
-    # Get the products associated with this farmer
     products = FarmerProduct.objects.filter(farmer=farmer)
+    
+    buyer_reviews = BuyerToFarmerReview.objects.filter(farmer=farmer).order_by('-created_at')[:6]
     
     context = {
         'title': 'Farmer Dashboard',
         'farmer': farmer,
         'farm_data': farm_data,
         'products': products,
+        'buyer_reviews': buyer_reviews,
     }
     
     return render(request, 'supplychain/farmer_dashboard.html', context)
 
 @login_required
 def buyer_dashboard(request):
-    """
-    Dashboard view for buyers. Only accessible to users with a buyer profile.
-    Displays company information and product needs.
-    """
     try:
-        # Try to get the buyer profile for the logged-in user
         buyer = BuyerProfile.objects.get(user=request.user)
     except BuyerProfile.DoesNotExist:
-        # If no buyer profile exists for this user, they shouldn't access this page
         raise PermissionDenied("You do not have access to this page.")
     
-    # Get the product needs associated with this buyer
     product_needs = ProductNeed.objects.filter(buyer=buyer)
+    
+    farmer_reviews = FarmerToBuyerReview.objects.filter(buyer=buyer).order_by('-created_at')[:6]
     
     context = {
         'title': 'Buyer Dashboard',
         'buyer': buyer,
         'product_needs': product_needs,
+        'farmer_reviews': farmer_reviews,  # 添加到上下文中
     }
     
     return render(request, 'supplychain/buyer_dashboard.html', context)

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class FarmerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='farmer_profile')
@@ -182,3 +183,54 @@ class CompanyCertification(models.Model):
         if not self.expiry_date:
             return True
         return self.expiry_date >= timezone.now().date()
+
+
+class FarmerToBuyerReview(models.Model):
+    """
+    Model for farmers to review buyers
+    """
+    farmer = models.ForeignKey('FarmerProfile', on_delete=models.CASCADE, related_name='reviews_given')
+    buyer = models.ForeignKey('BuyerProfile', on_delete=models.CASCADE, related_name='reviews_received')
+    product = models.ForeignKey('FarmerProduct', on_delete=models.SET_NULL, null=True, blank=True, related_name='farmer_reviews')
+    quantity = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, help_text="Quantity of product")
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, help_text="Price of transaction in USD")
+    rating = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)],
+        help_text="Rating from 1 to 5 stars"
+    )
+    content = models.TextField(help_text="Review content")
+    review_image = models.ImageField(upload_to='review_images/', null=True, blank=True, help_text="Optional image for the review")
+    created_at = models.DateTimeField(default=timezone.now)
+    
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "Farmer to Buyer Review"
+        verbose_name_plural = "Farmer to Buyer Reviews"
+    
+    def __str__(self):
+        return f"{self.farmer.first_name} {self.farmer.last_name}'s review of {self.buyer.company_name}"
+
+class BuyerToFarmerReview(models.Model):
+    """
+    Model for buyers to review farmers
+    """
+    buyer = models.ForeignKey('BuyerProfile', on_delete=models.CASCADE, related_name='reviews_given')
+    farmer = models.ForeignKey('FarmerProfile', on_delete=models.CASCADE, related_name='reviews_received')
+    product = models.ForeignKey('FarmerProduct', on_delete=models.SET_NULL, null=True, blank=True, related_name='buyer_reviews')
+    quantity = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, help_text="Quantity of product")
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, help_text="Price of transaction in USD")
+    rating = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)],
+        help_text="Rating from 1 to 5 stars"
+    )
+    content = models.TextField(help_text="Review content")
+    review_image = models.ImageField(upload_to='review_images/', null=True, blank=True, help_text="Optional image for the review")
+    created_at = models.DateTimeField(default=timezone.now)
+    
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "Buyer to Farmer Review"
+        verbose_name_plural = "Buyer to Farmer Reviews"
+    
+    def __str__(self):
+        return f"{self.buyer.company_name}'s review of {self.farmer.first_name} {self.farmer.last_name}"
