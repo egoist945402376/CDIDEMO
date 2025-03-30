@@ -1,0 +1,104 @@
+{% extends "supplychain/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Back to Dashboard Button -->
+    <div class="mb-4">
+        <a href="{% url 'farmer_dashboard' %}" class="btn btn-outline-primary">
+            <i class="bi bi-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+
+    <!-- Create Community Form -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="bi bi-people-fill me-2"></i>Create a New Farmer Community</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle-fill me-2"></i>
+                        <strong>Community Tips:</strong> Creating a community helps you connect with other farmers, share knowledge, and attract buyers as a group. You can host up to 50 members in your community.
+                    </div>
+                    
+                    <form method="post" action="{% url 'create_community' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Community Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                            <div class="form-text">Choose a name that reflects the purpose of your community.</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description <span class="text-danger">*</span></label>
+                            <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
+                            <div class="form-text">Describe what your community is about, its goals, and what members can expect.</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="location" class="form-label">Primary Location</label>
+                            <input type="text" class="form-control" id="location" name="location">
+                            <div class="form-text">The main geographic area where your community operates.</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="cover_image" class="form-label">Cover Image</label>
+                            <input type="file" class="form-control" id="cover_image" name="cover_image">
+                            <div class="form-text">Upload an image that represents your community (optional).</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="contact_email" class="form-label">Contact Email</label>
+                            <input type="email" class="form-control" id="contact_email" name="contact_email">
+                            <div class="form-text">An email where interested farmers can contact your community (optional).</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="is_public" class="form-check-label">Community Visibility</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="is_public" name="is_public" checked>
+                                <label class="form-check-label" for="is_public">
+                                    Make this community public
+                                </label>
+                                <div class="form-text">Public communities can be discovered by all farmers. Private communities are only visible to members.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Focus Products</label>
+                            <div class="row">
+                                {% for category in product_categories %}
+                                    <div class="col-md-4 col-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="product-{{ category.id }}" name="focus_products" value="{{ category.id }}">
+                                            <label class="form-check-label" for="product-{{ category.id }}">
+                                                {{ category.name }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="form-text">Select the main product categories your community focuses on.</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="max_members" class="form-label">Maximum Members</label>
+                            <input type="number" class="form-control" id="max_members" name="max_members" value="50" min="5" max="50">
+                            <div class="form-text">Maximum number of members allowed in your community (5-50).</div>
+                        </div>
+                        
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-people-fill me-2"></i>Create Community
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -261,6 +261,42 @@ class CompanyCertificationForm(forms.ModelForm):
             'certification_type': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
+from django import forms
+from .models import FarmerCommunity
+
+class CommunityForm(forms.ModelForm):
+    """Form for creating and editing farmer communities"""
+    
+    class Meta:
+        model = FarmerCommunity
+        fields = ['name', 'description', 'location', 'cover_image', 'contact_email', 'is_public', 'max_members', 'focus_products']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Community name'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Describe your community...', 'rows': 5}),
+            'location': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Main geographic location'}),
+            'contact_email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Contact email'}),
+            'max_members': forms.NumberInput(attrs={'class': 'form-control', 'min': 5, 'max': 50}),
+        }
+        labels = {
+            'name': 'Community Name',
+            'description': 'Description',
+            'location': 'Primary Location',
+            'cover_image': 'Cover Image',
+            'contact_email': 'Contact Email',
+            'is_public': 'Make this community public',
+            'max_members': 'Maximum Members',
+            'focus_products': 'Focus Products'
+        }
+        help_texts = {
+            'name': 'Choose a name that reflects the purpose of your community.',
+            'description': 'Describe what your community is about, its goals, and what members can expect.',
+            'location': 'The main geographic area where your community operates.',
+            'contact_email': 'An email where interested farmers can contact your community (optional).',
+            'is_public': 'Public communities can be discovered by all farmers.',
+            'max_members': 'Maximum number of members allowed (5-50).',
+            'focus_products': 'Select the main product categories your community focuses on.'
+        }
+
 
 
 

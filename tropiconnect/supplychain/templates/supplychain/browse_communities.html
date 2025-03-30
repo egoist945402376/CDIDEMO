@@ -1,0 +1,109 @@
+{% extends "supplychain/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h1 class="h3 mb-3">Browse Communities</h1>
+            <p class="text-muted">Find and join farmer communities to collaborate, share knowledge, and grow together.</p>
+            
+            <!-- Search form -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <form method="GET" action="{% url 'browse_communities' %}" class="d-flex">
+                        <input type="text" name="query" class="form-control me-2" placeholder="Search communities by name, description or location" value="{{ query }}">
+                        <button type="submit" class="btn btn-primary"><i class="bi bi-search me-1"></i> Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Communities List -->
+    <div class="row">
+        <div class="col-md-12">
+            {% if communities %}
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    {% for community in communities %}
+                        <div class="col">
+                            <div class="card h-100">
+                                {% if community.cover_image %}
+                                    <img src="{{ community.cover_image.url }}" class="card-img-top" alt="{{ community.name }}" style="height: 160px; object-fit: cover;">
+                                {% else %}
+                                    <div class="bg-light d-flex align-items-center justify-content-center" style="height: 160px;">
+                                        <i class="bi bi-people text-secondary" style="font-size: 3rem;"></i>
+                                    </div>
+                                {% endif %}
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ community.name }}</h5>
+                                    <p class="card-text small text-muted mb-2">
+                                        <i class="bi bi-geo-alt"></i> {{ community.location|default:"No location specified" }}
+                                    </p>
+                                    <p class="card-text" style="height: 80px; overflow: hidden;">{{ community.description|truncatechars:150 }}</p>
+                                    
+                                    <div class="d-flex flex-wrap mb-3">
+                                        <div class="me-3">
+                                            <small class="text-muted d-block">Members</small>
+                                            <span class="badge bg-info">{{ community.member_count }}/{{ community.max_members }}</span>
+                                        </div>
+                                        <div class="me-3">
+                                            <small class="text-muted d-block">Created</small>
+                                            <span class="text-muted">{{ community.created_at|date:"M d, Y" }}</span>
+                                        </div>
+                                        {% if community.creator == farmer %}
+                                            <div>
+                                                <small class="text-muted d-block">Status</small>
+                                                <span class="badge bg-success">Creator</span>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    
+                                    {% if community.focus_products.all %}
+                                        <div class="mb-3">
+                                            <small class="text-muted d-block mb-1">Focus Products:</small>
+                                            {% for product in community.focus_products.all %}
+                                                <span class="badge bg-secondary me-1">{{ product.name }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="card-footer bg-white">
+                                    {% if community.id in joined_communities %}
+                                        <a href="{% url 'community_detail' community.id %}" class="btn btn-primary w-100"><i class="bi bi-box-arrow-in-right me-1"></i> View Community</a>
+                                    {% elif community.is_full %}
+                                        <button class="btn btn-secondary w-100" disabled><i class="bi bi-x-circle me-1"></i> Community Full</button>
+                                    {% else %}
+                                        <form method="post" action="{% url 'join_community' community.id %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-success w-100"><i class="bi bi-plus-circle me-1"></i> Join Community</button>
+                                        </form>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-light text-center">
+                    {% if query %}
+                        <p class="mb-3">No communities found matching "{{ query }}".</p>
+                        <a href="{% url 'browse_communities' %}" class="btn btn-outline-primary">Show All Communities</a>
+                    {% else %}
+                        <p class="mb-3">There are no public communities available at the moment.</p>
+                        <a href="{% url 'create_community' %}" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Create Your Own Community</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Back to dashboard -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <a href="{% url 'farmer_dashboard' %}" class="btn btn-outline-primary"><i class="bi bi-arrow-left me-1"></i> Back to Dashboard</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

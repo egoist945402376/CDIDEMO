@@ -38,6 +38,11 @@ urlpatterns = [
     path('farmer/<int:farmer_id>/profile/', views.view_farmer_profile, name='view_farmer_profile'),
     path('farmer/<int:farmer_id>/review/', views.leave_farmer_review, name='leave_farmer_review'),
     path('buyer/<int:buyer_id>/review/', views.leave_buyer_review, name='leave_buyer_review'),
+    path('farmer/community/create/', views.create_community, name='create_community'),
+    path('farmer/community/<int:community_id>/', views.community_detail, name='community_detail'),
+    path('farmer/community/<int:community_id>/join/', views.join_community, name='join_community'),
+    path('farmer/community/<int:community_id>/leave/', views.leave_community, name='leave_community'),
+    path('farmer/communities/browse/', views.browse_communities, name='browse_communities'),
     #path('buyer/dashboard/', views.buyer_dashboard, name='buyer_dashboard'),
     #path('farmer/dashboard/', views.farmer_dashboard, name='farmer_dashboard'),
 ]

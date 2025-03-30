@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from .forms import FarmerRegistrationForm
@@ -16,8 +16,11 @@ from .forms import CompanyCertificationForm
 from .models import CompanyCertification
 from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct, ProductCategory, ShippingMethod
 from .models import BuyerProfile, ProductNeed, BuyerToFarmerReview, BuyerInterest, FarmerToBuyerReview
+from .models import CommunityMember, FarmerCommunity
 from django.contrib.auth import logout
 from django.shortcuts import redirect
+
+from django.db.models import Q
 
 
 def home(request):
@@ -136,12 +139,20 @@ def farmer_dashboard(request):
     
     buyer_reviews = BuyerToFarmerReview.objects.filter(farmer=farmer).order_by('-created_at')[:6]
     
+    # Get communities the farmer is a member of
+    communities = CommunityMember.objects.filter(farmer=farmer).select_related('community')
+    
+    # Get communities created by the farmer
+    created_communities = FarmerCommunity.objects.filter(creator=farmer)
+    
     context = {
         'title': 'Farmer Dashboard',
         'farmer': farmer,
         'farm_data': farm_data,
         'products': products,
         'buyer_reviews': buyer_reviews,
+        'communities': communities,
+        'created_communities': created_communities,
     }
     
     return render(request, 'supplychain/farmer_dashboard.html', context)
@@ -927,3 +938,173 @@ def leave_buyer_review(request, buyer_id):
         messages.success(request, "Your review has been submitted successfully!")
         
     return redirect('view_buyer_profile', buyer_id=buyer_id)
+
+@login_required
+def create_community(request):
+    """Create a new farmer community"""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+    except FarmerProfile.DoesNotExist:
+        messages.error(request, "Only farmers can create communities")
+        return redirect('home')
+    
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        location = request.POST.get('location', '')
+        
+        if not name or not description:
+            messages.error(request, "Community name and description are required")
+            return redirect('create_community')
+        
+        # Create the community
+        community = FarmerCommunity.objects.create(
+            name=name,
+            description=description,
+            creator=farmer,
+            location=location
+        )
+        
+        # Add creator as a member with admin role
+        CommunityMember.objects.create(
+            community=community,
+            farmer=farmer,
+            role='admin'
+        )
+        
+        messages.success(request, f"Community '{name}' created successfully!")
+        return redirect('farmer_dashboard')
+        
+    return render(request, 'supplychain/create_community.html', {
+        'title': 'Create Community'
+    })
+
+@login_required
+def community_detail(request, community_id):
+    """View community details"""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+    except FarmerProfile.DoesNotExist:
+        messages.error(request, "Only farmers can view community details")
+        return redirect('home')
+    
+    community = get_object_or_404(FarmerCommunity, id=community_id)
+    
+    # Check if user is a member
+    is_member = CommunityMember.objects.filter(community=community, farmer=farmer).exists()
+    
+    # Get member role if applicable
+    user_role = None
+    if is_member:
+        membership = CommunityMember.objects.get(community=community, farmer=farmer)
+        user_role = membership.role
+    
+    # Get all members
+    members = CommunityMember.objects.filter(community=community).select_related('farmer')
+    
+    context = {
+        'title': community.name,
+        'community': community,
+        'is_member': is_member,
+        'user_role': user_role,
+        'members': members,
+        'farmer': farmer
+    }
+    
+    return render(request, 'supplychain/community_detail.html', context)
+
+@login_required
+def join_community(request, community_id):
+    """Join a community"""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+    except FarmerProfile.DoesNotExist:
+        messages.error(request, "Only farmers can join communities")
+        return redirect('home')
+    
+    community = get_object_or_404(FarmerCommunity, id=community_id)
+    
+    # Check if already a member
+    if CommunityMember.objects.filter(community=community, farmer=farmer).exists():
+        messages.info(request, "You are already a member of this community")
+        return redirect('community_detail', community_id=community.id)
+    
+    # Check if community is full
+    if community.is_full:
+        messages.error(request, "This community has reached its maximum capacity")
+        return redirect('community_detail', community_id=community.id)
+    
+    # Add as member
+    CommunityMember.objects.create(
+        community=community,
+        farmer=farmer,
+        role='member'
+    )
+    
+    messages.success(request, f"You have successfully joined the '{community.name}' community!")
+    return redirect('community_detail', community_id=community.id)
+
+@login_required
+def leave_community(request, community_id):
+    """Leave a community"""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+    except FarmerProfile.DoesNotExist:
+        messages.error(request, "Only farmers can leave communities")
+        return redirect('home')
+    
+    community = get_object_or_404(FarmerCommunity, id=community_id)
+    
+    # Check if user is a member
+    try:
+        membership = CommunityMember.objects.get(community=community, farmer=farmer)
+        
+        # Creator cannot leave
+        if community.creator == farmer:
+            messages.error(request, "As the creator, you cannot leave the community")
+            return redirect('community_detail', community_id=community.id)
+        
+        # Delete membership
+        membership.delete()
+        messages.success(request, f"You have left the '{community.name}' community")
+        
+    except CommunityMember.DoesNotExist:
+        messages.error(request, "You are not a member of this community")
+    
+    return redirect('farmer_dashboard')
+
+@login_required
+def browse_communities(request):
+    """View for browsing available communities"""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+    except FarmerProfile.DoesNotExist:
+        messages.error(request, "Only farmers can browse communities")
+        return redirect('home')
+    
+    # Get search query
+    query = request.GET.get('query', '')
+    
+    # Get all public communities
+    communities = FarmerCommunity.objects.filter(is_public=True)
+    
+    # Apply search filter if query exists
+    if query:
+        communities = communities.filter(
+            Q(name__icontains=query) |
+            Q(description__icontains=query) |
+            Q(location__icontains=query)
+        )
+    
+    # Get communities the farmer is already a member of
+    joined_communities = CommunityMember.objects.filter(farmer=farmer).values_list('community_id', flat=True)
+    
+    context = {
+        'title': 'Browse Communities',
+        'communities': communities,
+        'joined_communities': joined_communities,
+        'query': query,
+        'farmer': farmer
+    }
+    
+    return render(request, 'supplychain/browse_communities.html', context)

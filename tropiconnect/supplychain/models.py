@@ -234,3 +234,61 @@ class BuyerToFarmerReview(models.Model):
     
     def __str__(self):
         return f"{self.buyer.company_name}'s review of {self.farmer.first_name} {self.farmer.last_name}"
+
+
+from django.db import models
+from django.utils import timezone
+
+class FarmerCommunity(models.Model):
+    """Farmer Community model"""
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    creator = models.ForeignKey('FarmerProfile', on_delete=models.CASCADE, related_name='created_communities')
+    created_at = models.DateTimeField(default=timezone.now)
+    
+    # Additional fields
+    cover_image = models.ImageField(upload_to='community_covers/', null=True, blank=True)
+    location = models.CharField(max_length=200, blank=True)
+    focus_products = models.ManyToManyField('ProductCategory', blank=True, related_name='communities')
+    is_public = models.BooleanField(default=True)
+    max_members = models.PositiveIntegerField(default=50)
+    contact_email = models.EmailField(blank=True)
+    
+    class Meta:
+        verbose_name = "Farmer Community"
+        verbose_name_plural = "Farmer Communities"
+        ordering = ['-created_at']
+    
+    def __str__(self):
+        return self.name
+    
+    @property
+    def member_count(self):
+        """Get the number of community members"""
+        return self.members.count()
+    
+    @property
+    def is_full(self):
+        """Check if the community is full"""
+        return self.member_count >= self.max_members
+
+
+class CommunityMember(models.Model):
+    """Community Member model"""
+    ROLE_CHOICES = [
+        ('admin', 'Administrator'),
+        ('member', 'Member')
+    ]
+    
+    community = models.ForeignKey(FarmerCommunity, on_delete=models.CASCADE, related_name='members')
+    farmer = models.ForeignKey('FarmerProfile', on_delete=models.CASCADE, related_name='communities')
+    joined_at = models.DateTimeField(default=timezone.now)
+    role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='member')
+    
+    class Meta:
+        verbose_name = "Community Member"
+        verbose_name_plural = "Community Members"
+        unique_together = ('community', 'farmer')
+    
+    def __str__(self):
+        return f"{self.farmer} - {self.community} ({self.get_role_display()})"
