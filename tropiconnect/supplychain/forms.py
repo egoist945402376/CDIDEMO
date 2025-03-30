@@ -298,6 +298,22 @@ class CommunityForm(forms.ModelForm):
         }
 
 
+class CommunityEditForm(forms.ModelForm):
+    class Meta:
+        model = FarmerCommunity
+        fields = ['name', 'description', 'location', 'cover_image', 'focus_products', 'max_members', 'contact_email', 'is_public']
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 4}),
+            'focus_products': forms.CheckboxSelectMultiple(),
+        }
+        labels = {
+            'is_public': 'Make this community visible to all farmers',
+        }
+        help_texts = {
+            'focus_products': 'Select product categories that this community focuses on',
+            'max_members': 'Maximum number of members allowed in this community',
+            'contact_email': 'Contact email for community inquiries (optional)',
+        }
 
 
 def __init__(self, *args, **kwargs):

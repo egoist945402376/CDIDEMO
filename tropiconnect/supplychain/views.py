@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
-from .forms import FarmerRegistrationForm
+from .forms import CommunityEditForm, FarmerRegistrationForm
 from .forms import BuyerRegistrationForm
 from .models import FarmerProfile, BuyerProfile
 from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct
@@ -1108,3 +1108,45 @@ def browse_communities(request):
     }
     
     return render(request, 'supplychain/browse_communities.html', context)
+
+@login_required
+def edit_community(request, community_id):
+    """Edit a community"""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+    except FarmerProfile.DoesNotExist:
+        messages.error(request, "Only farmers can edit communities")
+        return redirect('home')
+    
+    community = get_object_or_404(FarmerCommunity, id=community_id)
+    
+    # Check if user is creator or admin
+    is_creator = community.creator == farmer
+    try:
+        membership = CommunityMember.objects.get(community=community, farmer=farmer)
+        is_admin = membership.role == 'admin'
+    except CommunityMember.DoesNotExist:
+        is_admin = False
+    
+    if not (is_creator or is_admin):
+        messages.error(request, "You don't have permission to edit this community")
+        return redirect('community_detail', community_id=community.id)
+    
+    if request.method == 'POST':
+        form = CommunityEditForm(request.POST, request.FILES, instance=community)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f"Community '{community.name}' has been updated successfully!")
+            return redirect('community_detail', community_id=community.id)
+    else:
+        form = CommunityEditForm(instance=community)
+    
+    context = {
+        'title': f'Edit {community.name}',
+        'form': form,
+        'community': community,
+        'farmer': farmer,
+        'is_creator': is_creator
+    }
+    
+    return render(request, 'supplychain/edit_community.html', context)

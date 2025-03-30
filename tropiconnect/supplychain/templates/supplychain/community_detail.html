@@ -48,7 +48,7 @@
                                 {% endif %}
                                 
                                 {% if community.creator == farmer or user_role == 'admin' %}
-                                    <a href="#" class="btn btn-light ms-2"><i class="bi bi-pencil"></i> Edit</a>
+                                    <a href="{% url 'edit_community' community.id %}" class="btn btn-light ms-2"><i class="bi bi-pencil"></i> Edit</a>
                                 {% endif %}
                             {% else %}
                                 <form method="post" action="{% url 'join_community' community.id %}" class="d-inline">
