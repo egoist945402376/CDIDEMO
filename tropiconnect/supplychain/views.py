@@ -780,6 +780,8 @@ def view_farmer_profile(request, farmer_id):
     
     certifications = FarmerCertification.objects.filter(farmer=farmer)
     
+    buyer_reviews = BuyerToFarmerReview.objects.filter(farmer=farmer).order_by('-created_at')[:6]
+    
     farm_data = []
     for farm in farms:
         photos = FarmPhoto.objects.filter(farm=farm)
@@ -793,7 +795,8 @@ def view_farmer_profile(request, farmer_id):
         'farmer': farmer,
         'farm_data': farm_data,
         'products': products,
-        'certifications': certifications
+        'certifications': certifications,
+        'buyer_reviews': buyer_reviews,
     }
     
     return render(request, 'supplychain/view_farmer_profile.html', context)
@@ -822,3 +825,51 @@ def view_buyer_profile(request, buyer_id):
     }
     
     return render(request, 'supplychain/view_buyer_profile.html', context)
+
+@login_required
+def leave_farmer_review(request, farmer_id):
+    """View for buyers to leave a review for a farmer."""
+    try:
+        buyer = BuyerProfile.objects.get(user=request.user)
+        farmer = FarmerProfile.objects.get(id=farmer_id)
+    except BuyerProfile.DoesNotExist:
+        messages.error(request, "You need a buyer account to leave a review.")
+        return redirect('home')
+    except FarmerProfile.DoesNotExist:
+        messages.error(request, "Farmer not found.")
+        return redirect('buyer_home')
+    
+    if request.method == 'POST':
+        product_id = request.POST.get('product')
+        product = None
+        if product_id:
+            try:
+                product = FarmerProduct.objects.get(id=product_id)
+            except FarmerProduct.DoesNotExist:
+                pass
+        
+        rating = request.POST.get('rating')
+        content = request.POST.get('content')
+        quantity = request.POST.get('quantity') or None
+        price = request.POST.get('price') or None
+        
+        review = BuyerToFarmerReview(
+            buyer=buyer,
+            farmer=farmer,
+            rating=rating,
+            content=content,
+            product=product
+        )
+        
+        if quantity:
+            review.quantity = quantity
+        if price:
+            review.price = price
+        
+        if 'review_image' in request.FILES:
+            review.review_image = request.FILES['review_image']
+        
+        review.save()
+        messages.success(request, "Your review has been submitted successfully!")
+        
+    return redirect('view_farmer_profile', farmer_id=farmer_id)
