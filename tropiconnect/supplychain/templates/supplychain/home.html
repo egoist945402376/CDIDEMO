@@ -1,6 +1,7 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -211,19 +212,41 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link active" href="#">{% trans "Home" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Supply Chain</a>
+                        <a class="nav-link" href="#">{% trans "Supply Chain" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Solutions</a>
+                        <a class="nav-link" href="#">{% trans "Solutions" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/login/farmer">Login as Farmer</a>
+                        <a class="nav-link" href="/login/farmer">{% trans "Login as Farmer" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/login/buyer">Login as Buyer</a>
+                        <a class="nav-link" href="/login/buyer">{% trans "Login as Buyer" %}</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% trans "Language" %}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            {% get_current_language as CURRENT_LANGUAGE %}
+                            {% get_available_languages as AVAILABLE_LANGUAGES %}
+                            {% for lang_code, lang_name in AVAILABLE_LANGUAGES %}
+                                <li>
+                                    <form action="{% url 'set_language' %}" method="post" class="d-inline">
+                                        {% csrf_token %}
+                                        <input name="next" type="hidden" value="{{ request.path }}">
+                                        <input name="language" type="hidden" value="{{ lang_code }}">
+                                        <button type="submit" class="dropdown-item {% if lang_code == CURRENT_LANGUAGE %}active{% endif %}">
+                                            {{ lang_name }}
+                                        </button>
+                                    </form>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </li>
                 </ul>
             </div>

@@ -19,7 +19,7 @@ from .models import BuyerProfile, ProductNeed, BuyerToFarmerReview, BuyerInteres
 from .models import CommunityMember, FarmerCommunity
 from django.contrib.auth import logout
 from django.shortcuts import redirect
-
+from django.utils.translation import gettext as _
 from django.db.models import Q
 
 
@@ -28,7 +28,7 @@ def home(request):
     Homepage view for the supplychain app
     """
     return render(request, 'supplychain/home.html', {
-        'title': 'TropiConnect Homg page'
+        'title': _('TropiConnect Home page')
     })
 
 def register_farmer(request):

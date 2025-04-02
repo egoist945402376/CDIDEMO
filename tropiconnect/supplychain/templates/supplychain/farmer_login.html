@@ -1,6 +1,7 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -110,19 +111,41 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        <a class="nav-link" href="{% url 'home' %}">{% trans "Home" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register_farmer' %}">For Farmers</a>
+                        <a class="nav-link" href="{% url 'register_farmer' %}">{% trans "For Farmers" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register_buyer' %}">For Buyers</a>
+                        <a class="nav-link" href="{% url 'register_buyer' %}">{% trans "For Buyers" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="#">{% trans "About Us" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#">{% trans "Contact" %}</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% trans "Language" %}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                            {% get_current_language as CURRENT_LANGUAGE %}
+                            {% get_available_languages as AVAILABLE_LANGUAGES %}
+                            {% for lang_code, lang_name in AVAILABLE_LANGUAGES %}
+                                <li>
+                                    <form action="{% url 'set_language' %}" method="post" class="d-inline">
+                                        {% csrf_token %}
+                                        <input name="next" type="hidden" value="{{ request.path }}">
+                                        <input name="language" type="hidden" value="{{ lang_code }}">
+                                        <button type="submit" class="dropdown-item {% if lang_code == CURRENT_LANGUAGE %}active{% endif %}">
+                                            {{ lang_name }}
+                                        </button>
+                                    </form>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -133,8 +156,8 @@
     <div class="container">
         <div class="login-container">
             <div class="login-header">
-                <h2><i class="fas fa-user-circle me-2"></i> Farmer Login</h2>
-                <p class="mb-0">Access your TropiConnect farmer account</p>
+                <h2><i class="fas fa-user-circle me-2"></i> {% trans "Farmer Login" %}</h2>
+                <p class="mb-0">{% trans "Access your TropiConnect farmer account" %}</p>
             </div>
             <div class="login-form">
                 {% if messages %}
@@ -149,37 +172,37 @@
                     {% csrf_token %}
                     
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                        <label for="username" class="form-label">{% trans "Username" %}</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="{% trans 'Enter your username' %}" required>
                     </div>
                     
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                        <label for="password" class="form-label">{% trans "Password" %}</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="{% trans 'Enter your password' %}" required>
                     </div>
                     
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="first_name" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Your first name" required>
+                            <label for="first_name" class="form-label">{% trans "First Name" %}</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="{% trans 'Your first name' %}" required>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="last_name" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Your last name" required>
+                            <label for="last_name" class="form-label">{% trans "Last Name" %}</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="{% trans 'Your last name' %}" required>
                         </div>
                     </div>
                     
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="remember_me" name="remember_me">
-                        <label class="form-check-label" for="remember_me">Remember me</label>
+                        <label class="form-check-label" for="remember_me">{% trans "Remember me" %}</label>
                     </div>
                     
                     <button type="submit" class="btn btn-login">
-                        Login <i class="fas fa-sign-in-alt ms-2"></i>
+                        {% trans "Login" %} <i class="fas fa-sign-in-alt ms-2"></i>
                     </button>
                     
                     <div class="text-center mt-3">
-                        Don't have an account? <a href="{% url 'register_farmer' %}" class="text-decoration-none">Register here</a>
+                        {% trans "Don't have an account?" %} <a href="{% url 'register_farmer' %}" class="text-decoration-none">{% trans "Register here" %}</a>
                     </div>
                 </form>
             </div>
@@ -189,7 +212,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 TropiConnect. All Rights Reserved</p>
+            <p>&copy; 2025 TropiConnect. {% trans "All Rights Reserved" %}</p>
         </div>
     </footer>
 

@@ -1,0 +1,122 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-02 11:44+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:114
+#: .\supplychain\templates\supplychain\home.html:215
+msgid "Home"
+msgstr "Nyumbani"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:117
+#, fuzzy
+#| msgid "Login as Farmer"
+msgid "For Farmers"
+msgstr "Ingia kama Mkulima"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:120
+msgid "For Buyers"
+msgstr "Kwa Wanunuzi"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:123
+msgid "About Us"
+msgstr "Kuhusu Sisi"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:126
+msgid "Contact"
+msgstr "Mawasiliano"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:159
+msgid "Farmer Login"
+msgstr "Ingia kama Mkulima"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:160
+msgid "Access your TropiConnect farmer account"
+msgstr "Fikia akaunti yako ya mkulima ya TropiConnect"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:175
+msgid "Username"
+msgstr "Jina la mtumiaji"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:176
+msgid "Enter your username"
+msgstr "Weka jina lako la mtumiaji"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:180
+msgid "Password"
+msgstr "Nenosiri"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:181
+msgid "Enter your password"
+msgstr "Weka nenosiri lako"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:186
+msgid "First Name"
+msgstr "Jina la Kwanza"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:187
+msgid "Your first name"
+msgstr "Jina lako la kwanza"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:190
+msgid "Last Name"
+msgstr "Jina la Mwisho"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:191
+msgid "Your last name"
+msgstr "Jina lako la mwisho"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:197
+msgid "Remember me"
+msgstr "Nikumbuke"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:201
+msgid "Login"
+msgstr "Ingia"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:205
+msgid "Don't have an account?"
+msgstr "Huna akaunti?"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:205
+msgid "Register here"
+msgstr "Jisajili hapa"
+
+#: .\supplychain\templates\supplychain\farmer_login.html:215
+msgid "All Rights Reserved"
+msgstr "Haki Zote Zimehifadhiwa"
+
+#: .\supplychain\templates\supplychain\home.html:218
+msgid "Supply Chain"
+msgstr "Mnyororo wa Ugavi"
+
+#: .\supplychain\templates\supplychain\home.html:221
+msgid "Solutions"
+msgstr "Suluhisho"
+
+#: .\supplychain\templates\supplychain\home.html:224
+msgid "Login as Farmer"
+msgstr "Ingia kama Mkulima"
+
+#: .\supplychain\templates\supplychain\home.html:227
+msgid "Login as Buyer"
+msgstr "Ingia kama Mnunuzi"
+
+#: .\supplychain\views.py:31
+msgid "TropiConnect Home page"
+msgstr "Ukurasa wa Nyumbani wa TropiConnect"
