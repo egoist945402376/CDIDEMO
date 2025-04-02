@@ -71,156 +71,357 @@
     </div>
 </section>
 
-<!-- Market Insights Section -->
-<section id="market-insights" class="py-5">
+<section class="py-4 bg-white">
     <div class="container">
-        <div class="row mb-4">
-            <div class="col-lg-8 mx-auto text-center">
-                <h2 class="fw-bold mb-3">Sourcing & Industry Insights</h2>
-                <p class="text-muted">Stay informed with the latest agricultural production trends, quality forecasts, and sourcing opportunities</p>
-            </div>
-        </div>
-        
-        <div class="row mb-4">
+        <div class="row">
             <div class="col-12">
-                <ul class="nav nav-pills justify-content-center mb-4" id="insightTabs" role="tablist">
+                <ul class="nav nav-pills nav-justified main-content-tabs mb-4" id="contentTabs" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="production-tab" data-bs-toggle="pill" data-bs-target="#production" type="button" role="tab" aria-controls="production" aria-selected="true">Production Forecasts</button>
+                        <button class="nav-link active py-3" id="insights-tab" data-bs-toggle="pill" data-bs-target="#insights-content" type="button" role="tab" aria-controls="insights-content" aria-selected="true">
+                            <i class="bi bi-graph-up me-2"></i>Market Insights
+                        </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="quality-tab" data-bs-toggle="pill" data-bs-target="#quality" type="button" role="tab" aria-controls="quality" aria-selected="false">Quality Trends</button>
+                        <button class="nav-link py-3" id="products-tab" data-bs-toggle="pill" data-bs-target="#products-content" type="button" role="tab" aria-controls="products-content" aria-selected="false">
+                            <i class="bi bi-basket me-2"></i>Explore Products
+                        </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="logistics-tab" data-bs-toggle="pill" data-bs-target="#logistics" type="button" role="tab" aria-controls="logistics" aria-selected="false">Logistics Updates</button>
+                        <button class="nav-link py-3" id="resources-tab" data-bs-toggle="pill" data-bs-target="#resources-content" type="button" role="tab" aria-controls="resources-content" aria-selected="false">
+                            <i class="bi bi-tools me-2"></i>Sourcing Resources
+                        </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="certification-tab" data-bs-toggle="pill" data-bs-target="#certification" type="button" role="tab" aria-controls="certification" aria-selected="false">Certification News</button>
+                        <button class="nav-link py-3" id="farmers-tab" data-bs-toggle="pill" data-bs-target="#farmers-content" type="button" role="tab" aria-controls="farmers-content" aria-selected="false">
+                            <i class="bi bi-people me-2"></i>Verified Farmers
+                        </button>
                     </li>
                 </ul>
             </div>
         </div>
-        
-        <div class="tab-content" id="insightsTabContent">
-            <!-- Production Forecasts Tab -->
-            <div class="tab-pane fade show active" id="production" role="tabpanel" aria-labelledby="production-tab">
-                <div class="row g-4">
-                    <div class="col-lg-4">
-                        <div class="card h-100 border-0 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1599467556385-48b57868f038?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Coffee Production" style="height: 200px; object-fit: cover;">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span class="badge bg-primary">Coffee</span>
-                                    <small class="text-muted">March 15, 2025</small>
-                                </div>
-                                <h5 class="card-title">East African Coffee Harvests Expected to Increase by 12% This Season</h5>
-                                <p class="card-text">Favorable weather conditions in Kenya, Ethiopia, and Tanzania are projected to boost coffee production, creating excellent sourcing opportunities.</p>
-                                <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card h-100 border-0 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1528975604071-b4dc52a2d18c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Cocoa Production" style="height: 200px; object-fit: cover;">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span class="badge bg-success">Cocoa</span>
-                                    <small class="text-muted">March 18, 2025</small>
-                                </div>
-                                <h5 class="card-title">Premium Cocoa Varieties Growing in Availability as Farmers Upgrade Techniques</h5>
-                                <p class="card-text">Increasing numbers of West African farmers are transitioning to premium cocoa varieties and implementing improved fermentation methods.</p>
-                                <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card h-100 border-0 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1610565426083-b71d9e5730e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Tropical Fruits Production" style="height: 200px; object-fit: cover;">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span class="badge bg-danger">Tropical Fruits</span>
-                                    <small class="text-muted">March 20, 2025</small>
-                                </div>
-                                <h5 class="card-title">New Cold Chain Facilities Expanding Availability of Exotic Tropical Fruits</h5>
-                                <p class="card-text">Investment in cold chain infrastructure in Southeast Asia is extending shelf life and expanding the export reach of highly perishable tropical fruits.</p>
-                                <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Quality Trends Tab -->
-            <div class="tab-pane fade" id="quality" role="tabpanel" aria-labelledby="quality-tab">
-                <div class="row g-4">
-                    <div class="col-lg-4">
-                        <div class="card h-100 border-0 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1570275239925-4af0aa77e3f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Coffee Quality" style="height: 200px; object-fit: cover;">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span class="badge bg-primary">Coffee</span>
-                                    <small class="text-muted">March 10, 2025</small>
-                                </div>
-                                <h5 class="card-title">Advanced Processing Techniques Elevating Coffee Cup Profiles</h5>
-                                <p class="card-text">Innovative fermentation techniques being adopted by farmers in Colombia and Rwanda are producing exceptional flavor profiles in specialty coffees.</p>
-                                <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card h-100 border-0 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1596363643774-672d6ebace31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Spice Quality" style="height: 200px; object-fit: cover;">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span class="badge bg-success">Spices</span>
-                                    <small class="text-muted">March 14, 2025</small>
-                                </div>
-                                <h5 class="card-title">Aroma Preservation Technologies Improving Shipped Spice Quality</h5>
-                                <p class="card-text">New packaging innovations are preserving essential oils and aromatic compounds in spices during long-distance shipping and extended storage.</p>
-                                <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card h-100 border-0 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1591677245391-b2a8bef74c03?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Nut Quality" style="height: 200px; object-fit: cover;">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span class="badge bg-danger">Nuts</span>
-                                    <small class="text-muted">March 19, 2025</small>
-                                </div>
-                                <h5 class="card-title">Aflatoxin Control Breakthroughs Ensure Higher Quality Tree Nuts</h5>
-                                <p class="card-text">Innovative on-farm interventions and improved storage practices are significantly reducing aflatoxin levels in tree nuts from tropical regions.</p>
-                                <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Other tab content -->
-            <div class="tab-pane fade" id="logistics" role="tabpanel" aria-labelledby="logistics-tab">
-                <!-- Logistics Updates content -->
-                <div class="row g-4">
-                    <!-- Similar card structure for Logistics news -->
-                </div>
-            </div>
-            
-            <div class="tab-pane fade" id="certification" role="tabpanel" aria-labelledby="certification-tab">
-                <!-- Certification News content -->
-                <div class="row g-4">
-                    <!-- Similar card structure for Certification news -->
-                </div>
-            </div>
-        </div>
-        
-        <div class="text-center mt-4">
-            <a href="#" class="btn btn-primary">View All Insights</a>
-        </div>
     </div>
 </section>
 
-<!-- Product Explorer Section -->
-<section id="product-explorer" class="py-5 bg-light">
+<!-- 标签页内容区域 -->
+<div class="tab-content" id="contentTabsContent">
+    <!-- INSIGHTS CONTENT TAB -->
+    <div class="tab-pane fade show active" id="insights-content" role="tabpanel" aria-labelledby="insights-tab">
+        <!-- Market Insights Section -->
+        <section id="market-insights" class="py-5">
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="fw-bold mb-3">Sourcing & Industry Insights</h2>
+                        <p class="text-muted">Stay informed with the latest agricultural production trends, quality forecasts, and sourcing opportunities</p>
+                    </div>
+                </div>
+                
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <ul class="nav nav-pills justify-content-center mb-4" id="insightTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="production-tab" data-bs-toggle="pill" data-bs-target="#production" type="button" role="tab" aria-controls="production" aria-selected="true">Production Forecasts</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="quality-tab" data-bs-toggle="pill" data-bs-target="#quality" type="button" role="tab" aria-controls="quality" aria-selected="false">Quality Trends</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="logistics-tab" data-bs-toggle="pill" data-bs-target="#logistics" type="button" role="tab" aria-controls="logistics" aria-selected="false">Logistics Updates</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="certification-tab" data-bs-toggle="pill" data-bs-target="#certification" type="button" role="tab" aria-controls="certification" aria-selected="false">Certification News</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="insightsTabContent">
+                    <!-- Production Forecasts Tab -->
+                    <div class="tab-pane fade show active" id="production" role="tabpanel" aria-labelledby="production-tab">
+                        <div class="row g-4">
+                            <div class="col-lg-4">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <img src="https://images.unsplash.com/photo-1599467556385-48b57868f038?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Coffee Production" style="height: 200px; object-fit: cover;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="badge bg-primary">Coffee</span>
+                                            <small class="text-muted">March 15, 2025</small>
+                                        </div>
+                                        <h5 class="card-title">East African Coffee Harvests Expected to Increase by 12% This Season</h5>
+                                        <p class="card-text">Favorable weather conditions in Kenya, Ethiopia, and Tanzania are projected to boost coffee production, creating excellent sourcing opportunities.</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <img src="https://images.unsplash.com/photo-1528975604071-b4dc52a2d18c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Cocoa Production" style="height: 200px; object-fit: cover;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="badge bg-success">Cocoa</span>
+                                            <small class="text-muted">March 18, 2025</small>
+                                        </div>
+                                        <h5 class="card-title">Premium Cocoa Varieties Growing in Availability as Farmers Upgrade Techniques</h5>
+                                        <p class="card-text">Increasing numbers of West African farmers are transitioning to premium cocoa varieties and implementing improved fermentation methods.</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <img src="https://images.unsplash.com/photo-1610565426083-b71d9e5730e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Tropical Fruits Production" style="height: 200px; object-fit: cover;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="badge bg-danger">Tropical Fruits</span>
+                                            <small class="text-muted">March 20, 2025</small>
+                                        </div>
+                                        <h5 class="card-title">New Cold Chain Facilities Expanding Availability of Exotic Tropical Fruits</h5>
+                                        <p class="card-text">Investment in cold chain infrastructure in Southeast Asia is extending shelf life and expanding the export reach of highly perishable tropical fruits.</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quality Trends Tab -->
+                    <div class="tab-pane fade" id="quality" role="tabpanel" aria-labelledby="quality-tab">
+                        <div class="row g-4">
+                            <div class="col-lg-4">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <img src="https://images.unsplash.com/photo-1570275239925-4af0aa77e3f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Coffee Quality" style="height: 200px; object-fit: cover;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="badge bg-primary">Coffee</span>
+                                            <small class="text-muted">March 10, 2025</small>
+                                        </div>
+                                        <h5 class="card-title">Advanced Processing Techniques Elevating Coffee Cup Profiles</h5>
+                                        <p class="card-text">Innovative fermentation techniques being adopted by farmers in Colombia and Rwanda are producing exceptional flavor profiles in specialty coffees.</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <img src="https://images.unsplash.com/photo-1596363643774-672d6ebace31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Spice Quality" style="height: 200px; object-fit: cover;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="badge bg-success">Spices</span>
+                                            <small class="text-muted">March 14, 2025</small>
+                                        </div>
+                                        <h5 class="card-title">Aroma Preservation Technologies Improving Shipped Spice Quality</h5>
+                                        <p class="card-text">New packaging innovations are preserving essential oils and aromatic compounds in spices during long-distance shipping and extended storage.</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <img src="https://images.unsplash.com/photo-1591677245391-b2a8bef74c03?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Nut Quality" style="height: 200px; object-fit: cover;">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="badge bg-danger">Nuts</span>
+                                            <small class="text-muted">March 19, 2025</small>
+                                        </div>
+                                        <h5 class="card-title">Aflatoxin Control Breakthroughs Ensure Higher Quality Tree Nuts</h5>
+                                        <p class="card-text">Innovative on-farm interventions and improved storage practices are significantly reducing aflatoxin levels in tree nuts from tropical regions.</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Other tab content -->
+                    <div class="tab-pane fade" id="logistics" role="tabpanel" aria-labelledby="logistics-tab">
+                        <!-- Logistics Updates content -->
+                        <div class="row g-4">
+                            <!-- Similar card structure for Logistics news -->
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="certification" role="tabpanel" aria-labelledby="certification-tab">
+                        <!-- Certification News content -->
+                        <div class="row g-4">
+                            <!-- Similar card structure for Certification news -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn-primary">View All Insights</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- RESOURCES CONTENT TAB -->
+    <div class="tab-pane fade" id="resources-content" role="tabpanel" aria-labelledby="resources-tab">
+        <!-- Sourcing Resources Section -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="fw-bold mb-3">Sourcing Resources</h2>
+                        <p class="text-muted">Tools and resources to help you optimize your sourcing strategy and build sustainable supply chains</p>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center p-4">
+                                <div class="icon-box mb-3 mx-auto bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <i class="bi bi-clipboard-check" style="font-size: 2rem;"></i>
+                                </div>
+                                <h5 class="card-title">Due Diligence Tools</h5>
+                                <p class="card-text">Templates and checklists for verifying potential suppliers and ensuring compliance.</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Access Tools</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center p-4">
+                                <div class="icon-box mb-3 mx-auto bg-success bg-opacity-10 text-success rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <i class="bi bi-journal-text" style="font-size: 2rem;"></i>
+                                </div>
+                                <h5 class="card-title">Quality Guides</h5>
+                                <p class="card-text">Product-specific quality assessment guides to help you evaluate samples and shipments.</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Download Guides</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center p-4">
+                                <div class="icon-box mb-3 mx-auto bg-warning bg-opacity-10 text-warning rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <i class="bi bi-calculator" style="font-size: 2rem;"></i>
+                                </div>
+                                <h5 class="card-title">Cost Calculators</h5>
+                                <p class="card-text">Interactive tools to estimate total landed costs including freight, duty, and handling.</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Use Calculators</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center p-4">
+                                <div class="icon-box mb-3 mx-auto bg-info bg-opacity-10 text-info rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <i class="bi bi-file-earmark-text" style="font-size: 2rem;"></i>
+                                </div>
+                                <h5 class="card-title">Contract Templates</h5>
+                                <p class="card-text">Customizable contract templates designed for international agricultural sourcing.</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary">View Templates</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FARMERS CONTENT TAB -->
+    <div class="tab-pane fade" id="farmers-content" role="tabpanel" aria-labelledby="farmers-tab">
+        <!-- Verified Farmers Section -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="fw-bold mb-3">Meet Our Verified Farmers</h2>
+                        <p class="text-muted">Connect with pre-vetted farmers who meet international quality and compliance standards</p>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="flex-shrink-0">
+                                        <img src="https://images.unsplash.com/photo-1612599316791-451087c7fe15?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Farmer portrait" class="rounded-circle" width="60" height="60" style="object-fit: cover;">
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h5 class="mb-1">Samuel Mwangi</h5>
+                                        <p class="mb-0 text-muted"><i class="bi bi-geo-alt-fill"></i> Kenya, East Africa</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <span class="badge bg-primary me-1">Coffee</span>
+                                    <span class="badge bg-success me-1">Organic</span>
+                                    <span class="badge bg-info me-1">Fair Trade</span>
+                                </div>
+                                <p class="card-text">Third-generation coffee farmer specializing in washed and natural process SL28 and SL34 varieties. 15 years of export experience.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-success"><i class="bi bi-check-circle-fill"></i> Verified Supplier</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View Profile</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="flex-shrink-0">
+                                        <img src="https://images.unsplash.com/photo-1544467163-4932129744c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Farmer portrait" class="rounded-circle" width="60" height="60" style="object-fit: cover;">
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h5 class="mb-1">Costa Verde Cooperative</h5>
+                                        <p class="mb-0 text-muted"><i class="bi bi-geo-alt-fill"></i> Costa Rica, Central America</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <span class="badge bg-primary me-1">Coffee</span>
+                                    <span class="badge bg-warning me-1">Rainforest Alliance</span>
+                                </div>
+                                <p class="card-text">Cooperative of 120 small-scale farmers specializing in micro-lot coffees. Processing station with strict quality control protocols.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-success"><i class="bi bi-check-circle-fill"></i> Verified Supplier</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View Profile</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="flex-shrink-0">
+                                        <img src="https://images.unsplash.com/photo-1569865690045-09902b1f834d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Farmer portrait" class="rounded-circle" width="60" height="60" style="object-fit: cover;">
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h5 class="mb-1">Green Earth Growers</h5>
+                                        <p class="mb-0 text-muted"><i class="bi bi-geo-alt-fill"></i> Vietnam, Southeast Asia</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <span class="badge bg-primary me-1">Spices</span>
+                                    <span class="badge bg-success me-1">Organic</span>
+                                </div>
+                                <p class="card-text">Family-owned business growing premium organic black pepper, cinnamon, and star anise. USDA and EU organic certified.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-success"><i class="bi bi-check-circle-fill"></i> Verified Supplier</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View Profile</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn-primary">Browse All Farmers</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+
+ <!-- PRODUCTS CONTENT TAB -->
+ <section id="product-explorer" class="py-5 bg-light">
     <div class="container">
         <div class="row mb-4">
             <div class="col-lg-8 mx-auto text-center">
@@ -340,69 +541,6 @@
     </div>
 </section>
 
-<!-- Sourcing Resources Section -->
-<section class="py-5">
-    <div class="container">
-        <div class="row mb-4">
-            <div class="col-lg-8 mx-auto text-center">
-                <h2 class="fw-bold mb-3">Sourcing Resources</h2>
-                <p class="text-muted">Tools and resources to help you optimize your sourcing strategy and build sustainable supply chains</p>
-            </div>
-        </div>
-        
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-3">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center p-4">
-                        <div class="icon-box mb-3 mx-auto bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                            <i class="bi bi-clipboard-check" style="font-size: 2rem;"></i>
-                        </div>
-                        <h5 class="card-title">Due Diligence Tools</h5>
-                        <p class="card-text">Templates and checklists for verifying potential suppliers and ensuring compliance.</p>
-                        <a href="#" class="btn btn-sm btn-outline-primary">Access Tools</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center p-4">
-                        <div class="icon-box mb-3 mx-auto bg-success bg-opacity-10 text-success rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                            <i class="bi bi-journal-text" style="font-size: 2rem;"></i>
-                        </div>
-                        <h5 class="card-title">Quality Guides</h5>
-                        <p class="card-text">Product-specific quality assessment guides to help you evaluate samples and shipments.</p>
-                        <a href="#" class="btn btn-sm btn-outline-primary">Download Guides</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center p-4">
-                        <div class="icon-box mb-3 mx-auto bg-warning bg-opacity-10 text-warning rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                            <i class="bi bi-calculator" style="font-size: 2rem;"></i>
-                        </div>
-                        <h5 class="card-title">Cost Calculators</h5>
-                        <p class="card-text">Interactive tools to estimate total landed costs including freight, duty, and handling.</p>
-                        <a href="#" class="btn btn-sm btn-outline-primary">Use Calculators</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center p-4">
-                        <div class="icon-box mb-3 mx-auto bg-info bg-opacity-10 text-info rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                            <i class="bi bi-file-earmark-text" style="font-size: 2rem;"></i>
-                        </div>
-                        <h5 class="card-title">Contract Templates</h5>
-                        <p class="card-text">Customizable contract templates designed for international agricultural sourcing.</p>
-                        <a href="#" class="btn btn-sm btn-outline-primary">View Templates</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Success Stories Section -->
 <section class="py-5 bg-light">
     <div class="container">
@@ -464,98 +602,6 @@
                     <a href="{% url 'buyer_dashboard' %}" class="btn btn-outline-light btn-lg px-4">My Dashboard</a>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- Verified Farmers Section -->
-<section class="py-5">
-    <div class="container">
-        <div class="row mb-4">
-            <div class="col-lg-8 mx-auto text-center">
-                <h2 class="fw-bold mb-3">Meet Our Verified Farmers</h2>
-                <p class="text-muted">Connect with pre-vetted farmers who meet international quality and compliance standards</p>
-            </div>
-        </div>
-        
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="flex-shrink-0">
-                                <img src="https://images.unsplash.com/photo-1612599316791-451087c7fe15?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Farmer portrait" class="rounded-circle" width="60" height="60" style="object-fit: cover;">
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                                <h5 class="mb-1">Samuel Mwangi</h5>
-                                <p class="mb-0 text-muted"><i class="bi bi-geo-alt-fill"></i> Kenya, East Africa</p>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <span class="badge bg-primary me-1">Coffee</span>
-                            <span class="badge bg-success me-1">Organic</span>
-                            <span class="badge bg-info me-1">Fair Trade</span>
-                        </div>
-                        <p class="card-text">Third-generation coffee farmer specializing in washed and natural process SL28 and SL34 varieties. 15 years of export experience.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-success"><i class="bi bi-check-circle-fill"></i> Verified Supplier</span>
-                            <a href="#" class="btn btn-sm btn-outline-primary">View Profile</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="flex-shrink-0">
-                                <img src="https://images.unsplash.com/photo-1544467163-4932129744c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Farmer portrait" class="rounded-circle" width="60" height="60" style="object-fit: cover;">
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                                <h5 class="mb-1">Costa Verde Cooperative</h5>
-                                <p class="mb-0 text-muted"><i class="bi bi-geo-alt-fill"></i> Costa Rica, Central America</p>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <span class="badge bg-primary me-1">Coffee</span>
-                            <span class="badge bg-warning me-1">Rainforest Alliance</span>
-                        </div>
-                        <p class="card-text">Cooperative of 120 small-scale farmers specializing in micro-lot coffees. Processing station with strict quality control protocols.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-success"><i class="bi bi-check-circle-fill"></i> Verified Supplier</span>
-                            <a href="#" class="btn btn-sm btn-outline-primary">View Profile</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="flex-shrink-0">
-                                <img src="https://images.unsplash.com/photo-1569865690045-09902b1f834d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Farmer portrait" class="rounded-circle" width="60" height="60" style="object-fit: cover;">
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                                <h5 class="mb-1">Green Earth Growers</h5>
-                                <p class="mb-0 text-muted"><i class="bi bi-geo-alt-fill"></i> Vietnam, Southeast Asia</p>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <span class="badge bg-primary me-1">Spices</span>
-                            <span class="badge bg-success me-1">Organic</span>
-                        </div>
-                        <p class="card-text">Family-owned business growing premium organic black pepper, cinnamon, and star anise. USDA and EU organic certified.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-success"><i class="bi bi-check-circle-fill"></i> Verified Supplier</span>
-                            <a href="#" class="btn btn-sm btn-outline-primary">View Profile</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="text-center mt-4">
-            <a href="#" class="btn btn-primary">Browse All Farmers</a>
         </div>
     </div>
 </section>

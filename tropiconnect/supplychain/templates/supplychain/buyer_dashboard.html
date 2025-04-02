@@ -10,7 +10,12 @@
                 <div class="d-flex align-items-center">
                     <div class="company-logo me-4">
                         {% if buyer.company_logo %}
-                            <img src="{{ buyer.company_logo.url }}" alt="{{ buyer.company_name }}" class="rounded" width="100" height="100" style="object-fit: contain;">
+                            <img src="{{ buyer.company_logo.url }}" alt="{{ buyer.company_name }}" 
+                                class="rounded viewable-image" 
+                                width="100" height="100" 
+                                style="object-fit: contain; cursor: pointer;" 
+                                data-full-src="{{ buyer.company_logo.url }}" 
+                                data-caption="{{ buyer.company_name }} - Company Logo">
                         {% else %}
                             <div class="bg-light rounded d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
                                 <i class="bi bi-building text-primary" style="font-size: 48px;"></i>
@@ -118,7 +123,11 @@
                                         <tr style="vertical-align: middle;">
                                             <td class="text-center py-3">
                                                 {% if cert.certificate_image %}
-                                                    <img src="{{ cert.certificate_image.url }}" alt="{{ cert.certification_name }}" class="img-thumbnail" style="width: 80px; height: 60px; object-fit: cover;">
+                                                    <img src="{{ cert.certificate_image.url }}" alt="{{ cert.certification_name }}" 
+                                                        class="img-thumbnail viewable-image" 
+                                                        style="width: 80px; height: 60px; object-fit: cover; cursor: pointer;" 
+                                                        data-full-src="{{ cert.certificate_image.url }}" 
+                                                        data-caption="{{ cert.certification_name }} - {{ cert.issuing_organization }}">
                                                 {% else %}
                                                     <div class="bg-light d-flex align-items-center justify-content-center" style="width: 80px; height: 60px;">
                                                         <i class="bi bi-file-earmark-text text-secondary" style="font-size: 1.5rem;"></i>
@@ -349,4 +358,54 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="imageViewerModal" tabindex="-1" aria-labelledby="imageViewerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content bg-dark">
+        <div class="modal-header border-0">
+          <h5 class="modal-title text-white" id="imageViewerModalLabel"></h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex align-items-center justify-content-center p-0">
+          <div class="text-center w-100">
+            <img id="fullImage" src="" class="img-fluid" alt="Full View Image">
+            <p id="imageCaption" class="mt-3 text-white"></p>
+          </div>
+        </div>
+        <div class="modal-footer border-0 justify-content-center">
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">关闭</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const viewableImages = document.querySelectorAll('.viewable-image');
+      const imageViewerModalEl = document.getElementById('imageViewerModal');
+      
+      if (imageViewerModalEl) {
+        const imageViewerModal = new bootstrap.Modal(imageViewerModalEl);
+        
+        viewableImages.forEach(function(img) {
+          img.addEventListener('click', function(e) {
+
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const fullSrc = this.getAttribute('data-full-src');
+            const caption = this.getAttribute('data-caption');
+            document.getElementById('fullImage').src = fullSrc;
+            document.getElementById('imageCaption').textContent = caption || '';
+            document.getElementById('imageViewerModalLabel').textContent = caption || '图片查看';
+            
+            imageViewerModal.show();
+          });
+        });
+      }
+    });
+</script>
 {% endblock %}
