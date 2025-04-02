@@ -193,7 +193,11 @@
                                         <tr style="vertical-align: middle;">
                                             <td class="text-center py-3">
                                                 {% if cert.certificate_image %}
-                                                    <img src="{{ cert.certificate_image.url }}" alt="{{ cert.certification_name }}" class="img-thumbnail" style="width: 80px; height: 60px; object-fit: cover;">
+                                                    <img src="{{ cert.certificate_image.url }}" alt="{{ cert.certification_name }}" 
+                                                        class="img-thumbnail viewable-image" 
+                                                        style="width: 240px; height: 180px; object-fit: cover; cursor: pointer;" 
+                                                        data-full-src="{{ cert.certificate_image.url }}" 
+                                                        data-caption="{{ cert.certification_name }} - {{ cert.issuing_organization }}">
                                                 {% else %}
                                                     <div class="bg-light d-flex align-items-center justify-content-center" style="width: 80px; height: 60px;">
                                                         <i class="bi bi-file-earmark-text text-secondary" style="font-size: 1.5rem;"></i>
@@ -269,7 +273,11 @@
                                         <tr style="height: 80px; vertical-align: middle;">
                                             <td class="text-center py-3">
                                                 {% if product.photo %}
-                                                    <img src="{{ product.photo.url }}" alt="{{ product.product_name }}" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
+                                                    <img src="{{ product.photo.url }}" alt="{{ product.product_name }}" 
+                                                        class="img-thumbnail viewable-image" 
+                                                        style="width: 100px; height: 100px; object-fit: cover; cursor: pointer;" 
+                                                        data-full-src="{{ product.photo.url }}" 
+                                                        data-caption="{{ product.product_name }}">
                                                 {% else %}
                                                     <div class="bg-light d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
                                                         <i class="bi bi-image text-secondary" style="font-size: 1.5rem;"></i>
