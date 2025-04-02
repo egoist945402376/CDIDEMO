@@ -403,8 +403,6 @@ msgid "Farmer Registration"
 msgstr "Usajili wa Mnunuzi"
 
 #: .\supplychain\templates\supplychain\register_farmer.html:160
-#, fuzzy
-#| msgid "TropiConnect: Connecting African Farmers to Global Markets"
 msgid "Join our network of African farmers and access global markets"
 msgstr "TropiConnect: Kuunganisha Wakulima wa Afrika na Masoko ya Dunia"
 
