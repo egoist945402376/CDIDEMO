@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 保持原有CSS样式不变 */
+        /* CSS styles remain unchanged */
         :root {
             --primary-color: #2a9d8f;
             --secondary-color: #e9c46a;
@@ -150,26 +151,26 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">TropiConnect</a>
+            <a class="navbar-brand" href="{% url 'home' %}">{% translate "TropiConnect" %}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        <a class="nav-link" href="{% url 'home' %}">{% translate "Home" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register_farmer' %}">For Farmers</a>
+                        <a class="nav-link" href="{% url 'register_farmer' %}">{% translate "For Farmers" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'register_buyer' %}">For Buyers</a>
+                        <a class="nav-link active" href="{% url 'register_buyer' %}">{% translate "For Buyers" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="#">{% translate "About Us" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#">{% translate "Contact" %}</a>
                     </li>
                 </ul>
             </div>
@@ -182,8 +183,8 @@
             <div class="row g-0">
                 <div class="col-md-7">
                     <div class="register-header">
-                        <h2><i class="fas fa-briefcase me-2"></i> Buyer Registration</h2>
-                        <p class="mb-0">Connect with African farmers and source quality agricultural products</p>
+                        <h2><i class="fas fa-briefcase me-2"></i> {% translate "Buyer Registration" %}</h2>
+                        <p class="mb-0">{% translate "Connect with African farmers and source quality agricultural products" %}</p>
                     </div>
                     <div class="register-form">
                         {% if messages %}
@@ -196,14 +197,14 @@
                         
                         <div class="form-step">
                             <div class="step-number">1</div>
-                            <h3 class="step-title">Account Information</h3>
+                            <h3 class="step-title">{% translate "Account Information" %}</h3>
                         </div>
                         
                         <form method="post">
                             {% csrf_token %}
                             
                             <div class="mb-3">
-                                <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+                                <label for="{{ form.username.id_for_label }}" class="form-label">{% translate "Username" %}</label>
                                 {{ form.username }}
                                 {% if form.username.errors %}
                                     <div class="error-feedback">
@@ -215,7 +216,7 @@
                             </div>
                             
                             <div class="mb-3">
-                                <label for="{{ form.email.id_for_label }}" class="form-label">Contact Email</label>
+                                <label for="{{ form.email.id_for_label }}" class="form-label">{% translate "Contact Email" %}</label>
                                 {{ form.email }}
                                 {% if form.email.errors %}
                                     <div class="error-feedback">
@@ -227,7 +228,7 @@
                             </div>
                             
                             <div class="mb-3">
-                                <label for="{{ form.password1.id_for_label }}" class="form-label">Password</label>
+                                <label for="{{ form.password1.id_for_label }}" class="form-label">{% translate "Password" %}</label>
                                 {{ form.password1 }}
                                 {% if form.password1.errors %}
                                     <div class="error-feedback">
@@ -237,12 +238,12 @@
                                     </div>
                                 {% endif %}
                                 <div class="form-text">
-                                    Your password must be 8+ characters and can't be entirely numeric.
+                                    {% translate "Your password must be 8+ characters and can't be entirely numeric." %}
                                 </div>
                             </div>
                             
                             <div class="mb-3">
-                                <label for="{{ form.password2.id_for_label }}" class="form-label">Confirm Password</label>
+                                <label for="{{ form.password2.id_for_label }}" class="form-label">{% translate "Confirm Password" %}</label>
                                 {{ form.password2 }}
                                 {% if form.password2.errors %}
                                     <div class="error-feedback">
@@ -255,11 +256,11 @@
                             
                             <div class="form-step mt-4">
                                 <div class="step-number">2</div>
-                                <h3 class="step-title">Company Information</h3>
+                                <h3 class="step-title">{% translate "Company Information" %}</h3>
                             </div>
                             
                             <div class="mb-3">
-                                <label for="{{ form.company_name.id_for_label }}" class="form-label">Company Name</label>
+                                <label for="{{ form.company_name.id_for_label }}" class="form-label">{% translate "Company Name" %}</label>
                                 {{ form.company_name }}
                                 {% if form.company_name.errors %}
                                     <div class="error-feedback">
@@ -272,7 +273,7 @@
                             
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="{{ form.country.id_for_label }}" class="form-label">Country</label>
+                                    <label for="{{ form.country.id_for_label }}" class="form-label">{% translate "Country" %}</label>
                                     {{ form.country }}
                                     {% if form.country.errors %}
                                         <div class="error-feedback">
@@ -283,7 +284,7 @@
                                     {% endif %}
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="{{ form.city.id_for_label }}" class="form-label">City</label>
+                                    <label for="{{ form.city.id_for_label }}" class="form-label">{% translate "City" %}</label>
                                     {{ form.city }}
                                     {% if form.city.errors %}
                                         <div class="error-feedback">
@@ -297,11 +298,11 @@
                             
                             <div class="form-step mt-4">
                                 <div class="step-number">3</div>
-                                <h3 class="step-title">Product Interests</h3>
+                                <h3 class="step-title">{% translate "Product Interests" %}</h3>
                             </div>
                             
                             <div class="mb-3">
-                                <label for="{{ form.introduction.id_for_label }}" class="form-label">Introduction & Product Interests</label>
+                                <label for="{{ form.introduction.id_for_label }}" class="form-label">{% translate "Introduction & Product Interests" %}</label>
                                 {{ form.introduction }}
                                 {% if form.introduction.errors %}
                                     <div class="error-feedback">
@@ -311,23 +312,23 @@
                                     </div>
                                 {% endif %}
                                 <div class="form-text">
-                                    Your introduction will help us match you with suitable farmers. Be specific about product categories, quality requirements, and typical order volumes.
+                                    {% translate "Your introduction will help us match you with suitable farmers. Be specific about product categories, quality requirements, and typical order volumes." %}
                                 </div>
                             </div>
                             
                             <div class="form-check mb-4">
                                 <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
                                 <label class="form-check-label" for="terms">
-                                    I agree to TropiConnect's <a href="#" class="text-decoration-none">Terms of Service</a> and <a href="#" class="text-decoration-none">Privacy Policy</a>
+                                    {% translate "I agree to TropiConnect's" %} <a href="#" class="text-decoration-none">{% translate "Terms of Service" %}</a> {% translate "and" %} <a href="#" class="text-decoration-none">{% translate "Privacy Policy" %}</a>
                                 </label>
                             </div>
                             
                             <button type="submit" class="btn btn-register">
-                                Create Buyer Account <i class="fas fa-arrow-right ms-2"></i>
+                                {% translate "Create Buyer Account" %} <i class="fas fa-arrow-right ms-2"></i>
                             </button>
                             
                             <div class="text-center mt-3">
-                                Already have an account? <a href="#" class="text-decoration-none">Sign in</a>
+                                {% translate "Already have an account?" %} <a href="#" class="text-decoration-none">{% translate "Sign in" %}</a>
                             </div>
                         </form>
                     </div>
@@ -342,7 +343,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 TropiConnect. All Rights Reserved</p>
+            <p>&copy; 2025 {% translate "TropiConnect. All Rights Reserved" %}</p>
         </div>
     </footer>
 
