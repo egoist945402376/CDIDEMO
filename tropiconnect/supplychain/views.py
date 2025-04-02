@@ -1150,3 +1150,9 @@ def edit_community(request, community_id):
     }
     
     return render(request, 'supplychain/edit_community.html', context)
+
+def market_preparation_guides(request):
+    """
+    View to display international market preparation guides
+    """
+    return render(request, 'supplychain/market_preparation_guides.html')

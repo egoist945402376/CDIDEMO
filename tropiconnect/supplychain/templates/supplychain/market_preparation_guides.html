@@ -1,0 +1,179 @@
+{% extends 'supplychain/base.html' %}
+{% load static %}
+
+{% block title %}International Market Preparation Guides{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="mb-3">International Market Preparation Guides</h1>
+            <p class="lead">Step-by-step resources to help you prepare your agricultural products for international markets.</p>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Market Preparation Guides</li>
+                </ol>
+            </nav>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Sidebar for categories -->
+        <div class="col-md-3 mb-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    Guide Categories
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="#sustainable-agriculture" class="list-group-item list-group-item-action">Sustainable Agriculture</a>
+                    <a href="#gap-certification" class="list-group-item list-group-item-action">GAP Certification</a>
+                    <a href="#carbon-certification" class="list-group-item list-group-item-action">Carbon Certification</a>
+                    <a href="#organic-certification" class="list-group-item list-group-item-action">Organic Certification</a>
+                    <a href="#specialty-certification" class="list-group-item list-group-item-action">Specialty Certifications</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="col-md-9">
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-body">
+                    <p>Welcome to our comprehensive collection of guides and resources for farmers looking to enter international markets. These guides will help you understand certification requirements, standards, and processes necessary to sell your products globally.</p>
+                </div>
+            </div>
+
+            <!-- Sustainable Agriculture Section -->
+            <section id="sustainable-agriculture" class="mb-5">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h2 class="h4 mb-0">Sustainable Agriculture Standards</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <h3 class="h5">Rainforest Alliance Certification</h3>
+                            <p>The Rainforest Alliance certification helps farmers produce better crops, adapt to climate change, increase productivity, and reduce costs.</p>
+                            <div class="list-group mb-3">
+                                <a href="https://www.rainforest-alliance.org/business/certification/how-to-get-rainforest-alliance-certified-a-guide-for-farmers/" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                    Certification Guide for Farmers
+                                    <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                                </a>
+                                <a href="https://learn.ra.org/course/view.php?id=1998&notifyeditingon=1" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                    Online Training Course
+                                    <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                                </a>
+                                <a href="https://www.rainforest-alliance.org/business/certification/?_gl=1*uliu9d*_ga_NFQ21FT91S*MTc0MzQ5Njc1MS4xLjEuMTc0MzQ5NzA3Mi40OS4wLjE2NTIxNDM4ODg.&fwp_by_audience=farmers&fwp_by_resource=certification-standard&fwp_by_tag=2020-certification-program" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                    2020 Certification Program
+                                    <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GAP Certification Section -->
+            <section id="gap-certification" class="mb-5">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-info text-white">
+                        <h2 class="h4 mb-0">GLOBALG.A.P. Certification</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>GLOBALG.A.P. is a farm assurance program that translates consumer requirements into Good Agricultural Practice.</p>
+                        <div class="list-group mb-3">
+                            <a href="https://www.globalgap.org/producers/" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                GLOBALG.A.P for Producers
+                                <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                            </a>
+                            <a href="https://www.globalgap.org/producers/#yhfbaQfgE0GXhZPbz4pof" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                How to Get Certified
+                                <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                            </a>
+                            <a href="https://www.globalgap.org/certification-bodies/" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                Find Certification Bodies
+                                <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Carbon Certification Section -->
+            <section id="carbon-certification" class="mb-5">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-secondary text-white">
+                        <h2 class="h4 mb-0">Carbon Certification Programs</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <h3 class="h5">AgriCarbon & Verified Carbon Standard</h3>
+                            <p>Carbon certification programs that help farmers monetize sustainable practices that reduce greenhouse gas emissions.</p>
+                            <div class="list-group mb-3">
+                                <a href="https://www.anthesisgroup.com/carbon-projects/agricarbon-regenerative-agriculture/?_gl=1*177zwvq*_up*MQ..*_ga*MTExNTE1ODM1NC4xNzQzNDk5OTgw*_ga_PJ5Y72DG85*MTc0MzQ5OTk3OS4xLjAuMTc0MzQ5OTk3OS4wLjAuOTY1ODY1OTky*_ga_BK1HVBWN8E*MTc0MzQ5OTk3OS4xLjAuMTc0MzQ5OTk3OS4wLjAuMA.." class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                    AgriCarbon Regenerative Agriculture
+                                    <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                                </a>
+                                <a href="https://verra.org/programs/verified-carbon-standard/" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                    Verra Carbon Information
+                                    <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                                </a>
+                                <a href="https://verra.org/programs/verified-carbon-standard/vcs-program-details/" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                    VCS Program Details
+                                    <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                                </a>
+                                <a href="https://icroa.org/" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                    Verified Carbon Sellers (ICROA)
+                                    <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Organic Certification Section -->
+            <section id="organic-certification" class="mb-5">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h2 class="h4 mb-0">Organic Certification</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Organic certification ensures your farming practices meet strict ecological standards.</p>
+                        <div class="list-group mb-3">
+                            <a href="https://www.soilassociation.org/certification/certification-portal-login/" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                Soil Association Certification
+                                <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Specialty Certification Section -->
+            <section id="specialty-certification" class="mb-5">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-warning text-dark">
+                        <h2 class="h4 mb-0">Specialty Certifications</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <h3 class="h5">Regional & Commodity-Specific Certifications</h3>
+                            <div class="list-group mb-3">
+                                <a href="https://africertlimited.co.ke/getting-certified/" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                    Africert Certification
+                                    <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                                </a>
+                                <a href="https://www.4c-services.org/process/how-to-obtain-4c-certificate/" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                    4C Coffee Certification
+                                    <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}
