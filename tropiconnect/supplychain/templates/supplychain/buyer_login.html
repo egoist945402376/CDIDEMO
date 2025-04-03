@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* CSS remains unchanged */
         :root {
             --primary-color: #2a9d8f;
             --secondary-color: #e9c46a;
@@ -111,19 +113,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        <a class="nav-link" href="{% url 'home' %}">{% trans "Home" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register_farmer' %}">For Farmers</a>
+                        <a class="nav-link" href="{% url 'register_farmer' %}">{% trans "For Farmers" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register_buyer' %}">For Buyers</a>
+                        <a class="nav-link" href="{% url 'register_buyer' %}">{% trans "For Buyers" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="#">{% trans "About Us" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#">{% trans "Contact" %}</a>
                     </li>
                 </ul>
             </div>
@@ -134,8 +136,8 @@
     <div class="container">
         <div class="login-container">
             <div class="login-header">
-                <h2><i class="fas fa-briefcase me-2"></i> Buyer Login</h2>
-                <p class="mb-0">Access your TropiConnect buyer account</p>
+                <h2><i class="fas fa-briefcase me-2"></i> {% trans "Buyer Login" %}</h2>
+                <p class="mb-0">{% trans "Access your TropiConnect buyer account" %}</p>
             </div>
             <div class="login-form">
                 {% if messages %}
@@ -150,31 +152,31 @@
                     {% csrf_token %}
                     
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                        <label for="username" class="form-label">{% trans "Username" %}</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="{% trans "Enter your username" %}" required>
                     </div>
                     
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                        <label for="password" class="form-label">{% trans "Password" %}</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="{% trans "Enter your password" %}" required>
                     </div>
                     
                     <div class="mb-3">
-                        <label for="company_name" class="form-label">Company Name</label>
-                        <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Your company name" required>
+                        <label for="company_name" class="form-label">{% trans "Company Name" %}</label>
+                        <input type="text" class="form-control" id="company_name" name="company_name" placeholder="{% trans "Your company name" %}" required>
                     </div>
                     
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="remember_me" name="remember_me">
-                        <label class="form-check-label" for="remember_me">Remember me</label>
+                        <label class="form-check-label" for="remember_me">{% trans "Remember me" %}</label>
                     </div>
                     
                     <button type="submit" class="btn btn-login">
-                        Login <i class="fas fa-sign-in-alt ms-2"></i>
+                        {% trans "Login" %} <i class="fas fa-sign-in-alt ms-2"></i>
                     </button>
                     
                     <div class="text-center mt-3">
-                        Don't have an account? <a href="{% url 'register_buyer' %}" class="text-decoration-none">Register here</a>
+                        {% trans "Don't have an account?" %} <a href="{% url 'register_buyer' %}" class="text-decoration-none">{% trans "Register here" %}</a>
                     </div>
                 </form>
             </div>
@@ -184,7 +186,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 TropiConnect. All Rights Reserved</p>
+            <p>{% trans "&copy; 2025 TropiConnect. All Rights Reserved" %}</p>
         </div>
     </footer>
 
