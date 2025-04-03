@@ -357,8 +357,6 @@ msgstr ""
 "aina za bidhaa, mahitaji ya ubora, na wingi wa agizo la kawaida."
 
 #: .\supplychain\templates\supplychain\register_buyer.html:322
-#, fuzzy
-#| msgid "I agree to TropiConnect's Terms of Service"
 msgid "I agree to TropiConnect's"
 msgstr "Nakubaliana na Masharti ya Huduma ya TropiConnect"
 
@@ -371,8 +369,6 @@ msgid "and"
 msgstr "na"
 
 #: .\supplychain\templates\supplychain\register_buyer.html:322
-#, fuzzy
-#| msgid "and Privacy Policy"
 msgid "Privacy Policy"
 msgstr "na Sera ya Faragha"
 
@@ -382,8 +378,6 @@ msgstr "Fungua Akaunti ya Mnunuzi"
 
 #: .\supplychain\templates\supplychain\register_buyer.html:331
 #: .\supplychain\templates\supplychain\register_farmer.html:267
-#, fuzzy
-#| msgid "Don't have an account?"
 msgid "Already have an account?"
 msgstr "Huna akaunti?"
 
