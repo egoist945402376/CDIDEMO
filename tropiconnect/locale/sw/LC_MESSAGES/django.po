@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-03 10:13+0100\n"
+"POT-Creation-Date: 2025-04-03 11:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,6 +120,354 @@ msgstr "Jisajili hapa"
 #: .\supplychain\templates\supplychain\buyer_login.html:189
 msgid "&copy; 2025 TropiConnect. All Rights Reserved"
 msgstr "TropiConnect. Haki Zote Zimehifadhiwa"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:21
+msgid "Dashboard"
+msgstr "Dashibodi"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:22
+#, fuzzy
+#| msgid "I agree to TropiConnect's"
+msgid "Welcome back to TropiConnect!"
+msgstr "Karibu tena kwenye TropiConnect!"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:27
+#, fuzzy
+#| msgid "Farmer Login"
+msgid "Farmer Home"
+msgstr "Nyumbani kwa Mkulima"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:28
+msgid "Logout"
+msgstr "Toka"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:39
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:324
+#, fuzzy
+#| msgid "Account Information"
+msgid "Personal Information"
+msgstr "Taarifa Binafsi"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:40
+msgid "Edit"
+msgstr "Hariri"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:46
+#, fuzzy
+#| msgid "Username"
+msgid "Username:"
+msgstr "Jina la mtumiaji:"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:47
+#, fuzzy
+#| msgid "First Name"
+msgid "First Name:"
+msgstr "Jina la Kwanza:"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:48
+#, fuzzy
+#| msgid "Last Name"
+msgid "Last Name:"
+msgstr "Jina la Mwisho:"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:51
+msgid "Email:"
+msgstr "Barua pepe:"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:52
+msgid "Phone:"
+msgstr "Simu:"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:53
+msgid "Member Since:"
+msgstr "Mwanachama Tangu:"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:67
+#, fuzzy
+#| msgid "About Us"
+msgid "About Me"
+msgstr "Kuhusu Mimi"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:68
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:144
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:327
+msgid "Edit Info"
+msgstr "Hariri Taarifa"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:76
+msgid ""
+"You haven't added your bio yet. Tell buyers about yourself, your farming "
+"practices, and what makes your produce special."
+msgstr ""
+"Hujaongeza wasifu wako bado. Waambie wanunuzi kuhusu wewe, mbinu zako za "
+"kilimo, na kile kinachofanya mazao yako yawe ya kipekee."
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:90
+#, fuzzy
+#| msgid "For Farmers"
+msgid "My Farms"
+msgstr "Mashamba Yangu"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:91
+msgid "Add Farm"
+msgstr "Ongeza Shamba"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:126
+msgid "Previous"
+msgstr "Iliyotangulia"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:130
+msgid "Next"
+msgstr "Inayofuata"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:139
+msgid "Established:"
+msgstr "Ilianzishwa:"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:145
+msgid "Add Photos"
+msgstr "Ongeza Picha"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:154
+msgid ""
+"You haven't added any farms yet. Add your first farm to showcase your "
+"operations to potential buyers."
+msgstr ""
+"Hujaongeza shamba lolote bado. Ongeza shamba lako la kwanza kuonyesha "
+"shughuli zako kwa wanunuzi watarajiwa."
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:157
+#, fuzzy
+#| msgid "Your first name"
+msgid "Add Your First Farm"
+msgstr "Ongeza Shamba Lako la Kwanza"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:172
+#, fuzzy
+#| msgid "Certification Help"
+msgid "My Certifications"
+msgstr "Vyeti Vyangu"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:173
+#, fuzzy
+#| msgid "Certification Help"
+msgid "Add Certification"
+msgstr "Ongeza Cheti"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:182
+#, fuzzy
+#| msgid "Certification Help"
+msgid "Certificate"
+msgstr "Cheti"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:183
+#, fuzzy
+#| msgid "Certification Help"
+msgid "Certification Name"
+msgstr "Jina la Cheti"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:184
+msgid "Issuing Organization"
+msgstr "Shirika Lililoitoa"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:185
+msgid "Issue Date"
+msgstr "Tarehe ya Kutolewa"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:186
+msgid "Expiry Date"
+msgstr "Tarehe ya Kuisha"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:187
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:266
+msgid "Status"
+msgstr "Hali"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:188
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:268
+#, fuzzy
+#| msgid "Solutions"
+msgid "Actions"
+msgstr "Vitendo"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:210
+msgid "No Expiry"
+msgstr "Haina Mwisho"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:213
+msgid "Valid"
+msgstr "Halali"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:215
+msgid "Expired"
+msgstr "Imeisha muda"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:234
+msgid ""
+"You haven't added any certifications yet. Adding certifications can increase "
+"buyers' trust in your products."
+msgstr ""
+"Hujaongeza vyeti vyovyote bado. Kuongeza vyeti kunaweza kuongeza imani ya "
+"wanunuzi katika bidhaa zako."
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:237
+msgid "Add Your First Certification"
+msgstr "Ongeza Cheti Chako cha Kwanza"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:253
+#, fuzzy
+#| msgid "Browse Products"
+msgid "My Products"
+msgstr "Bidhaa Zangu"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:254
+#, fuzzy
+#| msgid "Browse Products"
+msgid "Add Product"
+msgstr "Ongeza Bidhaa"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:263
+msgid "Photo"
+msgstr "Picha"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:264
+#, fuzzy
+#| msgid "First Name"
+msgid "Product Name"
+msgstr "Jina la Bidhaa"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:265
+msgid "Category"
+msgstr "Kategoria"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:267
+msgid "Description"
+msgstr "Maelezo"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:291
+msgid "Available"
+msgstr "Inapatikana"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:293
+msgid "Unavailable"
+msgstr "Haipatikani"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:313
+msgid ""
+"You haven't added any products yet. Add your products to attract potential "
+"buyers."
+msgstr ""
+"Hujaongeza bidhaa zozote bado. Ongeza bidhaa zako ili kuvutia wanunuzi "
+"watarajiwa."
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:316
+msgid "Add Your First Product"
+msgstr "Ongeza Bidhaa Yako ya Kwanza"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:326
+msgid "Update Photo"
+msgstr "Sasisha Picha"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:337
+msgid "My Communities"
+msgstr "Jamii Zangu"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:338
+#, fuzzy
+#| msgid "Create Buyer Account"
+msgid "Create Community"
+msgstr "Unda Jamii"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:345
+msgid "Communities I Created"
+msgstr "Jamii Nilizounda"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:364
+msgid "Creator"
+msgstr "Muundaji"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:365
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:399
+#, fuzzy
+#| msgid "Remember me"
+msgid "members"
+msgstr "wanachama"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:369
+msgid "Manage"
+msgstr "Simamia"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:379
+msgid "Communities I Joined"
+msgstr "Jamii Nilizojiunga Nazo"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:404
+msgid "View"
+msgstr "Angalia"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:420
+msgid ""
+"You haven't joined or created any communities yet. Communities help farmers "
+"collaborate, share knowledge, and attract buyers as a group."
+msgstr ""
+"Hujaunda au kujiunga na jamii yoyote bado. Jamii husaidia wakulima "
+"kushirikiana, kubadilishana maarifa, na kuvutia wanunuzi kama kikundi."
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:423
+msgid "Create Your First Community"
+msgstr "Unda Jamii Yako ya Kwanza"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:424
+#, fuzzy
+#| msgid "Browse Products"
+msgid "Browse Communities"
+msgstr "Vinjari Jamii"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:438
+#, fuzzy
+#| msgid "Buyer Registration"
+msgid "Buyer Reviews"
+msgstr "Tathmini za Wanunuzi"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:439
+msgid "Total"
+msgstr "Jumla"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:479
+msgid "Transaction Details:"
+msgstr "Maelezo ya Muamala:"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:483
+#, fuzzy
+#| msgid "Browse Products"
+msgid "Product:"
+msgstr "Bidhaa:"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:490
+msgid "Quantity:"
+msgstr "Kiasi:"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:497
+msgid "Price:"
+msgstr "Bei:"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:514
+#, fuzzy
+#| msgid "For Buyers"
+msgid "View Buyer"
+msgstr "Angalia Mnunuzi"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:524
+msgid "View All Reviews"
+msgstr "Angalia Tathmini Zote"
+
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:530
+msgid ""
+"You haven't received any reviews from buyers yet. Reviews will appear here "
+"once buyers rate your products and services."
+msgstr ""
+"Hujapokea tathmini zozote kutoka kwa wanunuzi bado. Tathmini zitaonekana "
+"hapa mara tu wanunuzi watakapopima bidhaa na huduma zako."
 
 #: .\supplychain\templates\supplychain\farmer_login.html:131
 #: .\supplychain\templates\supplychain\home.html:232

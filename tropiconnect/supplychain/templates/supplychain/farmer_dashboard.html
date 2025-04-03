@@ -1,6 +1,6 @@
 {% extends "supplychain/base.html" %}
 {% load static %}
-
+{% load i18n %}
 {% block content %}
 <div class="container py-5">
     <!-- Dashboard Header -->
@@ -18,14 +18,14 @@
                         {% endif %}
                     </div>
                     <div>
-                        <h1 class="h3 mb-0">{{ farmer.first_name }} {{ farmer.last_name }}'s Dashboard</h1>
-                        <p class="mb-0">Welcome back to TropiConnect!</p>
+                        <h1 class="h3 mb-0">{{ farmer.first_name }} {{ farmer.last_name }}'s {% trans 'Dashboard' %}</h1>
+                        <p class="mb-0">{% trans 'Welcome back to TropiConnect!' %}</p>
                     </div>
                 </div>
             </div>
             <div>
-                <a href="{% url 'farmer_home' %}" class="btn btn-primary me-2"><i class="bi bi-house-door me-2"></i>Farmer Home</a>
-                <a href="{% url 'logout' %}" class="btn btn-light"><i class="bi bi-box-arrow-right me-2"></i>Logout</a>
+                <a href="{% url 'farmer_home' %}" class="btn btn-primary me-2"><i class="bi bi-house-door me-2"></i>{% trans 'Farmer Home' %}</a>
+                <a href="{% url 'logout' %}" class="btn btn-light"><i class="bi bi-box-arrow-right me-2"></i>{% trans 'Logout' %}</a>
             </div>
         </div>
     </div>
@@ -36,21 +36,21 @@
             <div class="card shadow-sm">
                 <div class="card-header bg-white">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0"><i class="bi bi-person-lines-fill me-2"></i>Personal Information</h5>
-                        <a href="{% url 'edit_farmer_profile' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i> Edit Info</a>
+                        <h5 class="mb-0"><i class="bi bi-person-lines-fill me-2"></i>{% trans 'Personal Information' %}</h5>
+                        <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i> {% trans 'Edit' %}</a>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <p><strong>Username:</strong> {{ farmer.user.username }}</p>
-                            <p><strong>First Name:</strong> {{ farmer.first_name }}</p>
-                            <p><strong>Last Name:</strong> {{ farmer.last_name }}</p>
+                            <p><strong>{% trans 'Username:' %}</strong> {{ farmer.user.username }}</p>
+                            <p><strong>{% trans 'First Name:' %}</strong> {{ farmer.first_name }}</p>
+                            <p><strong>{% trans 'Last Name:' %}</strong> {{ farmer.last_name }}</p>
                         </div>
                         <div class="col-md-6">
-                            <p><strong>Email:</strong> {{ farmer.user.email }}</p>
-                            <p><strong>Phone:</strong> {{ farmer.phone_number }}</p>
-                            <p><strong>Member Since:</strong> {{ farmer.date_joined|date:"F d, Y" }}</p>
+                            <p><strong>{% trans 'Email:' %}</strong> {{ farmer.user.email }}</p>
+                            <p><strong>{% trans 'Phone:' %}</strong> {{ farmer.phone_number }}</p>
+                            <p><strong>{% trans 'Member Since:' %}</strong> {{ farmer.date_joined|date:"F d, Y" }}</p>
                         </div>
                     </div>
                 </div>
@@ -64,8 +64,8 @@
             <div class="card shadow-sm">
                 <div class="card-header bg-white">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0"><i class="bi bi-file-person me-2"></i>About Me</h5>
-                        <a href="{% url 'edit_farmer_profile' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i> Edit Info</a>
+                        <h5 class="mb-0"><i class="bi bi-file-person me-2"></i>{% trans 'About Me' %}</h5>
+                        <a href="{% url 'edit_farmer_profile' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i> {% trans 'Edit Info' %}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -73,7 +73,7 @@
                         <p>{{ farmer.bio }}</p>
                     {% else %}
                         <div class="alert alert-light mb-0">
-                            <p class="mb-0">You haven't added your bio yet. Tell buyers about yourself, your farming practices, and what makes your produce special.</p>
+                            <p class="mb-0">{% trans "You haven't added your bio yet. Tell buyers about yourself, your farming practices, and what makes your produce special." %}</p>
                         </div>
                     {% endif %}
                 </div>
@@ -87,8 +87,8 @@
             <div class="card shadow-sm">
                 <div class="card-header bg-white">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0"><i class="bi bi-house me-2"></i>My Farms</h5>
-                        <a href="{% url 'add_farm' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-lg"></i> Add Farm</a>
+                        <h5 class="mb-0"><i class="bi bi-house me-2"></i>{% trans 'My Farms' %}</h5>
+                        <a href="{% url 'add_farm' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-lg"></i> {% trans 'Add Farm' %}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -123,11 +123,11 @@
                                             {% if farm_item.photos.count > 1 %}
                                                 <button class="carousel-control-prev" type="button" data-bs-target="#farm-{{ farm_item.farm.id }}-carousel" data-bs-slide="prev">
                                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Previous</span>
+                                                    <span class="visually-hidden">{% trans 'Previous' %}</span>
                                                 </button>
                                                 <button class="carousel-control-next" type="button" data-bs-target="#farm-{{ farm_item.farm.id }}-carousel" data-bs-slide="next">
                                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Next</span>
+                                                    <span class="visually-hidden">{% trans 'Next' %}</span>
                                                 </button>
                                             {% endif %}
                                         </div>
@@ -136,13 +136,13 @@
                                             <p class="card-text text-muted"><i class="bi bi-geo-alt-fill"></i> {{ farm_item.farm.location }}</p>
                                             <p class="card-text">{{ farm_item.farm.description|truncatechars:150 }}</p>
                                             {% if farm_item.farm.established_year %}
-                                                <p class="card-text"><small class="text-muted">Established: {{ farm_item.farm.established_year }}</small></p>
+                                                <p class="card-text"><small class="text-muted">{% trans 'Established:' %} {{ farm_item.farm.established_year }}</small></p>
                                             {% endif %}
                                         </div>
                                         <div class="card-footer bg-white">
                                             <div class="d-flex justify-content-between">
-                                                <a href="#" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i> Edit</a>
-                                                <a href="{% url 'add_farm_photo' farm_item.farm.id %}" class="btn btn-sm btn-outline-success"><i class="bi bi-images"></i> Add Photos</a>
+                                                <a href="{% url 'edit_farmer_profile' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i> {% trans 'Edit Info' %}</a>
+                                                <a href="{% url 'add_farm_photo' farm_item.farm.id %}" class="btn btn-sm btn-outline-success"><i class="bi bi-images"></i> {% trans 'Add Photos' %}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -151,10 +151,10 @@
                         </div>
                     {% else %}
                         <div class="alert alert-light">
-                            <p class="mb-0">You haven't added any farms yet. Add your first farm to showcase your operations to potential buyers.</p>
+                            <p class="mb-0">{% trans "You haven't added any farms yet. Add your first farm to showcase your operations to potential buyers." %}</p>
                         </div>
                         <div class="text-center">
-                            <a href="#" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Add Your First Farm</a>
+                            <a href="#" class="btn btn-primary"><i class="bi bi-plus-lg"></i> {% trans 'Add Your First Farm' %}</a>
                         </div>
                     {% endif %}
                 </div>
@@ -169,8 +169,8 @@
             <div class="card shadow-sm">
                 <div class="card-header bg-white">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0"><i class="bi bi-award me-2"></i>My Certifications</h5>
-                        <a href="{% url 'farmer_add_certification' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-lg"></i> Add Certification</a>
+                        <h5 class="mb-0"><i class="bi bi-award me-2"></i>{% trans 'My Certifications' %}</h5>
+                        <a href="{% url 'farmer_add_certification' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-lg"></i> {% trans 'Add Certification' %}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -179,13 +179,13 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Certificate</th>
-                                        <th>Certification Name</th>
-                                        <th>Issuing Organization</th>
-                                        <th>Issue Date</th>
-                                        <th>Expiry Date</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
+                                        <th>{% trans 'Certificate' %}</th>
+                                        <th>{% trans 'Certification Name' %}</th>
+                                        <th>{% trans 'Issuing Organization' %}</th>
+                                        <th>{% trans 'Issue Date' %}</th>
+                                        <th>{% trans 'Expiry Date' %}</th>
+                                        <th>{% trans 'Status' %}</th>
+                                        <th>{% trans 'Actions' %}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -207,12 +207,12 @@
                                             <td>{{ cert.certification_name }}</td>
                                             <td>{{ cert.issuing_organization }}</td>
                                             <td>{{ cert.issue_date|date:"M d, Y" }}</td>
-                                            <td>{% if cert.expiry_date %}{{ cert.expiry_date|date:"M d, Y" }}{% else %}No Expiry{% endif %}</td>
+                                            <td>{% if cert.expiry_date %}{{ cert.expiry_date|date:"M d, Y" }}{% else %}{% trans 'No Expiry' %}{% endif %}</td>
                                             <td>
                                                 {% if cert.is_valid %}
-                                                    <span class="badge bg-success">Valid</span>
+                                                    <span class="badge bg-success">{% trans 'Valid' %}</span>
                                                 {% else %}
-                                                    <span class="badge bg-danger">Expired</span>
+                                                    <span class="badge bg-danger">{% trans 'Expired' %}</span>
                                                 {% endif %}
                                             </td>
                                             <td>
@@ -231,10 +231,10 @@
                         </div>
                     {% else %}
                         <div class="alert alert-light">
-                            <p class="mb-0">You haven't added any certifications yet. Adding certifications can increase buyers' trust in your products.</p>
+                            <p class="mb-0">{% trans "You haven't added any certifications yet. Adding certifications can increase buyers' trust in your products." %}</p>
                         </div>
                         <div class="text-center">
-                            <a href="{% url 'farmer_add_certification' %}" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Add Your First Certification</a>
+                            <a href="{% url 'farmer_add_certification' %}" class="btn btn-primary"><i class="bi bi-plus-lg"></i> {% trans 'Add Your First Certification' %}</a>
                         </div>
                     {% endif %}
                 </div>
@@ -250,8 +250,8 @@
             <div class="card shadow-sm">
                 <div class="card-header bg-white">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0"><i class="bi bi-basket me-2"></i>My Products</h5>
-                        <a href="{% url 'add_product' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-lg"></i> Add Product</a>
+                        <h5 class="mb-0"><i class="bi bi-basket me-2"></i>{% trans 'My Products' %}</h5>
+                        <a href="{% url 'add_product' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-lg"></i> {% trans 'Add Product' %}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -260,12 +260,12 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Photo</th>
-                                        <th>Product Name</th>
-                                        <th>Category</th>
-                                        <th>Status</th>
-                                        <th>Description</th>
-                                        <th>Actions</th>
+                                        <th>{% trans 'Photo' %}</th>
+                                        <th>{% trans 'Product Name' %}</th>
+                                        <th>{% trans 'Category' %}</th>
+                                        <th>{% trans 'Status' %}</th>
+                                        <th>{% trans 'Description' %}</th>
+                                        <th>{% trans 'Actions' %}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -288,9 +288,9 @@
                                             <td class="py-3 fs-6">{{ product.category.name }}</td>
                                             <td class="py-3">
                                                 {% if product.is_available %}
-                                                    <span class="badge bg-success fs-6">Available</span>
+                                                    <span class="badge bg-success fs-6">{% trans 'Available' %}</span>
                                                 {% else %}
-                                                    <span class="badge bg-secondary fs-6">Unavailable</span>
+                                                    <span class="badge bg-secondary fs-6">{% trans 'Unavailable' %}</span>
                                                 {% endif %}
                                             </td>
                                             <td class="py-3 fs-6">{{ product.description|truncatechars:100 }}</td>
@@ -310,10 +310,10 @@
                         </div>
                     {% else %}
                         <div class="alert alert-light">
-                            <p class="mb-0">You haven't added any products yet. Add your products to attract potential buyers.</p>
+                            <p class="mb-0">{% trans "You haven't added any products yet. Add your products to attract potential buyers." %}</p>
                         </div>
                         <div class="text-center">
-                            <a href="#" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Add Your First Product</a>
+                            <a href="#" class="btn btn-primary"><i class="bi bi-plus-lg"></i> {% trans 'Add Your First Product' %}</a>
                         </div>
                     {% endif %}
                 </div>
@@ -321,10 +321,10 @@
         </div>
     </div>
     <div class="d-flex justify-content-between align-items-center">
-        <h5 class="mb-0"><i class="bi bi-person-lines-fill me-2"></i>Personal Information</h5>
+        <h5 class="mb-0"><i class="bi bi-person-lines-fill me-2"></i>{% trans 'Personal Information' %}</h5>
         <div>
-            <a href="{% url 'update_profile_picture' %}" class="btn btn-sm btn-outline-primary me-2"><i class="bi bi-image"></i> Update Photo</a>
-            <a href="{% url 'edit_farmer_profile' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i> Edit Info</a>
+            <a href="{% url 'update_profile_picture' %}" class="btn btn-sm btn-outline-primary me-2"><i class="bi bi-image"></i> {% trans 'Update Photo' %}</a>
+            <a href="{% url 'edit_farmer_profile' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"></i> {% trans 'Edit Info' %}</a>
         </div>
     </div>
 
@@ -334,15 +334,15 @@
             <div class="card shadow-sm">
                 <div class="card-header bg-white">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0"><i class="bi bi-people-fill me-2"></i>My Communities</h5>
-                        <a href="{% url 'create_community' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-lg"></i> Create Community</a>
+                        <h5 class="mb-0"><i class="bi bi-people-fill me-2"></i>{% trans 'My Communities' %}</h5>
+                        <a href="{% url 'create_community' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-lg"></i> {% trans 'Create Community' %}</a>
                     </div>
                 </div>
                 <div class="card-body">
                     {% if communities or created_communities %}
                         <!-- Communities I Created -->
                         {% if created_communities %}
-                            <h6 class="text-primary mb-3">Communities I Created</h6>
+                            <h6 class="text-primary mb-3">{% trans 'Communities I Created' %}</h6>
                             <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
                                 {% for community in created_communities %}
                                     <div class="col">
@@ -361,12 +361,12 @@
                                                 </p>
                                                 <p class="card-text" style="height: 60px; overflow: hidden;">{{ community.description|truncatechars:100 }}</p>
                                                 <div class="d-flex align-items-center mt-2">
-                                                    <span class="badge bg-info me-2">Creator</span>
-                                                    <small class="text-muted"><i class="bi bi-people"></i> {{ community.member_count }} members</small>
+                                                    <span class="badge bg-info me-2">{% trans 'Creator' %}</span>
+                                                    <small class="text-muted"><i class="bi bi-people"></i> {{ community.member_count }} {% trans 'members' %}</small>
                                                 </div>
                                             </div>
                                             <div class="card-footer bg-white">
-                                                <a href="{% url 'community_detail' community.id %}" class="btn btn-sm btn-primary w-100"><i class="bi bi-box-arrow-in-right"></i> Manage</a>
+                                                <a href="{% url 'community_detail' community.id %}" class="btn btn-sm btn-primary w-100"><i class="bi bi-box-arrow-in-right"></i> {% trans 'Manage' %}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -376,7 +376,7 @@
 
                         <!-- Communities I Joined -->
                         {% if communities %}
-                            <h6 class="text-primary mb-3">Communities I Joined</h6>
+                            <h6 class="text-primary mb-3">{% trans 'Communities I Joined' %}</h6>
                             <div class="row row-cols-1 row-cols-md-3 g-4">
                                 {% for membership in communities %}
                                     <div class="col">
@@ -396,12 +396,12 @@
                                                 <p class="card-text" style="height: 60px; overflow: hidden;">{{ membership.community.description|truncatechars:100 }}</p>
                                                 <div class="d-flex align-items-center mt-2">
                                                     <span class="badge {% if membership.role == 'admin' %}bg-success{% else %}bg-secondary{% endif %} me-2">{{ membership.get_role_display }}</span>
-                                                    <small class="text-muted"><i class="bi bi-people"></i> {{ membership.community.member_count }} members</small>
+                                                    <small class="text-muted"><i class="bi bi-people"></i> {{ membership.community.member_count }} {% trans 'members' %}</small>
                                                 </div>
                                             </div>
                                             <div class="card-footer bg-white">
                                                 <div class="d-flex justify-content-between">
-                                                    <a href="{% url 'community_detail' membership.community.id %}" class="btn btn-sm btn-outline-primary flex-grow-1 me-1"><i class="bi bi-box-arrow-in-right"></i> View</a>
+                                                    <a href="{% url 'community_detail' membership.community.id %}" class="btn btn-sm btn-outline-primary flex-grow-1 me-1"><i class="bi bi-box-arrow-in-right"></i> {% trans 'View' %}</a>
                                                     {% if membership.community.creator != farmer %}
                                                         <form method="post" action="{% url 'leave_community' membership.community.id %}" class="d-inline" onsubmit="return confirm('Are you sure you want to leave this community?');">
                                                             {% csrf_token %}
@@ -417,11 +417,11 @@
                         {% endif %}
                     {% else %}
                         <div class="alert alert-light">
-                            <p class="mb-0">You haven't joined or created any communities yet. Communities help farmers collaborate, share knowledge, and attract buyers as a group.</p>
+                            <p class="mb-0">{% trans "You haven't joined or created any communities yet. Communities help farmers collaborate, share knowledge, and attract buyers as a group." %}</p>
                         </div>
                         <div class="text-center">
-                            <a href="{% url 'create_community' %}" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Create Your First Community</a>
-                            <a href="{% url 'browse_communities' %}" class="btn btn-outline-primary ms-2"><i class="bi bi-search"></i> Browse Communities</a>
+                            <a href="{% url 'create_community' %}" class="btn btn-primary"><i class="bi bi-plus-lg"></i> {% trans 'Create Your First Community' %}</a>
+                            <a href="{% url 'browse_communities' %}" class="btn btn-outline-primary ms-2"><i class="bi bi-search"></i> {% trans 'Browse Communities' %}</a>
                         </div>
                     {% endif %}
                 </div>
@@ -435,8 +435,8 @@
             <div class="card shadow-sm">
                 <div class="card-header bg-white">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0"><i class="bi bi-star me-2"></i>Buyer Reviews</h5>
-                        <span class="badge bg-primary">{{ buyer_reviews.count }} Total</span>
+                        <h5 class="mb-0"><i class="bi bi-star me-2"></i>{% trans 'Buyer Reviews' %}</h5>
+                        <span class="badge bg-primary">{{ buyer_reviews.count }} {% trans 'Total' %}</span>
                     </div>
                 </div>
                 <div class="card-body">
@@ -476,25 +476,25 @@
                                             
                                             {% if review.product or review.quantity or review.price %}
                                                 <div class="mt-3 p-3 bg-light rounded">
-                                                    <h6 class="mb-2">Transaction Details:</h6>
+                                                    <h6 class="mb-2">{% trans 'Transaction Details:' %}</h6>
                                                     <div class="d-flex flex-wrap">
                                                         {% if review.product %}
                                                             <div class="me-3 mb-2">
-                                                                <small class="text-muted d-block">Product:</small>
+                                                                <small class="text-muted d-block">{% trans 'Product:' %}</small>
                                                                 <span class="badge bg-info">{{ review.product.product_name }}</span>
                                                             </div>
                                                         {% endif %}
                                                         
                                                         {% if review.quantity %}
                                                             <div class="me-3 mb-2">
-                                                                <small class="text-muted d-block">Quantity:</small>
+                                                                <small class="text-muted d-block">{% trans 'Quantity:' %}</small>
                                                                 <span>{{ review.quantity }}</span>
                                                             </div>
                                                         {% endif %}
                                                         
                                                         {% if review.price %}
                                                             <div class="mb-2">
-                                                                <small class="text-muted d-block">Price:</small>
+                                                                <small class="text-muted d-block">{% trans 'Price:' %}</small>
                                                                 <span>${{ review.price }}</span>
                                                             </div>
                                                         {% endif %}
@@ -511,7 +511,7 @@
                                         
                                         <div class="card-footer bg-white text-end">
                                             <a href="{% url 'view_buyer_profile' review.buyer.id %}" class="btn btn-sm btn-outline-primary">
-                                                <i class="bi bi-eye"></i> View Buyer
+                                                <i class="bi bi-eye"></i> {% trans 'View Buyer' %}
                                             </a>
                                         </div>
                                     </div>
@@ -521,13 +521,13 @@
                         
                         {% if buyer_reviews.count > 6 %}
                             <div class="text-center mt-3">
-                                <a href="#" class="btn btn-outline-primary">View All Reviews</a>
+                                <a href="#" class="btn btn-outline-primary">{% trans 'View All Reviews' %}</a>
                             </div>
                         {% endif %}
                         
                     {% else %}
                         <div class="alert alert-light">
-                            <p class="mb-0">You haven't received any reviews from buyers yet. Reviews will appear here once buyers rate your products and services.</p>
+                            <p class="mb-0">{% trans "You haven't received any reviews from buyers yet. Reviews will appear here once buyers rate your products and services." %}</p>
                         </div>
                     {% endif %}
                 </div>
