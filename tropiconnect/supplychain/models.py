@@ -11,6 +11,7 @@ class FarmerProfile(models.Model):
     profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
     bio = models.TextField(blank=True)
     date_joined = models.DateTimeField(default=timezone.now)
+    region = models.CharField(max_length=100, default="Kenya")
     
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

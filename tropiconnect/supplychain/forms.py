@@ -106,10 +106,11 @@ class FarmerProfileEditForm(forms.ModelForm):
     
     class Meta:
         model = FarmerProfile
-        fields = ['phone_number', 'bio']
+        fields = ['phone_number', 'bio', 'region']
         widgets = {
             'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
             'bio': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+            'region': forms.TextInput(attrs={'class': 'form-control'}),
         }
     
     def __init__(self, *args, **kwargs):
