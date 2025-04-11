@@ -74,19 +74,14 @@ def farmer_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
         
         user = authenticate(username=username, password=password)
         
         if user is not None:
             try:
                 farmer = FarmerProfile.objects.get(user=user)
-                if farmer.first_name == first_name and farmer.last_name == last_name:
-                    login(request, user)
-                    return redirect('farmer_dashboard') 
-                else:
-                    messages.error(request, "First name or last name doesn't match.")
+                login(request, user)
+                return redirect('farmer_dashboard') 
             except FarmerProfile.DoesNotExist:
                 messages.error(request, "Farmer profile not found.")
         else:
