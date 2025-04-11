@@ -1,0 +1,193 @@
+{% extends 'supplychain/base.html' %}
+{% load static %}
+{% block title %}International Market Regulations and Resources{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="mb-3">International Market Regulations and Resources</h1>
+            <p class="lead">Essential regulations, tools, and training resources for accessing international agricultural markets.</p>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Market Regulations</li>
+                </ol>
+            </nav>
+            <hr>
+        </div>
+    </div>
+<div class="row">
+    <!-- Sidebar for categories -->
+    <div class="col-md-3 mb-4">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-primary text-white">
+                Resource Categories
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="#regulations" class="list-group-item list-group-item-action">EU Regulations</a>
+                <a href="#practical-tools" class="list-group-item list-group-item-action">Practical Tools</a>
+                <a href="#online-training" class="list-group-item list-group-item-action">Online Training</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="col-md-9">
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body">
+                <p>Welcome to our comprehensive collection of regulations, tools, and resources for farmers looking to export agricultural products to international markets. These resources will help you understand and comply with key requirements necessary for successful market access.</p>
+            </div>
+        </div>
+
+        <!-- Regulations Section -->
+        <section id="regulations" class="mb-5">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h2 class="h4 mb-0">EU Regulations</h2>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <div class="list-group mb-3">
+                            <a href="https://eur-lex.europa.eu/eli/reg/2002/178/oj" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                <div>
+                                    <h5 class="mb-1">Food Safety Laws (General Food Law - EC 178/2002)</h5>
+                                    <p class="mb-1">Ensuring product safety, traceability, and contamination prevention.</p>
+                                </div>
+                                <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                            </a>
+                            
+                            <a href="https://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/start/screen/mrls" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                <div>
+                                    <h5 class="mb-1">Pesticide Residue Standards (MRLs - EC 396/2005)</h5>
+                                    <p class="mb-1">Setting pesticide residue limits; non-compliance leads to import bans.</p>
+                                </div>
+                                <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                            </a>
+                            
+                            <a href="https://food.ec.europa.eu/food-safety/labelling-and-nutrition/food-information-consumers-legislation_en" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                <div>
+                                    <h5 class="mb-1">Labeling & Traceability (EU 1169/2011)</h5>
+                                    <p class="mb-1">Requiring full labeling, including product name, origin, ingredients, allergens, and nutrition facts.</p>
+                                </div>
+                                <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                            </a>
+                            
+                            <a href="https://eur-lex.europa.eu/eli/reg/2018/848/oj" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                <div>
+                                    <h5 class="mb-1">Sustainability Requirements (EU Organic 2018/848)</h5>
+                                    <p class="mb-1">Demanding organic certification for organic imports.</p>
+                                </div>
+                                <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                            </a>
+                            
+                            <a href="https://www.wto.org/english/tratop_e/sps_e/spsagr_e.htm" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                <div>
+                                    <h5 class="mb-1">Sanitary & Phytosanitary Measures (SPS Agreement)</h5>
+                                    <p class="mb-1">Requiring quarantine checks for fresh fruits, meat, and other sensitive products.</p>
+                                </div>
+                                <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                            </a>
+                            
+                            <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=LEGISSUM:agricultural_policy" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                <div>
+                                    <h5 class="mb-1">Common Agricultural Policy (CAP)</h5>
+                                    <p class="mb-1">EU's agricultural policy framework that affects market access requirements.</p>
+                                </div>
+                                <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practical Tools Section -->
+        <section id="practical-tools" class="mb-5">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h2 class="h4 mb-0">Practical Tools & Additional Resources</h2>
+                </div>
+                <div class="card-body">
+                    <div class="list-group mb-3">
+                        <a href="https://eur-lex.europa.eu/homepage.html" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                            <div>
+                                <h5 class="mb-1">EU Food Regulations Database: EUR-Lex</h5>
+                                <p class="mb-1">Comprehensive database of all EU regulations and directives.</p>
+                            </div>
+                            <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                        </a>
+                        
+                        <a href="https://webgate.ec.europa.eu/rasff-window/screen/search" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                            <div>
+                                <h5 class="mb-1">RASFF Alert Portal</h5>
+                                <p class="mb-1">Track food safety alerts and notifications affecting imports.</p>
+                            </div>
+                            <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                        </a>
+                        
+                        <a href="https://agriculture.ec.europa.eu/farming/organic-farming/organic-logo_en" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                            <div>
+                                <h5 class="mb-1">Organic Certification Guidelines: EU Organic Logo User Guide</h5>
+                                <p class="mb-1">Official guidelines for using the EU organic logo on products.</p>
+                            </div>
+                            <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                        </a>
+                        
+                        <a href="https://trade.ec.europa.eu/access-to-markets/en/home" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                            <div>
+                                <h5 class="mb-1">EU Import Helpdesk: EU Trade Helpdesk</h5>
+                                <p class="mb-1">Resource for tariff and quota inquiries when exporting to the EU.</p>
+                            </div>
+                            <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                        </a>
+                        
+                        <a href="https://www.kephis.go.ke" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                            <div>
+                                <h5 class="mb-1">Official Kenyan Support: KEPHIS</h5>
+                                <p class="mb-1">Kenya Plant Health Inspectorate Service for plant quarantine support.</p>
+                            </div>
+                            <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                        </a>
+                        
+                        <a href="https://www.belastingdienst.nl/wps/wcm/connect/en/customs/content/importing-goods" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                            <div>
+                                <h5 class="mb-1">Dutch Customs Assistance</h5>
+                                <p class="mb-1">Information on importing goods to the Netherlands through Dutch Customs.</p>
+                            </div>
+                            <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Online Training Section -->
+        <section id="online-training" class="mb-5">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-warning text-dark">
+                    <h2 class="h4 mb-0">Online Training Resources</h2>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <h3 class="h5">BTSF and BTSF ACADEMY</h3>
+                        <p>Better Training for Safer Food (BTSF) is a European Commission training initiative to improve the knowledge and implementation of EU rules covering food safety, plant, animal, and One Health.</p>
+                        <p>The courses address the following topics:</p>
+                        <ul>
+                            <li>Plant Health</li>
+                            <li>Pesticides</li>
+                            <li>Food Safety</li>
+                            <li>Organic Farming</li>
+                        </ul>
+                        <div class="list-group mb-3">
+                            <a href="https://better-training-for-safer-food.ec.europa.eu/training/mod/page/view.php?id=7039#howtoapply" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" target="_blank">
+                                Access BTSF Training Resources
+                                <span class="badge bg-primary rounded-pill"><i class="fas fa-external-link-alt"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

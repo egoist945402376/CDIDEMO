@@ -45,6 +45,7 @@ urlpatterns = [
     path('farmer/communities/browse/', views.browse_communities, name='browse_communities'),
     path('farmer/community/<int:community_id>/edit/', views.edit_community, name='edit_community'),
     path('guides/market-preparation/', views.market_preparation_guides, name='market_preparation_guides'),
+    path('guides/certification-help/', views.certification_help, name='certification_help'),
     #path('buyer/dashboard/', views.buyer_dashboard, name='buyer_dashboard'),
     #path('farmer/dashboard/', views.farmer_dashboard, name='farmer_dashboard'),
 ]

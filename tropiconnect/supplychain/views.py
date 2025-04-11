@@ -1151,3 +1151,7 @@ def market_preparation_guides(request):
     View to display international market preparation guides
     """
     return render(request, 'supplychain/market_preparation_guides.html')
+
+
+def certification_help(request):
+    return render(request, 'supplychain/certification_help.html', {'title': 'Certification Help'})
