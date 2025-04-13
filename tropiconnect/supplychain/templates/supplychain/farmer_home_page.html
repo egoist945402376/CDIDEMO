@@ -417,6 +417,7 @@
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <h5 class="mb-1">
+                                                    <a href="{% url 'view_logistic_profile' logistic.id %}" class="text-decoration-none">{{ logistic.company_name }}</a>
                                                 </h5>
                                                 <p class="mb-0 text-muted"><i class="bi bi-person-fill"></i> {{ logistic.contact_person }}</p>
                                             </div>
@@ -436,6 +437,7 @@
                                             <span class="text-success">
                                                 <i class="bi bi-calendar-check"></i> Member since: {{ logistic.date_joined|date:"M d, Y" }}
                                             </span>
+                                            <a href="{% url 'view_logistic_profile' logistic.id %}" class="btn btn-sm btn-outline-primary">View Details</a>
                                         </div>
                                     </div>
                                 </div>
