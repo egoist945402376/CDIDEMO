@@ -260,8 +260,11 @@
                 <div class="col-md-8 offset-md-2 text-center hero-content">
                     <h1 class="mb-4 display-4 fw-bold">{% trans "TropiConnect: Connecting African Farmers to Global Markets" %}</h1>
                     <p class="lead mb-4">{% trans "Bridging the gap between African agricultural producers and worldwide buyers through sustainable, transparent supply chains." %}</p>
-                    <a href="{% url 'register_farmer' %}" class="btn btn-custom btn-lg">{% trans "Register Now As Farmer" %}</a>
-                    <a href="{% url 'register_buyer' %}" class="btn btn-custom btn-lg">{% trans "Register Now As Buyer" %}</a>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="{% url 'register_farmer' %}" class="btn btn-custom btn-lg mb-2">{% trans "Register As Farmer" %}</a>
+                        <a href="{% url 'register_buyer' %}" class="btn btn-custom btn-lg mb-2">{% trans "Register As Buyer" %}</a>
+                        <a href="{% url 'register_logistic' %}" class="btn btn-custom btn-lg mb-2">{% trans "Register As Logistics" %}</a>
+                    </div>
                 </div>
             </div>
         </div>
