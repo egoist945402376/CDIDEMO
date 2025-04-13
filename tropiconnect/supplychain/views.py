@@ -12,7 +12,7 @@ from .forms import ProfilePictureForm, CompanyLogoForm, FarmerProfileEditForm, F
 from .forms import FarmerCertificationForm, LogisticCompanyLogoForm
 from .forms import BuyerProfileEditForm, LogisticCompanyRegistrationForm
 from .models import FarmerCertification, LogisticCompany
-from .forms import CompanyCertificationForm
+from .forms import CompanyCertificationForm, LogisticCompanyProfileEditForm
 from .models import CompanyCertification
 from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct, ProductCategory, ShippingMethod
 from .models import BuyerProfile, ProductNeed, BuyerToFarmerReview, BuyerInterest, FarmerToBuyerReview
@@ -1237,3 +1237,28 @@ def update_logistic_logo(request):
     }
     
     return render(request, 'supplychain/update_logistic_logo.html', context)
+
+@login_required
+def edit_logistic_profile(request):
+    """View for editing logistics company's profile information."""
+    try:
+        logistic = LogisticCompany.objects.get(user=request.user)
+    except LogisticCompany.DoesNotExist:
+        raise PermissionDenied("You do not have access to this page.")
+    
+    if request.method == 'POST':
+        form = LogisticCompanyProfileEditForm(request.POST, instance=logistic)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your profile has been updated successfully!")
+            return redirect('logistic_dashboard')
+    else:
+        form = LogisticCompanyProfileEditForm(instance=logistic)
+    
+    context = {
+        'title': 'Edit Logistics Company Profile',
+        'form': form,
+        'logistic': logistic
+    }
+    
+    return render(request, 'supplychain/edit_logistic_profile.html', context)

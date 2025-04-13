@@ -353,6 +353,15 @@ class LogisticCompanyLogoForm(forms.ModelForm):
         model = LogisticCompany
         fields = ['logo']
 
+class LogisticCompanyProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = LogisticCompany
+        fields = ['company_name', 'contact_person', 'phone_number', 'email', 'website', 'bio']
+        widgets = {
+            'bio': forms.Textarea(attrs={'rows': 4}),
+        }
+
+
 def __init__(self, *args, **kwargs):
     super(FarmerRegistrationForm, self).__init__(*args, **kwargs)
     self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Username'})
