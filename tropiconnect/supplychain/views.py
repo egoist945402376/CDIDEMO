@@ -9,7 +9,7 @@ from .models import BuyerProfile, ProductNeed
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from .forms import ProfilePictureForm, CompanyLogoForm, FarmerProfileEditForm, FarmPhotoForm, FarmForm, FarmerProductForm, ProductNeedForm
-from .forms import FarmerCertificationForm
+from .forms import FarmerCertificationForm, LogisticCompanyLogoForm
 from .forms import BuyerProfileEditForm, LogisticCompanyRegistrationForm
 from .models import FarmerCertification, LogisticCompany
 from .forms import CompanyCertificationForm
@@ -1212,3 +1212,28 @@ def logistic_dashboard(request):
     }
     
     return render(request, 'supplychain/logistic_dashboard.html', context)
+
+@login_required
+def update_logistic_logo(request):
+    """View for updating the logistics company's logo."""
+    try:
+        logistic = LogisticCompany.objects.get(user=request.user)
+    except LogisticCompany.DoesNotExist:
+        raise PermissionDenied("You do not have access to this page.")
+    
+    if request.method == 'POST':
+        form = LogisticCompanyLogoForm(request.POST, request.FILES, instance=logistic)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Company logo updated successfully!")
+            return redirect('logistic_dashboard')
+    else:
+        form = LogisticCompanyLogoForm(instance=logistic)
+    
+    context = {
+        'title': 'Update Company Logo',
+        'form': form,
+        'logistic': logistic
+    }
+    
+    return render(request, 'supplychain/update_logistic_logo.html', context)

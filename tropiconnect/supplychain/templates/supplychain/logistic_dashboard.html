@@ -10,9 +10,15 @@
             <div class="bg-primary text-white rounded-lg p-4 shadow">
                 <div class="d-flex align-items-center">
                     <div class="logistic-avatar me-4">
-                        <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                            <i class="bi bi-truck text-primary" style="font-size: 40px;"></i>
-                        </div>
+                        <a href="{% url 'update_logistic_logo' %}" title="{% trans 'Update Logo' %}">
+                            {% if logistic.logo %}
+                                <img src="{{ logistic.logo.url }}" alt="{{ logistic.company_name }}" class="rounded-circle" width="80" height="80" style="cursor: pointer;">
+                            {% else %}
+                                <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; cursor: pointer;">
+                                    <i class="bi bi-truck text-primary" style="font-size: 40px;"></i>
+                                </div>
+                            {% endif %}
+                        </a>
                     </div>
                     <div>
                         <h1 class="h3 mb-0">{{ logistic.company_name }}'s {% trans 'Dashboard' %}</h1>

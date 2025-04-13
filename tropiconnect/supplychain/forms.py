@@ -348,6 +348,10 @@ class LogisticCompanyRegistrationForm(UserCreationForm):
         
         return user
 
+class LogisticCompanyLogoForm(forms.ModelForm):
+    class Meta:
+        model = LogisticCompany
+        fields = ['logo']
 
 def __init__(self, *args, **kwargs):
     super(FarmerRegistrationForm, self).__init__(*args, **kwargs)

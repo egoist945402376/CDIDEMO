@@ -49,6 +49,7 @@ urlpatterns = [
     path('register/logistic/', views.register_logistic, name='register_logistic'),
     path('login/logistic/', views.logistic_login, name='logistic_login'),
     path('logistic/dashboard/', views.logistic_dashboard, name='logistic_dashboard'),
+    path('logistic/dashboard/update-logo/', views.update_logistic_logo, name='update_logistic_logo'),
     #path('buyer/dashboard/', views.buyer_dashboard, name='buyer_dashboard'),
     #path('farmer/dashboard/', views.farmer_dashboard, name='farmer_dashboard'),
 ]
