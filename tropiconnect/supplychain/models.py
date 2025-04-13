@@ -293,3 +293,18 @@ class CommunityMember(models.Model):
     
     def __str__(self):
         return f"{self.farmer} - {self.community} ({self.get_role_display()})"
+    
+
+class LogisticCompany(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='logistic_company')
+    company_name = models.CharField(max_length=200)
+    contact_person = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=20)
+    email = models.EmailField()
+    website = models.URLField(blank=True, null=True)
+    logo = models.ImageField(upload_to='logistic_logos/', null=True, blank=True)
+    bio = models.TextField(blank=True, help_text="Brief introduction about your logistics company")
+    date_joined = models.DateTimeField(default=timezone.now)
+    
+    def __str__(self):
+        return self.company_name

@@ -9,6 +9,8 @@ from .models import ProductNeed
 from .models import FarmerProduct
 from .models import FarmerCertification
 from .models import CompanyCertification
+from .models import LogisticCompany
+
 import datetime
 class FarmerRegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -315,6 +317,36 @@ class CommunityEditForm(forms.ModelForm):
             'max_members': 'Maximum number of members allowed in this community',
             'contact_email': 'Contact email for community inquiries (optional)',
         }
+
+class LogisticCompanyRegistrationForm(UserCreationForm):
+    company_name = forms.CharField(max_length=200)
+    contact_person = forms.CharField(max_length=100)
+    phone_number = forms.CharField(max_length=20)
+    email = forms.EmailField()
+    website = forms.URLField(required=False)
+    bio = forms.CharField(widget=forms.Textarea, required=False)
+    
+    class Meta:
+        model = User
+        fields = ['username', 'password1', 'password2']
+    
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email = self.cleaned_data['email']
+        
+        if commit:
+            user.save()
+            LogisticCompany.objects.create(
+                user=user,
+                company_name=self.cleaned_data['company_name'],
+                contact_person=self.cleaned_data['contact_person'],
+                phone_number=self.cleaned_data['phone_number'],
+                email=self.cleaned_data['email'],
+                website=self.cleaned_data['website'],
+                bio=self.cleaned_data['bio']
+            )
+        
+        return user
 
 
 def __init__(self, *args, **kwargs):

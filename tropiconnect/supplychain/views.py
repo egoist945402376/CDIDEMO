@@ -10,8 +10,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from .forms import ProfilePictureForm, CompanyLogoForm, FarmerProfileEditForm, FarmPhotoForm, FarmForm, FarmerProductForm, ProductNeedForm
 from .forms import FarmerCertificationForm
-from .forms import BuyerProfileEditForm
-from .models import FarmerCertification
+from .forms import BuyerProfileEditForm, LogisticCompanyRegistrationForm
+from .models import FarmerCertification, LogisticCompany
 from .forms import CompanyCertificationForm
 from .models import CompanyCertification
 from .models import FarmerProfile, Farm, FarmPhoto, FarmerProduct, ProductCategory, ShippingMethod
@@ -1155,3 +1155,22 @@ def market_preparation_guides(request):
 
 def certification_help(request):
     return render(request, 'supplychain/certification_help.html', {'title': 'Certification Help'})
+
+def register_logistic(request):
+    if request.method == 'POST':
+        form = LogisticCompanyRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            messages.success(request, "Registration successful! Please log in.")
+            return redirect('home')
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
+    else:
+        form = LogisticCompanyRegistrationForm()
+    
+    return render(request, 'supplychain/register_logistic.html', {
+        'title': 'Logistics Company Registration',
+        'form': form
+    })
