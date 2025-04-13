@@ -1197,3 +1197,18 @@ def logistic_login(request):
             messages.error(request, "Invalid username or password.")
     
     return render(request, 'supplychain/logistic_login.html', {'title': 'Logistics Company Login'})
+
+@login_required
+def logistic_dashboard(request):
+    """Dashboard view for logistics companies."""
+    try:
+        logistic = LogisticCompany.objects.get(user=request.user)
+    except LogisticCompany.DoesNotExist:
+        raise PermissionDenied("You do not have access to this page.")
+    
+    context = {
+        'title': 'Logistics Company Dashboard',
+        'logistic': logistic,
+    }
+    
+    return render(request, 'supplychain/logistic_dashboard.html', context)
