@@ -1174,3 +1174,26 @@ def register_logistic(request):
         'title': 'Logistics Company Registration',
         'form': form
     })
+
+def logistic_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        company_name = request.POST.get('company_name')
+        
+        user = authenticate(username=username, password=password)
+        
+        if user is not None:
+            try:
+                logistic = LogisticCompany.objects.get(user=user)
+                if logistic.company_name == company_name:
+                    login(request, user)
+                    return redirect('logistic_dashboard')  # 登录成功后重定向到物流公司仪表板页面
+                else:
+                    messages.error(request, "Company name doesn't match.")
+            except LogisticCompany.DoesNotExist:
+                messages.error(request, "Logistics company profile not found.")
+        else:
+            messages.error(request, "Invalid username or password.")
+    
+    return render(request, 'supplychain/logistic_login.html', {'title': 'Logistics Company Login'})

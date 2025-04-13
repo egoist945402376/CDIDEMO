@@ -47,6 +47,7 @@ urlpatterns = [
     path('guides/market-preparation/', views.market_preparation_guides, name='market_preparation_guides'),
     path('guides/certification-help/', views.certification_help, name='certification_help'),
     path('register/logistic/', views.register_logistic, name='register_logistic'),
+    path('login/logistic/', views.logistic_login, name='logistic_login'),
     #path('buyer/dashboard/', views.buyer_dashboard, name='buyer_dashboard'),
     #path('farmer/dashboard/', views.farmer_dashboard, name='farmer_dashboard'),
 ]
