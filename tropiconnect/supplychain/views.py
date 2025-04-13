@@ -447,14 +447,27 @@ def farmer_home_page(request):
             product_needs = ProductNeed.objects.filter(id__in=random_ids)
         else:
             product_needs = all_needs.order_by('-date_posted')[:3]
+    is_random_logistic = request.GET.get('random_logistic', '') == 'true'
     
+    all_logistics = LogisticCompany.objects.all()
+    
+    if is_random_logistic and all_logistics.count() > 3:
+        import random
+        logistic_ids = list(all_logistics.values_list('id', flat=True))
+        random_ids = random.sample(logistic_ids, min(3, len(logistic_ids)))
+        logistic_companies = LogisticCompany.objects.filter(id__in=random_ids)
+    else:
+        logistic_companies = all_logistics.order_by('?')[:3]
+
     context = {
         'title': 'Farmer Home',
         'farmer': farmer,
         'product_categories': product_categories,
         'selected_category': selected_category,
         'product_needs': product_needs,
-        'is_random': is_random
+        'is_random': is_random,
+        'logistic_companies': logistic_companies,
+        'is_random_logistic': is_random_logistic
     }
     
     return render(request, 'supplychain/farmer_home_page.html', context)

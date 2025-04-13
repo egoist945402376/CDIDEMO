@@ -82,6 +82,11 @@
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
+                        <button class="nav-link py-3" id="logistics-tab" data-bs-toggle="pill" data-bs-target="#logistics-content" type="button" role="tab" aria-controls="logistics-content" aria-selected="false">
+                            <i class="bi bi-truck me-2"></i>Find Logistics Companies
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
                         <button class="nav-link py-3" id="training-tab" data-bs-toggle="pill" data-bs-target="#training-content" type="button" role="tab" aria-controls="training-content" aria-selected="false">
                             <i class="bi bi-book me-2"></i>Training & Resources
                         </button>
@@ -371,6 +376,91 @@
         </section>
     </div>
 
+    <!-- LOGISTIC COMPANIES CONTENT TAB -->
+    <div class="tab-pane fade" id="logistics-content" role="tabpanel" aria-labelledby="logistics-tab">
+        <!-- Logistics Section -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="fw-bold mb-3">Find Logistics Companies</h2>
+                        <p class="text-muted">Discover reliable logistics partners to help transport your products to global markets</p>
+                    </div>
+                </div>
+                
+                <!-- Results Header with Refresh Button -->
+                <div class="row mb-3">
+                    <div class="col-12 d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">Available Logistics Partners</h4>
+                        <a href="{% url 'farmer_home' %}?random_logistic=true" class="btn btn-outline-primary">
+                            <i class="bi bi-shuffle me-2"></i>Refresh Results
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Logistics Companies Results -->
+                <div class="row g-4 mt-2" id="logisticsResults">
+                    {% if logistic_companies %}
+                        {% for logistic in logistic_companies %}
+                            <div class="col-lg-4">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="flex-shrink-0">
+                                                {% if logistic.logo %}
+                                                    <img src="{{ logistic.logo.url }}" alt="{{ logistic.company_name }}" class="rounded-circle" width="60" height="60" style="object-fit: cover;">
+                                                {% else %}
+                                                    <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                                        <i class="bi bi-truck text-primary" style="font-size: 30px;"></i>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <h5 class="mb-1">
+                                                </h5>
+                                                <p class="mb-0 text-muted"><i class="bi bi-person-fill"></i> {{ logistic.contact_person }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <span class="badge bg-primary me-1">Logistics Partner</span>
+                                        </div>
+                                        <div class="mb-3">
+                                            <p class="mb-1"><strong>Email:</strong> {{ logistic.email }}</p>
+                                            <p class="mb-1"><strong>Phone:</strong> {{ logistic.phone_number }}</p>
+                                            {% if logistic.website %}
+                                                <p class="mb-1"><strong>Website:</strong> <a href="{{ logistic.website }}" target="_blank">{{ logistic.website }}</a></p>
+                                            {% endif %}
+                                        </div>
+                                        <p class="card-text">{{ logistic.bio|truncatechars:100 }}</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="text-success">
+                                                <i class="bi bi-calendar-check"></i> Member since: {{ logistic.date_joined|date:"M d, Y" }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-12">
+                            <div class="alert alert-info text-center">
+                                <h4 class="alert-heading">No logistics companies found</h4>
+                                <p>Currently, there are no logistics companies registered in the system. Please check back later.</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                
+                {% if logistic_companies %}
+                    <div class="text-center mt-4">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactLogisticModal">Contact These Companies</button>
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+
+
     <!-- TRAINING CONTENT TAB -->
     <div class="tab-pane fade" id="training-content" role="tabpanel" aria-labelledby="training-tab">
         <!-- Training & Resources Section -->
@@ -504,6 +594,31 @@
             </div>
             <div class="modal-body">
                 <p>To contact these buyers, please ensure your farm and product profiles are complete with accurate information. Buyers will review your profile before responding to inquiries.</p>
+                <div class="alert alert-warning">
+                    <p class="mb-0">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        This is a demo application. In a real-world application, you would have a messaging system or request contact information.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{% url 'farmer_dashboard' %}" class="btn btn-primary">Update My Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Logistics Modal -->
+<div class="modal fade" id="contactLogisticModal" tabindex="-1" aria-labelledby="contactLogisticModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactLogisticModalLabel">Contact Logistics Companies</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>To contact these logistics companies, please ensure your products and shipping requirements are clearly defined. Logistics partners will provide you with shipping quotes based on your needs.</p>
                 <div class="alert alert-warning">
                     <p class="mb-0">
                         <i class="bi bi-exclamation-triangle-fill me-2"></i>
