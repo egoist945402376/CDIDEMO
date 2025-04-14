@@ -1286,3 +1286,19 @@ def view_logistic_profile(request, logistic_id):
     }
     
     return render(request, 'supplychain/view_logistic_profile.html', context)
+
+@login_required
+def order_history(request):
+    """View for displaying a farmer's order history (demonstration only)."""
+    try:
+        farmer = FarmerProfile.objects.get(user=request.user)
+    except FarmerProfile.DoesNotExist:
+        raise PermissionDenied("You do not have access to this page.")
+    
+    
+    context = {
+        'title': 'Order History',
+        'farmer': farmer,
+    }
+    
+    return render(request, 'supplychain/order_history.html', context)

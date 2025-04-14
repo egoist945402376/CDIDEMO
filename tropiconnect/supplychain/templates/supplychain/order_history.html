@@ -1,0 +1,505 @@
+{% extends "supplychain/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+<div class="container py-5">
+    <!-- Header Section -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="bg-primary text-white rounded-lg p-4 shadow">
+                <div class="d-flex align-items-center">
+                    <div class="me-4">
+                        <i class="bi bi-clock-history" style="font-size: 40px;"></i>
+                    </div>
+                    <div>
+                        <h1 class="h3 mb-0">{% trans 'Order History' %}</h1>
+                        <p class="mb-0">{% trans 'Track your past sales and transactions' %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Summary Section -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <div class="display-4 text-primary mb-2">42</div>
+                    <div class="text-muted">{% trans 'Total Orders' %}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <div class="display-4 text-success mb-2">$58,420</div>
+                    <div class="text-muted">{% trans 'Total Revenue' %}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <div class="display-4 text-info mb-2">12</div>
+                    <div class="text-muted">{% trans 'Buyer Countries' %}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <div class="display-4 text-warning mb-2">8</div>
+                    <div class="text-muted">{% trans 'Products Sold' %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Options -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label for="dateRange" class="form-label">{% trans 'Date Range' %}</label>
+                            <select class="form-select" id="dateRange">
+                                <option value="all" selected>{% trans 'All Time' %}</option>
+                                <option value="30">{% trans 'Last 30 Days' %}</option>
+                                <option value="90">{% trans 'Last 90 Days' %}</option>
+                                <option value="180">{% trans 'Last 6 Months' %}</option>
+                                <option value="365">{% trans 'Last Year' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="product" class="form-label">{% trans 'Product' %}</label>
+                            <select class="form-select" id="product">
+                                <option value="all" selected>{% trans 'All Products' %}</option>
+                                <option value="coffee">{% trans 'Coffee Beans' %}</option>
+                                <option value="cocoa">{% trans 'Cocoa Beans' %}</option>
+                                <option value="cashew">{% trans 'Cashew Nuts' %}</option>
+                                <option value="mango">{% trans 'Dried Mango' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="buyer" class="form-label">{% trans 'Buyer' %}</label>
+                            <select class="form-select" id="buyer">
+                                <option value="all" selected>{% trans 'All Buyers' %}</option>
+                                <option value="freshfoods">{% trans 'FreshFoods Inc.' %}</option>
+                                <option value="tropicaltaste">{% trans 'Tropical Taste Ltd.' %}</option>
+                                <option value="ecotrade">{% trans 'EcoTrade Group' %}</option>
+                                <option value="globalorganic">{% trans 'Global Organic Imports' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="status" class="form-label">{% trans 'Status' %}</label>
+                            <select class="form-select" id="status">
+                                <option value="all" selected>{% trans 'All Statuses' %}</option>
+                                <option value="completed">{% trans 'Completed' %}</option>
+                                <option value="shipped">{% trans 'Shipped' %}</option>
+                                <option value="processing">{% trans 'Processing' %}</option>
+                                <option value="cancelled">{% trans 'Cancelled' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-12 text-end">
+                            <button type="button" class="btn btn-primary" onclick="alert('This is a demo page. Filtering is not functional.')">
+                                <i class="bi bi-filter me-2"></i>{% trans 'Apply Filters' %}
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" onclick="resetFilters()">
+                                <i class="bi bi-x-circle me-2"></i>{% trans 'Reset' %}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orders Table -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white py-3">
+                    <h5 class="mb-0"><i class="bi bi-list-ul me-2"></i>{% trans 'Order List' %}</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>{% trans 'Order ID' %}</th>
+                                    <th>{% trans 'Date' %}</th>
+                                    <th>{% trans 'Buyer' %}</th>
+                                    <th>{% trans 'Product' %}</th>
+                                    <th>{% trans 'Quantity' %}</th>
+                                    <th>{% trans 'Price' %}</th>
+                                    <th>{% trans 'Total' %}</th>
+                                    <th>{% trans 'Status' %}</th>
+                                    <th>{% trans 'Actions' %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#ORD-2025-0042</a></td>
+                                    <td>Apr 10, 2025</td>
+                                    <td>FreshFoods Inc.</td>
+                                    <td>Coffee Beans - Arabica</td>
+                                    <td>2,500 kg</td>
+                                    <td>$8.50/kg</td>
+                                    <td>$21,250</td>
+                                    <td><span class="badge bg-success">Completed</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" onclick="viewOrderDetails('ORD-2025-0042')">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#ORD-2025-0041</a></td>
+                                    <td>Apr 5, 2025</td>
+                                    <td>Tropical Taste Ltd.</td>
+                                    <td>Dried Mango</td>
+                                    <td>800 kg</td>
+                                    <td>$12.75/kg</td>
+                                    <td>$10,200</td>
+                                    <td><span class="badge bg-primary">Shipped</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" onclick="viewOrderDetails('ORD-2025-0041')">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#ORD-2025-0040</a></td>
+                                    <td>Mar 28, 2025</td>
+                                    <td>EcoTrade Group</td>
+                                    <td>Cocoa Beans - Organic</td>
+                                    <td>1,200 kg</td>
+                                    <td>$7.80/kg</td>
+                                    <td>$9,360</td>
+                                    <td><span class="badge bg-success">Completed</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" onclick="viewOrderDetails('ORD-2025-0040')">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#ORD-2025-0039</a></td>
+                                    <td>Mar 20, 2025</td>
+                                    <td>Global Organic Imports</td>
+                                    <td>Cashew Nuts - Raw</td>
+                                    <td>1,000 kg</td>
+                                    <td>$9.25/kg</td>
+                                    <td>$9,250</td>
+                                    <td><span class="badge bg-success">Completed</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" onclick="viewOrderDetails('ORD-2025-0039')">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#ORD-2025-0038</a></td>
+                                    <td>Mar 15, 2025</td>
+                                    <td>FreshFoods Inc.</td>
+                                    <td>Coffee Beans - Robusta</td>
+                                    <td>1,800 kg</td>
+                                    <td>$7.20/kg</td>
+                                    <td>$12,960</td>
+                                    <td><span class="badge bg-success">Completed</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" onclick="viewOrderDetails('ORD-2025-0038')">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#ORD-2025-0037</a></td>
+                                    <td>Mar 8, 2025</td>
+                                    <td>Tropical Taste Ltd.</td>
+                                    <td>Dried Pineapple</td>
+                                    <td>600 kg</td>
+                                    <td>$14.50/kg</td>
+                                    <td>$8,700</td>
+                                    <td><span class="badge bg-secondary">Processing</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" onclick="viewOrderDetails('ORD-2025-0037')">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#ORD-2025-0036</a></td>
+                                    <td>Mar 1, 2025</td>
+                                    <td>EcoTrade Group</td>
+                                    <td>Cocoa Beans - Premium</td>
+                                    <td>900 kg</td>
+                                    <td>$8.90/kg</td>
+                                    <td>$8,010</td>
+                                    <td><span class="badge bg-success">Completed</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" onclick="viewOrderDetails('ORD-2025-0036')">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#ORD-2025-0035</a></td>
+                                    <td>Feb 22, 2025</td>
+                                    <td>Global Organic Imports</td>
+                                    <td>Cashew Nuts - Organic</td>
+                                    <td>750 kg</td>
+                                    <td>$10.40/kg</td>
+                                    <td>$7,800</td>
+                                    <td><span class="badge bg-success">Completed</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" onclick="viewOrderDetails('ORD-2025-0035')">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#ORD-2025-0034</a></td>
+                                    <td>Feb 18, 2025</td>
+                                    <td>Tropical Taste Ltd.</td>
+                                    <td>Dried Banana Chips</td>
+                                    <td>500 kg</td>
+                                    <td>$9.80/kg</td>
+                                    <td>$4,900</td>
+                                    <td><span class="badge bg-danger">Cancelled</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" onclick="viewOrderDetails('ORD-2025-0034')">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#ORD-2025-0033</a></td>
+                                    <td>Feb 12, 2025</td>
+                                    <td>FreshFoods Inc.</td>
+                                    <td>Coffee Beans - Arabica</td>
+                                    <td>2,200 kg</td>
+                                    <td>$8.50/kg</td>
+                                    <td>$18,700</td>
+                                    <td><span class="badge bg-success">Completed</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" onclick="viewOrderDetails('ORD-2025-0033')">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer bg-white">
+                    <nav aria-label="Order history pagination">
+                        <ul class="pagination justify-content-center mb-0">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Options -->
+    <div class="row">
+        <div class="col-md-12 text-end">
+            <button type="button" class="btn btn-outline-primary me-2" onclick="alert('This is a demo. Export functionality is not available.')">
+                <i class="bi bi-file-excel me-2"></i>{% trans 'Export to Excel' %}
+            </button>
+            <button type="button" class="btn btn-outline-primary" onclick="alert('This is a demo. Export functionality is not available.')">
+                <i class="bi bi-file-pdf me-2"></i>{% trans 'Export to PDF' %}
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Order Details Modal -->
+<div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orderDetailsModalLabel">Order Details #<span id="modalOrderNumber"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h6 class="text-primary">Order Information</h6>
+                        <table class="table table-sm">
+                            <tr>
+                                <th>Order Date:</th>
+                                <td id="modalOrderDate">April 10, 2025</td>
+                            </tr>
+                            <tr>
+                                <th>Status:</th>
+                                <td><span class="badge bg-success" id="modalOrderStatus">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <th>Payment Method:</th>
+                                <td>Bank Transfer</td>
+                            </tr>
+                            <tr>
+                                <th>Payment Status:</th>
+                                <td><span class="badge bg-success">Paid</span></td>
+                            </tr>
+                            <tr>
+                                <th>Shipping Method:</th>
+                                <td>Ocean Freight</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-primary">Buyer Information</h6>
+                        <table class="table table-sm">
+                            <tr>
+                                <th>Company:</th>
+                                <td id="modalBuyerName">FreshFoods Inc.</td>
+                            </tr>
+                            <tr>
+                                <th>Contact Person:</th>
+                                <td>John Smith</td>
+                            </tr>
+                            <tr>
+                                <th>Email:</th>
+                                <td>john.smith@freshfoods.com</td>
+                            </tr>
+                            <tr>
+                                <th>Phone:</th>
+                                <td>+1 (555) 123-4567</td>
+                            </tr>
+                            <tr>
+                                <th>Country:</th>
+                                <td>United States</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <h6 class="text-primary">Product Details</h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Product</th>
+                                <th>Variety</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="modalProductName">Coffee Beans</td>
+                                <td id="modalProductVariety">Arabica</td>
+                                <td id="modalProductQuantity">2,500 kg</td>
+                                <td id="modalProductPrice">$8.50/kg</td>
+                                <td id="modalProductTotal">$21,250</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="4" class="text-end">Subtotal:</th>
+                                <td>$21,250</td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="text-end">Shipping:</th>
+                                <td>$1,800</td>
+                            </tr>
+                            <tr>
+                                <th colspan="4" class="text-end">Total:</th>
+                                <td><strong>$23,050</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                
+                <h6 class="text-primary">Shipping Details</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-sm">
+                            <tr>
+                                <th>Shipping Company:</th>
+                                <td>Global Logistics Ltd.</td>
+                            </tr>
+                            <tr>
+                                <th>Tracking Number:</th>
+                                <td>GL-9876543210</td>
+                            </tr>
+                            <tr>
+                                <th>Estimated Delivery:</th>
+                                <td>May 5, 2025</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-sm">
+                            <tr>
+                                <th>Origin:</th>
+                                <td>Nairobi, Kenya</td>
+                            </tr>
+                            <tr>
+                                <th>Destination:</th>
+                                <td>Rotterdam, Netherlands</td>
+                            </tr>
+                            <tr>
+                                <th>Current Location:</th>
+                                <td>Rotterdam Port (Arrived)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info mt-3">
+                    <h6 class="alert-heading">Notes:</h6>
+                    <p class="mb-0">Buyer requested special packaging to maintain freshness during transit. Quality certificate provided as requested.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="alert('This is a demo. Download functionality is not available.')">
+                    <i class="bi bi-download me-2"></i>Download Invoice
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to handle view order details button
+    function viewOrderDetails(orderId) {
+        // In a real application, this would fetch order details from the server
+        // For demo purposes, we'll just show the modal with some static info
+        
+        document.getElementById('modalOrderNumber').textContent = orderId;
+        
+        // Show the modal
+        var orderModal = new bootstrap.Modal(document.getElementById('orderDetailsModal'));
+        orderModal.show();
+    }
+    
+    // Function to reset filters
+    function resetFilters() {
+        document.getElementById('dateRange').value = 'all';
+        document.getElementById('product').value = 'all';
+        document.getElementById('buyer').value = 'all';
+        document.getElementById('status').value = 'all';
+    }
+</script>
+
+{% endblock %}
