@@ -1275,3 +1275,14 @@ def edit_logistic_profile(request):
     }
     
     return render(request, 'supplychain/edit_logistic_profile.html', context)
+
+def view_logistic_profile(request, logistic_id):
+    """View for seeing a logistics company's profile."""
+    logistic = get_object_or_404(LogisticCompany, id=logistic_id)
+    
+    context = {
+        'title': f'{logistic.company_name} Profile',
+        'logistic': logistic,
+    }
+    
+    return render(request, 'supplychain/view_logistic_profile.html', context)
