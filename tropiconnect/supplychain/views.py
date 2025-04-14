@@ -1302,3 +1302,20 @@ def order_history(request):
     }
     
     return render(request, 'supplychain/order_history.html', context)
+
+
+@login_required
+def buyer_order_history(request):
+    """View for displaying a buyer's order history (demonstration only)."""
+    try:
+        buyer = BuyerProfile.objects.get(user=request.user)
+    except BuyerProfile.DoesNotExist:
+        raise PermissionDenied("You do not have access to this page.")
+    
+    
+    context = {
+        'title': 'Purchase History',
+        'buyer': buyer,
+    }
+    
+    return render(request, 'supplychain/buyer_order_history.html', context)

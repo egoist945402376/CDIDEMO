@@ -1,0 +1,230 @@
+{% extends "supplychain/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+<div class="container py-5">
+    <!-- Header Section -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="bg-primary text-white rounded-lg p-4 shadow">
+                <div class="d-flex align-items-center">
+                    <div class="me-4">
+                        <i class="bi bi-clock-history" style="font-size: 40px;"></i>
+                    </div>
+                    <div>
+                        <h1 class="h3 mb-0">{% trans 'Purchase History' %}</h1>
+                        <p class="mb-0">{% trans 'Track your past purchases from African farmers' %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Summary Section -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <div class="display-4 text-primary mb-2">28</div>
+                    <div class="text-muted">{% trans 'Total Orders' %}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <div class="display-4 text-success mb-2">$45,280</div>
+                    <div class="text-muted">{% trans 'Total Spent' %}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <div class="display-4 text-info mb-2">15</div>
+                    <div class="text-muted">{% trans 'Supplier Farmers' %}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <div class="display-4 text-warning mb-2">6</div>
+                    <div class="text-muted">{% trans 'Product Types' %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orders Table -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white py-3">
+                    <h5 class="mb-0"><i class="bi bi-list-ul me-2"></i>{% trans 'Purchase List' %}</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>{% trans 'Order ID' %}</th>
+                                    <th>{% trans 'Date' %}</th>
+                                    <th>{% trans 'Farmer' %}</th>
+                                    <th>{% trans 'Location' %}</th>
+                                    <th>{% trans 'Product' %}</th>
+                                    <th>{% trans 'Quantity' %}</th>
+                                    <th>{% trans 'Price' %}</th>
+                                    <th>{% trans 'Total' %}</th>
+                                    <th>{% trans 'Status' %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#PO-2025-0028</a></td>
+                                    <td>Apr 12, 2025</td>
+                                    <td>Kwame Nkrumah</td>
+                                    <td>Ghana</td>
+                                    <td>Coffee Beans - Arabica</td>
+                                    <td>2,500 kg</td>
+                                    <td>$8.50/kg</td>
+                                    <td>$21,250</td>
+                                    <td><span class="badge bg-success">Received</span></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#PO-2025-0027</a></td>
+                                    <td>Apr 8, 2025</td>
+                                    <td>Maria Okello</td>
+                                    <td>Kenya</td>
+                                    <td>Dried Mango</td>
+                                    <td>800 kg</td>
+                                    <td>$12.75/kg</td>
+                                    <td>$10,200</td>
+                                    <td><span class="badge bg-primary">In Transit</span></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#PO-2025-0026</a></td>
+                                    <td>Mar 30, 2025</td>
+                                    <td>Emmanuel Kofi</td>
+                                    <td>Ghana</td>
+                                    <td>Cocoa Beans - Organic</td>
+                                    <td>1,200 kg</td>
+                                    <td>$7.80/kg</td>
+                                    <td>$9,360</td>
+                                    <td><span class="badge bg-success">Received</span></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#PO-2025-0025</a></td>
+                                    <td>Mar 22, 2025</td>
+                                    <td>Fatima Diallo</td>
+                                    <td>Senegal</td>
+                                    <td>Cashew Nuts - Raw</td>
+                                    <td>1,000 kg</td>
+                                    <td>$9.25/kg</td>
+                                    <td>$9,250</td>
+                                    <td><span class="badge bg-success">Received</span></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#PO-2025-0024</a></td>
+                                    <td>Mar 17, 2025</td>
+                                    <td>Kwame Nkrumah</td>
+                                    <td>Ghana</td>
+                                    <td>Coffee Beans - Robusta</td>
+                                    <td>1,800 kg</td>
+                                    <td>$7.20/kg</td>
+                                    <td>$12,960</td>
+                                    <td><span class="badge bg-success">Received</span></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#PO-2025-0023</a></td>
+                                    <td>Mar 10, 2025</td>
+                                    <td>Amara Kone</td>
+                                    <td>Côte d'Ivoire</td>
+                                    <td>Dried Pineapple</td>
+                                    <td>600 kg</td>
+                                    <td>$14.50/kg</td>
+                                    <td>$8,700</td>
+                                    <td><span class="badge bg-secondary">Processing</span></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#PO-2025-0022</a></td>
+                                    <td>Mar 5, 2025</td>
+                                    <td>Emmanuel Kofi</td>
+                                    <td>Ghana</td>
+                                    <td>Cocoa Beans - Premium</td>
+                                    <td>900 kg</td>
+                                    <td>$8.90/kg</td>
+                                    <td>$8,010</td>
+                                    <td><span class="badge bg-success">Received</span></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#PO-2025-0021</a></td>
+                                    <td>Feb 25, 2025</td>
+                                    <td>Fatima Diallo</td>
+                                    <td>Senegal</td>
+                                    <td>Cashew Nuts - Organic</td>
+                                    <td>750 kg</td>
+                                    <td>$10.40/kg</td>
+                                    <td>$7,800</td>
+                                    <td><span class="badge bg-success">Received</span></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#PO-2025-0020</a></td>
+                                    <td>Feb 20, 2025</td>
+                                    <td>Amara Kone</td>
+                                    <td>Côte d'Ivoire</td>
+                                    <td>Dried Banana Chips</td>
+                                    <td>500 kg</td>
+                                    <td>$9.80/kg</td>
+                                    <td>$4,900</td>
+                                    <td><span class="badge bg-danger">Cancelled</span></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="text-primary">#PO-2025-0019</a></td>
+                                    <td>Feb 15, 2025</td>
+                                    <td>Kwame Nkrumah</td>
+                                    <td>Ghana</td>
+                                    <td>Coffee Beans - Arabica</td>
+                                    <td>2,200 kg</td>
+                                    <td>$8.50/kg</td>
+                                    <td>$18,700</td>
+                                    <td><span class="badge bg-success">Received</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer bg-white">
+                    <nav aria-label="Purchase history pagination">
+                        <ul class="pagination justify-content-center mb-0">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Options -->
+    <div class="row">
+        <div class="col-md-12 text-end">
+            <button type="button" class="btn btn-outline-primary me-2" onclick="alert('This is a demo. Export functionality is not available.')">
+                <i class="bi bi-file-excel me-2"></i>{% trans 'Export to Excel' %}
+            </button>
+            <button type="button" class="btn btn-outline-primary" onclick="alert('This is a demo. Export functionality is not available.')">
+                <i class="bi bi-file-pdf me-2"></i>{% trans 'Export to PDF' %}
+            </button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
