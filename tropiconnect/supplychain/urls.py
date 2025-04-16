@@ -54,6 +54,7 @@ urlpatterns = [
     path('logistic/<int:logistic_id>/profile/', views.view_logistic_profile, name='view_logistic_profile'),
     path('farmer/order-history/', views.order_history, name='order_history'),
     path('buyer/order-history/', views.buyer_order_history, name='buyer_order_history'),
+    path('tutorials/videos/', views.video_tutorials, name='video_tutorials'),
     #path('buyer/dashboard/', views.buyer_dashboard, name='buyer_dashboard'),
     #path('farmer/dashboard/', views.farmer_dashboard, name='farmer_dashboard'),
 ]

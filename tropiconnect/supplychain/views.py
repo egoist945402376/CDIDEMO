@@ -1319,3 +1319,10 @@ def buyer_order_history(request):
     }
     
     return render(request, 'supplychain/buyer_order_history.html', context)
+
+def video_tutorials(request):
+    """View for displaying video tutorials for farmers."""
+    context = {
+        'title': 'Video Tutorials',
+    }
+    return render(request, 'supplychain/video_tutorials.html', context)

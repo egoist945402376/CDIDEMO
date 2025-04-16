@@ -1,0 +1,297 @@
+{% extends "supplychain/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+<div class="container py-5">
+    <!-- Header Section -->
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <div class="bg-primary text-white rounded-lg p-4 shadow">
+                <div class="d-flex align-items-center">
+                    <div class="me-4">
+                        <i class="bi bi-play-circle" style="font-size: 40px;"></i>
+                    </div>
+                    <div>
+                        <h1 class="h3 mb-0">{% trans 'Video Tutorials' %}</h1>
+                        <p class="mb-0">{% trans 'Learn farming techniques, post-harvest handling, and more from experts' %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Introduction -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+            <h2 class="fw-bold mb-3">{% trans 'Educational Videos for Farmers' %}</h2>
+            <p class="lead">{% trans 'These videos cover a wide range of topics to help you improve your farming practices, increase yields, and prepare your products for international markets.' %}</p>
+        </div>
+    </div>
+
+    <!-- Video Categories -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <ul class="nav nav-pills justify-content-center mb-4" id="videoTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="all-tab" data-bs-toggle="pill" data-bs-target="#all-videos" type="button" role="tab" aria-controls="all-videos" aria-selected="true">All Videos</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="techniques-tab" data-bs-toggle="pill" data-bs-target="#techniques-videos" type="button" role="tab" aria-controls="techniques-videos" aria-selected="false">Farming Techniques</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="postharvest-tab" data-bs-toggle="pill" data-bs-target="#postharvest-videos" type="button" role="tab" aria-controls="postharvest-videos" aria-selected="false">Post-Harvest</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="sustainable-tab" data-bs-toggle="pill" data-bs-target="#sustainable-videos" type="button" role="tab" aria-controls="sustainable-videos" aria-selected="false">Sustainable Farming</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Videos Tab Content -->
+    <div class="tab-content" id="videoTabContent">
+        <!-- All Videos Tab -->
+        <div class="tab-pane fade show active" id="all-videos" role="tabpanel" aria-labelledby="all-tab">
+            <div class="row g-4">
+                <!-- Video 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/EVNSXB-3L1c" title="Agricultural Quality Management - Understanding Produce Quality for the Regional/Export Market" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Agricultural Quality Management</h5>
+                            <p class="card-text">Understanding Produce Quality for the Regional/Export Market</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="badge bg-primary">Post-Harvest</span>
+                                <a href="https://youtu.be/EVNSXB-3L1c?si=EnJ_D1_0REbVT_r3" class="btn btn-sm btn-outline-primary" target="_blank">
+                                    <i class="bi bi-youtube me-1"></i> Watch on YouTube
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/LPzp1jXlrjY" title="Regenerative Agriculture - SOIL: The Secret to TOP Soil is not a SECRET" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Regenerative Agriculture</h5>
+                            <p class="card-text">SOIL: The Secret to TOP Soil is not a SECRET</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="badge bg-success">Sustainable Farming</span>
+                                <a href="https://youtu.be/LPzp1jXlrjY?si=g0kfaUN-dHjvGrRp" class="btn btn-sm btn-outline-primary" target="_blank">
+                                    <i class="bi bi-youtube me-1"></i> Watch on YouTube
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/Uvzfbt52yGQ" title="From Farm to Market - Marketing Fruits and Vegetables" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">From Farm to Market</h5>
+                            <p class="card-text">Marketing Fruits and Vegetables</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="badge bg-info">Marketing</span>
+                                <a href="https://youtu.be/Uvzfbt52yGQ?si=RygoSU8q7G1XwUa0" class="btn btn-sm btn-outline-primary" target="_blank">
+                                    <i class="bi bi-youtube me-1"></i> Watch on YouTube
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/-Yp2qd3RCvU" title="How to Start an Agriculture Business | Including Free Agriculture Business Plan Template" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">How to Start an Agriculture Business</h5>
+                            <p class="card-text">Including Free Agriculture Business Plan Template</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="badge bg-warning text-dark">Business</span>
+                                <a href="https://youtu.be/-Yp2qd3RCvU?si=9nThFPBNvikfJQGy" class="btn btn-sm btn-outline-primary" target="_blank">
+                                    <i class="bi bi-youtube me-1"></i> Watch on YouTube
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Access Agriculture Resource -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="https://www.accessagriculture.org/sites/default/files/main_images/aa-smalllogo.png" class="card-img-top p-4" alt="Access Agriculture" style="height: 200px; object-fit: contain;">
+                        <div class="card-body">
+                            <h5 class="card-title">Access Agriculture Resources</h5>
+                            <p class="card-text">Collection of videos on sustainable land management techniques from Access Agriculture</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="badge bg-success">Sustainable Farming</span>
+                                <a href="https://www.accessagriculture.org/category/144/sustainable-land-management" class="btn btn-sm btn-outline-primary" target="_blank">
+                                    <i class="bi bi-box-arrow-up-right me-1"></i> Visit Website
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TropiConnect Collection -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm bg-light">
+                        <div class="card-body text-center d-flex flex-column justify-content-center" style="min-height: 350px;">
+                            <div class="icon-box mb-3 mx-auto bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                <i class="bi bi-collection-play" style="font-size: 2rem;"></i>
+                            </div>
+                            <h5 class="card-title">TropiConnect Video Library</h5>
+                            <p class="card-text">Access our complete library of farming and agriculture videos</p>
+                            <div class="mt-3">
+                                <button class="btn btn-primary" onclick="alert('This feature is not available in the demo version.')">
+                                    <i class="bi bi-play-btn me-1"></i> Browse All Videos
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Farming Techniques Tab -->
+        <div class="tab-pane fade" id="techniques-videos" role="tabpanel" aria-labelledby="techniques-tab">
+            <div class="row g-4">
+                <!-- Relevant farming techniques videos would be here -->
+                <div class="col-12">
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle-fill me-2"></i> This section would contain videos specifically about farming techniques.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Post-Harvest Tab -->
+        <div class="tab-pane fade" id="postharvest-videos" role="tabpanel" aria-labelledby="postharvest-tab">
+            <div class="row g-4">
+                <!-- Relevant post-harvest videos would be here -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/EVNSXB-3L1c" title="Agricultural Quality Management - Understanding Produce Quality for the Regional/Export Market" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Agricultural Quality Management</h5>
+                            <p class="card-text">Understanding Produce Quality for the Regional/Export Market</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="badge bg-primary">Post-Harvest</span>
+                                <a href="https://youtu.be/EVNSXB-3L1c?si=EnJ_D1_0REbVT_r3" class="btn btn-sm btn-outline-primary" target="_blank">
+                                    <i class="bi bi-youtube me-1"></i> Watch on YouTube
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sustainable Farming Tab -->
+        <div class="tab-pane fade" id="sustainable-videos" role="tabpanel" aria-labelledby="sustainable-tab">
+            <div class="row g-4">
+                <!-- Relevant sustainable farming videos would be here -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/LPzp1jXlrjY" title="Regenerative Agriculture - SOIL: The Secret to TOP Soil is not a SECRET" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Regenerative Agriculture</h5>
+                            <p class="card-text">SOIL: The Secret to TOP Soil is not a SECRET</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="badge bg-success">Sustainable Farming</span>
+                                <a href="https://youtu.be/LPzp1jXlrjY?si=g0kfaUN-dHjvGrRp" class="btn btn-sm btn-outline-primary" target="_blank">
+                                    <i class="bi bi-youtube me-1"></i> Watch on YouTube
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Access Agriculture Resource -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="https://www.accessagriculture.org/sites/default/files/main_images/aa-smalllogo.png" class="card-img-top p-4" alt="Access Agriculture" style="height: 200px; object-fit: contain;">
+                        <div class="card-body">
+                            <h5 class="card-title">Access Agriculture Resources</h5>
+                            <p class="card-text">Collection of videos on sustainable land management techniques from Access Agriculture</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="badge bg-success">Sustainable Farming</span>
+                                <a href="https://www.accessagriculture.org/category/144/sustainable-land-management" class="btn btn-sm btn-outline-primary" target="_blank">
+                                    <i class="bi bi-box-arrow-up-right me-1"></i> Visit Website
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Request Videos Section -->
+    <div class="row mt-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border-0 shadow">
+                <div class="card-body p-4">
+                    <h4 class="card-title text-center mb-4">{% trans "Can't find what you're looking for?" %}</h4>
+                    <p class="text-center mb-4">{% trans "Request a specific tutorial or topic you'd like to learn more about" %}</p>
+                    
+                    <form id="videoRequestForm" class="row g-3">
+                        <div class="col-md-6">
+                            <label for="requestTopic" class="form-label">{% trans 'Topic' %}</label>
+                            <input type="text" class="form-control" id="requestTopic" placeholder="{% trans 'e.g., Organic Pest Control' %}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="requestCategory" class="form-label">{% trans 'Category' %}</label>
+                            <select class="form-select" id="requestCategory">
+                                <option selected disabled>{% trans 'Select category' %}</option>
+                                <option>{% trans 'Farming Techniques' %}</option>
+                                <option>{% trans 'Post-Harvest Handling' %}</option>
+                                <option>{% trans 'Sustainable Farming' %}</option>
+                                <option>{% trans 'Marketing' %}</option>
+                                <option>{% trans 'Business Management' %}</option>
+                                <option>{% trans 'Other' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="requestDetails" class="form-label">{% trans 'Details' %}</label>
+                            <textarea class="form-control" id="requestDetails" rows="3" placeholder="{% trans 'Please describe what specific information you are looking for...' %}"></textarea>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="button" class="btn btn-primary px-4" onclick="submitVideoRequest()">
+                                <i class="bi bi-send me-2"></i>{% trans 'Submit Request' %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function submitVideoRequest() {
+        // In a real application, this would send the request to the server
+        alert('Thank you for your request! This is a demo version, so the request has not been sent.');
+        document.getElementById('videoRequestForm').reset();
+    }
+</script>
+
+{% endblock %}
