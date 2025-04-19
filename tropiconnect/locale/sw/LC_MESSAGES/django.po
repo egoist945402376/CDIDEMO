@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-15 11:10+0100\n"
+"POT-Creation-Date: 2025-04-19 16:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,9 @@ msgstr "Aina ya Cheti"
 
 #: .\supplychain\templates\supplychain\add_company_certification.html:25
 msgid "E.g., Food Safety, Import/Export License, Quality Management, etc."
-msgstr "Mfano, Usalama wa Chakula, Leseni ya Uagizaji/Usafirishaji, Usimamizi wa Ubora, n.k."
+msgstr ""
+"Mfano, Usalama wa Chakula, Leseni ya Uagizaji/Usafirishaji, Usimamizi wa "
+"Ubora, n.k."
 
 #: .\supplychain\templates\supplychain\add_company_certification.html:29
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:197
@@ -75,6 +77,51 @@ msgstr "Ghairi"
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:186
 msgid "Add Certification"
 msgstr "Ongeza Cheti"
+
+#: .\supplychain\templates\supplychain\add_farm_photo.html:11
+msgid "Add Photo to"
+msgstr "Ongeza Picha"
+
+#: .\supplychain\templates\supplychain\add_farm_photo.html:23
+msgid "Current photos"
+msgstr "Picha za Sasa"
+
+#: .\supplychain\templates\supplychain\add_farm_photo.html:26
+msgid ""
+"You have reached the maximum number of photos (3) for this farm. Please "
+"delete some photos before adding more."
+msgstr ""
+"Umefika idadi ya juu ya picha (3) kwa shamba hili. Tafadhali futa baadhi ya "
+"picha kabla ya kuongeza zaidi."
+
+#: .\supplychain\templates\supplychain\add_farm_photo.html:34
+msgid "Current Photos"
+msgstr "Picha za Sasa"
+
+#: .\supplychain\templates\supplychain\add_farm_photo.html:48
+msgid "Are you sure you want to delete this photo?"
+msgstr "Je, una uhakika unataka kufuta picha hii?"
+
+#: .\supplychain\templates\supplychain\add_farm_photo.html:49
+msgid "Delete"
+msgstr "Futa"
+
+#: .\supplychain\templates\supplychain\add_farm_photo.html:65
+msgid "Choose Photo"
+msgstr "Chagua Picha"
+
+#: .\supplychain\templates\supplychain\add_farm_photo.html:75
+msgid "Caption (Optional)"
+msgstr "Maelezo (Hiari)"
+
+#: .\supplychain\templates\supplychain\add_farm_photo.html:85
+msgid "Upload Photo"
+msgstr "Sasisha Picha"
+
+#: .\supplychain\templates\supplychain\add_farm_photo.html:86
+#: .\supplychain\templates\supplychain\add_farm_photo.html:91
+msgid "Back to Dashboard"
+msgstr "Dashibodi"
 
 #: .\supplychain\templates\supplychain\buyer_login.html:116
 #: .\supplychain\templates\supplychain\farmer_login.html:114
@@ -527,6 +574,7 @@ msgid "Product Name"
 msgstr "Jina la Bidhaa"
 
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:278
+#: .\supplychain\templates\supplychain\video_tutorials.html:262
 msgid "Category"
 msgstr "Kategoria"
 
@@ -1194,6 +1242,87 @@ msgstr ""
 
 #: .\supplychain\templates\supplychain\update_logistic_logo.html:45
 msgid "Recommended size: 400x400 pixels. Maximum file size: 5MB."
+msgstr ""
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:16
+msgid "Video Tutorials"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:17
+msgid "Learn farming techniques, post-harvest handling, and more from experts"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:27
+msgid "Educational Videos for Farmers"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:28
+msgid ""
+"These videos cover a wide range of topics to help you improve your farming "
+"practices, increase yields, and prepare your products for international "
+"markets."
+msgstr ""
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:253
+msgid "Can't find what you're looking for?"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:254
+msgid "Request a specific tutorial or topic you'd like to learn more about"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:258
+msgid "Topic"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:259
+msgid "e.g., Organic Pest Control"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:264
+#, fuzzy
+#| msgid "Category"
+msgid "Select category"
+msgstr "Kategoria"
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:265
+msgid "Farming Techniques"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:266
+msgid "Post-Harvest Handling"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:267
+#, fuzzy
+#| msgid "Sustainable Practices"
+msgid "Sustainable Farming"
+msgstr "Mbinu Endelevu"
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:268
+msgid "Marketing"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:269
+msgid "Business Management"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:270
+msgid "Other"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:274
+#, fuzzy
+#| msgid "Product Interests"
+msgid "Details"
+msgstr "Maslahi ya Bidhaa"
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:275
+msgid "Please describe what specific information you are looking for..."
+msgstr ""
+
+#: .\supplychain\templates\supplychain\video_tutorials.html:279
+msgid "Submit Request"
 msgstr ""
 
 #: .\supplychain\templates\supplychain\view_logistic_profile.html:23
