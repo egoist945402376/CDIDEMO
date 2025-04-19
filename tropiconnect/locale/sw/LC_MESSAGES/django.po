@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-19 17:09+0100\n"
+"POT-Creation-Date: 2025-04-19 17:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,6 +95,7 @@ msgstr "Vitendo"
 
 #: .\supplychain\templates\supplychain\add_farm.html:38
 #: .\supplychain\templates\supplychain\add_product.html:46
+#: .\supplychain\templates\supplychain\create_community.html:37
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:280
 msgid "Description"
 msgstr "Maelezo"
@@ -159,6 +160,7 @@ msgstr "Sasisha Picha"
 #: .\supplychain\templates\supplychain\add_farm_photo.html:91
 #: .\supplychain\templates\supplychain\browse_communities.html:106
 #: .\supplychain\templates\supplychain\community_detail.html:10
+#: .\supplychain\templates\supplychain\create_community.html:10
 msgid "Back to Dashboard"
 msgstr "Dashibodi"
 
@@ -761,7 +763,106 @@ msgstr "kamili"
 
 #: .\supplychain\templates\supplychain\community_detail.html:197
 msgid "No contact information provided. Please contact the community creator:"
-msgstr "Hakuna taarifa za mawasiliano zilizotolewa. Tafadhali wasiliana na muundaji wa jamii:"
+msgstr ""
+"Hakuna taarifa za mawasiliano zilizotolewa. Tafadhali wasiliana na muundaji "
+"wa jamii:"
+
+#: .\supplychain\templates\supplychain\create_community.html:19
+msgid "Create a New Farmer Community"
+msgstr "Unda Jamii Mpya ya Wakulima"
+
+#: .\supplychain\templates\supplychain\create_community.html:24
+msgid "Community Tips:"
+msgstr "Vidokezo vya Jamii:"
+
+#: .\supplychain\templates\supplychain\create_community.html:24
+msgid ""
+"Creating a community helps you connect with other farmers, share knowledge, "
+"and attract buyers as a group. You can host up to 50 members in your "
+"community."
+msgstr ""
+"Kuunda jamii kunakusaidia kuunganika na wakulima wengine, kubadilishana maarifa, "
+"na kuvutia wanunuzi kama kikundi. Unaweza kuwa na hadi wanachama 50 katika jamii yako."
+
+#: .\supplychain\templates\supplychain\create_community.html:31
+msgid "Community Name"
+msgstr "Jina la Jamii"
+
+#: .\supplychain\templates\supplychain\create_community.html:33
+msgid "Choose a name that reflects the purpose of your community."
+msgstr "Chagua jina linaloakisi madhumuni ya jamii yako."
+
+#: .\supplychain\templates\supplychain\create_community.html:39
+msgid ""
+"Describe what your community is about, its goals, and what members can "
+"expect."
+msgstr ""
+"Eleza jamii yako inajishughulisha na nini, malengo yake, na wanachama wanaweza "
+"kutarajia nini."
+
+#: .\supplychain\templates\supplychain\create_community.html:43
+msgid "Primary Location"
+msgstr "Eneo Kuu"
+
+#: .\supplychain\templates\supplychain\create_community.html:45
+msgid "The main geographic area where your community operates."
+msgstr "Eneo kuu la kijiografia ambapo jamii yako inafanya kazi."
+
+#: .\supplychain\templates\supplychain\create_community.html:49
+msgid "Cover Image"
+msgstr "Picha ya Jalada"
+
+#: .\supplychain\templates\supplychain\create_community.html:51
+msgid "Upload an image that represents your community (optional)."
+msgstr "Pakia picha inayowakilisha jamii yako (hiari)."
+
+#: .\supplychain\templates\supplychain\create_community.html:55
+#: .\supplychain\templates\supplychain\register_buyer.html:219
+msgid "Contact Email"
+msgstr "Barua pepe ya Mawasiliano"
+
+#: .\supplychain\templates\supplychain\create_community.html:57
+msgid ""
+"An email where interested farmers can contact your community (optional)."
+msgstr ""
+"Barua pepe ambayo wakulima wenye nia wanaweza kuwasiliana na jamii yako (hiari)."
+
+#: .\supplychain\templates\supplychain\create_community.html:61
+msgid "Community Visibility"
+msgstr "Mwonekano wa Jamii"
+
+#: .\supplychain\templates\supplychain\create_community.html:65
+msgid "Make this community public"
+msgstr "Fanya jamii hii kuwa ya umma"
+
+#: .\supplychain\templates\supplychain\create_community.html:67
+msgid ""
+"Public communities can be discovered by all farmers. Private communities are "
+"only visible to members."
+msgstr ""
+"Jamii za umma zinaweza kugundulika na wakulima wote. Jamii za kibinafsi "
+"zinaonekana kwa wanachama tu."
+
+#: .\supplychain\templates\supplychain\create_community.html:72
+msgid "Focus Products"
+msgstr "Bidhaa za Mkazo"
+
+#: .\supplychain\templates\supplychain\create_community.html:85
+msgid "Select the main product categories your community focuses on."
+msgstr "Chagua makundi makuu ya bidhaa ambayo jamii yako inalenga."
+
+#: .\supplychain\templates\supplychain\create_community.html:89
+msgid "Maximum Members"
+msgstr "Wanachama wa Juu"
+
+#: .\supplychain\templates\supplychain\create_community.html:91
+msgid "Maximum number of members allowed in your community (5-50)."
+msgstr "Idadi ya juu ya wanachama wanaoruhusiwa katika jamii yako (5-50)."
+
+#: .\supplychain\templates\supplychain\create_community.html:96
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:344
+msgid "Create Community"
+msgstr "Unda Jamii"
 
 #: .\supplychain\templates\supplychain\edit_logistic_profile.html:11
 msgid "Edit Company Profile"
@@ -982,10 +1083,6 @@ msgstr "Ongeza Bidhaa Yako ya Kwanza"
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:343
 msgid "My Communities"
 msgstr "Jamii Zangu"
-
-#: .\supplychain\templates\supplychain\farmer_dashboard.html:344
-msgid "Create Community"
-msgstr "Unda Jamii"
 
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:351
 msgid "Communities I Created"
@@ -1486,10 +1583,6 @@ msgstr "Unganisha na wakulima wa Afrika na pata bidhaa za kilimo zenye ubora"
 #: .\supplychain\templates\supplychain\register_buyer.html:200
 msgid "Account Information"
 msgstr "Taarifa za Akaunti"
-
-#: .\supplychain\templates\supplychain\register_buyer.html:219
-msgid "Contact Email"
-msgstr "Barua pepe ya Mawasiliano"
 
 #: .\supplychain\templates\supplychain\register_buyer.html:241
 #: .\supplychain\templates\supplychain\register_farmer.html:246
