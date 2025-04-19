@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-19 17:38+0100\n"
+"POT-Creation-Date: 2025-04-19 17:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,6 +70,7 @@ msgstr "Toa taarifa zozote za ziada kuhusu cheti hiki."
 #: .\supplychain\templates\supplychain\add_company_certification.html:61
 #: .\supplychain\templates\supplychain\add_farm.html:60
 #: .\supplychain\templates\supplychain\add_product.html:81
+#: .\supplychain\templates\supplychain\edit_farmer_profile.html:69
 #: .\supplychain\templates\supplychain\edit_logistic_profile.html:98
 #: .\supplychain\templates\supplychain\update_logistic_logo.html:49
 msgid "Cancel"
@@ -906,9 +907,47 @@ msgstr ""
 "utafutaji wa jamii."
 
 #: .\supplychain\templates\supplychain\edit_community.html:155
+#: .\supplychain\templates\supplychain\edit_farmer_profile.html:68
 #: .\supplychain\templates\supplychain\edit_logistic_profile.html:99
 msgid "Save Changes"
 msgstr "Hifadhi Mabadiliko"
+
+#: .\supplychain\templates\supplychain\edit_farmer_profile.html:11
+msgid "Edit Profile Information"
+msgstr "Taarifa Binafsi"
+
+#: .\supplychain\templates\supplychain\edit_farmer_profile.html:26
+#: .\supplychain\templates\supplychain\register_farmer.html:212
+#: .\supplychain\templates\supplychain\register_logistic.html:213
+msgid "Email Address"
+msgstr "Anwani ya Barua Pepe"
+
+#: .\supplychain\templates\supplychain\edit_farmer_profile.html:36
+#: .\supplychain\templates\supplychain\edit_logistic_profile.html:50
+#: .\supplychain\templates\supplychain\register_farmer.html:224
+#: .\supplychain\templates\supplychain\register_logistic.html:225
+msgid "Phone Number"
+msgstr "Namba ya Simu"
+
+#: .\supplychain\templates\supplychain\edit_farmer_profile.html:46
+msgid "Region"
+msgstr "Mkoa"
+
+#: .\supplychain\templates\supplychain\edit_farmer_profile.html:53
+msgid "Your location in Kenya. Default is \\"
+msgstr "Eneo lako nchini Kenya. Chaguo-msingi ni \\"
+
+#: .\supplychain\templates\supplychain\edit_farmer_profile.html:57
+msgid "Bio"
+msgstr "Wasifu"
+
+#: .\supplychain\templates\supplychain\edit_farmer_profile.html:64
+msgid ""
+"Tell buyers about yourself, your farming practices, and what makes your "
+"produce special."
+msgstr ""
+"Hujaongeza wasifu wako bado. Waambie wanunuzi kuhusu wewe, mbinu zako za "
+"kilimo, na kile kinachofanya mazao yako yawe ya kipekee."
 
 #: .\supplychain\templates\supplychain\edit_logistic_profile.html:11
 msgid "Edit Company Profile"
@@ -918,12 +957,6 @@ msgstr ""
 #: .\supplychain\templates\supplychain\register_logistic.html:201
 msgid "Contact Person"
 msgstr "Wasiliana Nasi"
-
-#: .\supplychain\templates\supplychain\edit_logistic_profile.html:50
-#: .\supplychain\templates\supplychain\register_farmer.html:224
-#: .\supplychain\templates\supplychain\register_logistic.html:225
-msgid "Phone Number"
-msgstr "Namba ya Simu"
 
 #: .\supplychain\templates\supplychain\edit_logistic_profile.html:62
 msgid "Email"
@@ -1714,11 +1747,6 @@ msgstr "Jina la Kwanza"
 #: .\supplychain\templates\supplychain\register_farmer.html:199
 msgid "Last Name"
 msgstr "Jina la Mwisho"
-
-#: .\supplychain\templates\supplychain\register_farmer.html:212
-#: .\supplychain\templates\supplychain\register_logistic.html:213
-msgid "Email Address"
-msgstr "Anwani ya Barua Pepe"
 
 #: .\supplychain\templates\supplychain\register_farmer.html:263
 #: .\supplychain\templates\supplychain\register_logistic.html:288
