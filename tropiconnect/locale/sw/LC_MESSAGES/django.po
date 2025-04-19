@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-19 16:22+0100\n"
+"POT-Creation-Date: 2025-04-19 16:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,6 +68,9 @@ msgid "Provide any additional information about this certification."
 msgstr "Toa taarifa zozote za ziada kuhusu cheti hiki."
 
 #: .\supplychain\templates\supplychain\add_company_certification.html:61
+#: .\supplychain\templates\supplychain\add_farm.html:60
+#: .\supplychain\templates\supplychain\add_product.html:81
+#: .\supplychain\templates\supplychain\add_product_need.html:58
 #: .\supplychain\templates\supplychain\edit_logistic_profile.html:98
 #: .\supplychain\templates\supplychain\update_logistic_logo.html:49
 msgid "Cancel"
@@ -77,6 +80,40 @@ msgstr "Ghairi"
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:186
 msgid "Add Certification"
 msgstr "Ongeza Cheti"
+
+#: .\supplychain\templates\supplychain\add_farm.html:11
+msgid "Add New Farm"
+msgstr "Ongeza Shamba"
+
+#: .\supplychain\templates\supplychain\add_farm.html:18
+msgid "Farm Name"
+msgstr "Jina la Kwanza"
+
+#: .\supplychain\templates\supplychain\add_farm.html:28
+#: .\supplychain\templates\supplychain\buyer_order_history.html:75
+msgid "Location"
+msgstr "Vitendo"
+
+#: .\supplychain\templates\supplychain\add_farm.html:38
+#: .\supplychain\templates\supplychain\add_product.html:46
+#: .\supplychain\templates\supplychain\add_product_need.html:29
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:280
+msgid "Description"
+msgstr "Maelezo"
+
+#: .\supplychain\templates\supplychain\add_farm.html:45
+msgid ""
+"Describe your farm, including size, products grown, farming methods, etc."
+msgstr "Eleza shamba lako, ikijumuisha ukubwa, mazao yanayolimwa, mbinu za kilimo, n.k."
+
+#: .\supplychain\templates\supplychain\add_farm.html:49
+msgid "Established Year"
+msgstr "Ilianzishwa:"
+
+#: .\supplychain\templates\supplychain\add_farm.html:59
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:104
+msgid "Add Farm"
+msgstr "Ongeza Shamba"
 
 #: .\supplychain\templates\supplychain\add_farm_photo.html:11
 msgid "Add Photo to"
@@ -122,6 +159,105 @@ msgstr "Sasisha Picha"
 #: .\supplychain\templates\supplychain\add_farm_photo.html:91
 msgid "Back to Dashboard"
 msgstr "Dashibodi"
+
+#: .\supplychain\templates\supplychain\add_product.html:11
+#, fuzzy
+#| msgid "Add Product"
+msgid "Add New Product"
+msgstr "Ongeza Bidhaa"
+
+#: .\supplychain\templates\supplychain\add_product.html:26
+#: .\supplychain\templates\supplychain\add_product_need.html:18
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:277
+msgid "Product Name"
+msgstr "Jina la Bidhaa"
+
+#: .\supplychain\templates\supplychain\add_product.html:36
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:278
+#: .\supplychain\templates\supplychain\video_tutorials.html:262
+msgid "Category"
+msgstr "Kategoria"
+
+#: .\supplychain\templates\supplychain\add_product.html:53
+msgid ""
+"Describe your product including quality, specifications, available "
+"quantities, etc."
+msgstr ""
+
+#: .\supplychain\templates\supplychain\add_product.html:57
+#, fuzzy
+#| msgid "Product:"
+msgid "Product Photo"
+msgstr "Bidhaa:"
+
+#: .\supplychain\templates\supplychain\add_product.html:64
+msgid "Upload a clear image of your product. Max size: 2MB."
+msgstr ""
+
+#: .\supplychain\templates\supplychain\add_product.html:70
+msgid "This product is currently available"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\add_product.html:80
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:267
+msgid "Add Product"
+msgstr "Ongeza Bidhaa"
+
+#: .\supplychain\templates\supplychain\add_product_need.html:11
+#, fuzzy
+#| msgid "Add Product"
+msgid "Add New Product Need"
+msgstr "Ongeza Bidhaa"
+
+#: .\supplychain\templates\supplychain\add_product_need.html:20
+msgid "Specify the name of the product you need."
+msgstr ""
+
+#: .\supplychain\templates\supplychain\add_product_need.html:24
+#, fuzzy
+#| msgid "Product Name"
+msgid "Product Category"
+msgstr "Jina la Bidhaa"
+
+#: .\supplychain\templates\supplychain\add_product_need.html:31
+msgid ""
+"Provide details about the product quality, specifications, and any other "
+"requirements."
+msgstr ""
+
+#: .\supplychain\templates\supplychain\add_product_need.html:36
+#: .\supplychain\templates\supplychain\buyer_order_history.html:77
+#: .\supplychain\templates\supplychain\order_history.html:136
+#, fuzzy
+#| msgid "Quantity:"
+msgid "Quantity"
+msgstr "Kiasi:"
+
+#: .\supplychain\templates\supplychain\add_product_need.html:40
+msgid "Unit"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\add_product_need.html:46
+msgid "Price per kg (USD)"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\add_product_need.html:48
+msgid "Specify the price you're willing to pay per kilogram in USD."
+msgstr ""
+
+#: .\supplychain\templates\supplychain\add_product_need.html:52
+msgid "Needed By"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\add_product_need.html:54
+msgid "When do you need this product by?"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\add_product_need.html:59
+#, fuzzy
+#| msgid "Add Product"
+msgid "Add Product Need"
+msgstr "Ongeza Bidhaa"
 
 #: .\supplychain\templates\supplychain\buyer_login.html:116
 #: .\supplychain\templates\supplychain\farmer_login.html:114
@@ -300,12 +436,6 @@ msgstr ""
 msgid "Farmer"
 msgstr "Ingia kama Mkulima"
 
-#: .\supplychain\templates\supplychain\buyer_order_history.html:75
-#, fuzzy
-#| msgid "Actions"
-msgid "Location"
-msgstr "Vitendo"
-
 #: .\supplychain\templates\supplychain\buyer_order_history.html:76
 #: .\supplychain\templates\supplychain\order_history.html:77
 #: .\supplychain\templates\supplychain\order_history.html:135
@@ -313,13 +443,6 @@ msgstr "Vitendo"
 #| msgid "Product:"
 msgid "Product"
 msgstr "Bidhaa:"
-
-#: .\supplychain\templates\supplychain\buyer_order_history.html:77
-#: .\supplychain\templates\supplychain\order_history.html:136
-#, fuzzy
-#| msgid "Quantity:"
-msgid "Quantity"
-msgstr "Kiasi:"
 
 #: .\supplychain\templates\supplychain\buyer_order_history.html:78
 #: .\supplychain\templates\supplychain\order_history.html:137
@@ -483,10 +606,6 @@ msgstr ""
 msgid "My Farms"
 msgstr "Mashamba Yangu"
 
-#: .\supplychain\templates\supplychain\farmer_dashboard.html:104
-msgid "Add Farm"
-msgstr "Ongeza Shamba"
-
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:139
 msgid "Previous"
 msgstr "Iliyotangulia"
@@ -561,26 +680,9 @@ msgstr "Ongeza Cheti Chako cha Kwanza"
 msgid "My Products"
 msgstr "Bidhaa Zangu"
 
-#: .\supplychain\templates\supplychain\farmer_dashboard.html:267
-msgid "Add Product"
-msgstr "Ongeza Bidhaa"
-
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:276
 msgid "Photo"
 msgstr "Picha"
-
-#: .\supplychain\templates\supplychain\farmer_dashboard.html:277
-msgid "Product Name"
-msgstr "Jina la Bidhaa"
-
-#: .\supplychain\templates\supplychain\farmer_dashboard.html:278
-#: .\supplychain\templates\supplychain\video_tutorials.html:262
-msgid "Category"
-msgstr "Kategoria"
-
-#: .\supplychain\templates\supplychain\farmer_dashboard.html:280
-msgid "Description"
-msgstr "Maelezo"
 
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:304
 msgid "Available"
