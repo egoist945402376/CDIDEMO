@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-19 17:30+0100\n"
+"POT-Creation-Date: 2025-04-19 17:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,12 +90,14 @@ msgstr "Jina la Kwanza"
 
 #: .\supplychain\templates\supplychain\add_farm.html:28
 #: .\supplychain\templates\supplychain\buyer_order_history.html:75
+#: .\supplychain\templates\supplychain\edit_community.html:60
 msgid "Location"
 msgstr "Vitendo"
 
 #: .\supplychain\templates\supplychain\add_farm.html:38
 #: .\supplychain\templates\supplychain\add_product.html:46
 #: .\supplychain\templates\supplychain\create_community.html:37
+#: .\supplychain\templates\supplychain\edit_community.html:47
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:280
 msgid "Description"
 msgstr "Maelezo"
@@ -781,10 +783,12 @@ msgid ""
 "and attract buyers as a group. You can host up to 50 members in your "
 "community."
 msgstr ""
-"Kuunda jamii kunakusaidia kuunganika na wakulima wengine, kubadilishana maarifa, "
-"na kuvutia wanunuzi kama kikundi. Unaweza kuwa na hadi wanachama 50 katika jamii yako."
+"Kuunda jamii kunakusaidia kuunganika na wakulima wengine, kubadilishana "
+"maarifa, na kuvutia wanunuzi kama kikundi. Unaweza kuwa na hadi wanachama 50 "
+"katika jamii yako."
 
 #: .\supplychain\templates\supplychain\create_community.html:31
+#: .\supplychain\templates\supplychain\edit_community.html:35
 msgid "Community Name"
 msgstr "Jina la Jamii"
 
@@ -797,8 +801,8 @@ msgid ""
 "Describe what your community is about, its goals, and what members can "
 "expect."
 msgstr ""
-"Eleza jamii yako inajishughulisha na nini, malengo yake, na wanachama wanaweza "
-"kutarajia nini."
+"Eleza jamii yako inajishughulisha na nini, malengo yake, na wanachama "
+"wanaweza kutarajia nini."
 
 #: .\supplychain\templates\supplychain\create_community.html:43
 msgid "Primary Location"
@@ -809,6 +813,7 @@ msgid "The main geographic area where your community operates."
 msgstr "Eneo kuu la kijiografia ambapo jamii yako inafanya kazi."
 
 #: .\supplychain\templates\supplychain\create_community.html:49
+#: .\supplychain\templates\supplychain\edit_community.html:73
 msgid "Cover Image"
 msgstr "Picha ya Jalada"
 
@@ -817,6 +822,7 @@ msgid "Upload an image that represents your community (optional)."
 msgstr "Pakia picha inayowakilisha jamii yako (hiari)."
 
 #: .\supplychain\templates\supplychain\create_community.html:55
+#: .\supplychain\templates\supplychain\edit_community.html:122
 #: .\supplychain\templates\supplychain\register_buyer.html:219
 msgid "Contact Email"
 msgstr "Barua pepe ya Mawasiliano"
@@ -825,7 +831,8 @@ msgstr "Barua pepe ya Mawasiliano"
 msgid ""
 "An email where interested farmers can contact your community (optional)."
 msgstr ""
-"Barua pepe ambayo wakulima wenye nia wanaweza kuwasiliana na jamii yako (hiari)."
+"Barua pepe ambayo wakulima wenye nia wanaweza kuwasiliana na jamii yako "
+"(hiari)."
 
 #: .\supplychain\templates\supplychain\create_community.html:61
 msgid "Community Visibility"
@@ -844,6 +851,7 @@ msgstr ""
 "zinaonekana kwa wanachama tu."
 
 #: .\supplychain\templates\supplychain\create_community.html:72
+#: .\supplychain\templates\supplychain\edit_community.html:91
 msgid "Focus Products"
 msgstr "Bidhaa za Mkazo"
 
@@ -852,6 +860,7 @@ msgid "Select the main product categories your community focuses on."
 msgstr "Chagua makundi makuu ya bidhaa ambayo jamii yako inalenga."
 
 #: .\supplychain\templates\supplychain\create_community.html:89
+#: .\supplychain\templates\supplychain\edit_community.html:108
 msgid "Maximum Members"
 msgstr "Wanachama wa Juu"
 
@@ -863,6 +872,43 @@ msgstr "Idadi ya juu ya wanachama wanaoruhusiwa katika jamii yako (5-50)."
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:344
 msgid "Create Community"
 msgstr "Unda Jamii"
+
+#: .\supplychain\templates\supplychain\edit_community.html:13
+msgid "Back to Community"
+msgstr "Rudi kwenye Jamii"
+
+#: .\supplychain\templates\supplychain\edit_community.html:19
+msgid "Edit Community:"
+msgstr "Hariri Jamii:"
+
+#: .\supplychain\templates\supplychain\edit_community.html:56
+msgid "Describe the purpose and goals of this community."
+msgstr "Eleza madhumuni na malengo ya jamii hii."
+
+#: .\supplychain\templates\supplychain\edit_community.html:69
+msgid "Region, city, or general area where this community is based."
+msgstr "Mkoa, mji, au eneo la jumla ambalo jamii hii iko."
+
+#: .\supplychain\templates\supplychain\edit_community.html:76
+msgid "Current cover image"
+msgstr "Picha ya jalada ya sasa"
+
+#: .\supplychain\templates\supplychain\edit_community.html:77
+msgid "Current cover image. Upload a new one to replace it."
+msgstr "Picha ya jalada ya sasa. Pakia mpya ili kuibadilisha."
+
+#: .\supplychain\templates\supplychain\edit_community.html:150
+msgid ""
+"If unchecked, the community will be private and not visible in community "
+"searches."
+msgstr ""
+"Ikiwa haijawekwa alama, jamii itakuwa ya kibinafsi na haitaonekana katika "
+"utafutaji wa jamii."
+
+#: .\supplychain\templates\supplychain\edit_community.html:155
+#: .\supplychain\templates\supplychain\edit_logistic_profile.html:99
+msgid "Save Changes"
+msgstr "Hifadhi Mabadiliko"
 
 #: .\supplychain\templates\supplychain\edit_logistic_profile.html:11
 msgid "Edit Company Profile"
@@ -899,10 +945,6 @@ msgstr ""
 #: .\supplychain\templates\supplychain\register_logistic.html:249
 msgid "Company Bio"
 msgstr "Jina la Kampuni"
-
-#: .\supplychain\templates\supplychain\edit_logistic_profile.html:99
-msgid "Save Changes"
-msgstr ""
 
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:13
 msgid "Farmer Home"

@@ -1,6 +1,7 @@
 {% extends "supplychain/base.html" %}
 {% load static %}
 {% load widget_tweaks %}
+{% load i18n %}
 
 {% block content %}
 <div class="container py-5">
@@ -9,13 +10,13 @@
             <!-- Back buttons -->
             <div class="mb-4">
                 <a href="{% url 'community_detail' community.id %}" class="btn btn-outline-primary">
-                    <i class="bi bi-arrow-left"></i> Back to Community
+                    <i class="bi bi-arrow-left"></i> {% trans "Back to Community" %}
                 </a>
             </div>
             
             <div class="card shadow-sm">
                 <div class="card-header bg-white">
-                    <h1 class="h3 mb-0">Edit Community: {{ community.name }}</h1>
+                    <h1 class="h3 mb-0">{% trans "Edit Community:" %} {{ community.name }}</h1>
                 </div>
                 
                 <div class="card-body">
@@ -31,7 +32,7 @@
                         {% endif %}
                         
                         <div class="mb-3">
-                            <label for="{{ form.name.id_for_label }}" class="form-label">Community Name</label>
+                            <label for="{{ form.name.id_for_label }}" class="form-label">{% trans "Community Name" %}</label>
                             {{ form.name|add_class:"form-control" }}
                             {% if form.name.errors %}
                                 <div class="invalid-feedback d-block">
@@ -43,7 +44,7 @@
                         </div>
                         
                         <div class="mb-3">
-                            <label for="{{ form.description.id_for_label }}" class="form-label">Description</label>
+                            <label for="{{ form.description.id_for_label }}" class="form-label">{% trans "Description" %}</label>
                             {{ form.description|add_class:"form-control" }}
                             {% if form.description.errors %}
                                 <div class="invalid-feedback d-block">
@@ -52,11 +53,11 @@
                                     {% endfor %}
                                 </div>
                             {% endif %}
-                            <div class="form-text">Describe the purpose and goals of this community.</div>
+                            <div class="form-text">{% trans "Describe the purpose and goals of this community." %}</div>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="{{ form.location.id_for_label }}" class="form-label">Location</label>
+                            <label for="{{ form.location.id_for_label }}" class="form-label">{% trans "Location" %}</label>
                             {{ form.location|add_class:"form-control" }}
                             {% if form.location.errors %}
                                 <div class="invalid-feedback d-block">
@@ -65,15 +66,15 @@
                                     {% endfor %}
                                 </div>
                             {% endif %}
-                            <div class="form-text">Region, city, or general area where this community is based.</div>
+                            <div class="form-text">{% trans "Region, city, or general area where this community is based." %}</div>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="{{ form.cover_image.id_for_label }}" class="form-label">Cover Image</label>
+                            <label for="{{ form.cover_image.id_for_label }}" class="form-label">{% trans "Cover Image" %}</label>
                             {% if community.cover_image %}
                                 <div class="mb-2">
-                                    <img src="{{ community.cover_image.url }}" alt="Current cover image" class="img-thumbnail" style="max-height: 150px;">
-                                    <p class="form-text">Current cover image. Upload a new one to replace it.</p>
+                                    <img src="{{ community.cover_image.url }}" alt="{% trans "Current cover image" %}" class="img-thumbnail" style="max-height: 150px;">
+                                    <p class="form-text">{% trans "Current cover image. Upload a new one to replace it." %}</p>
                                 </div>
                             {% endif %}
                             {{ form.cover_image|add_class:"form-control" }}
@@ -87,7 +88,7 @@
                         </div>
                         
                         <div class="mb-3">
-                            <label for="{{ form.focus_products.id_for_label }}" class="form-label">Focus Products</label>
+                            <label for="{{ form.focus_products.id_for_label }}" class="form-label">{% trans "Focus Products" %}</label>
                             <div class="card card-body bg-light">
                                 {{ form.focus_products }}
                             </div>
@@ -104,7 +105,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="{{ form.max_members.id_for_label }}" class="form-label">Maximum Members</label>
+                                    <label for="{{ form.max_members.id_for_label }}" class="form-label">{% trans "Maximum Members" %}</label>
                                     {{ form.max_members|add_class:"form-control" }}
                                     {% if form.max_members.errors %}
                                         <div class="invalid-feedback d-block">
@@ -118,7 +119,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="{{ form.contact_email.id_for_label }}" class="form-label">Contact Email</label>
+                                    <label for="{{ form.contact_email.id_for_label }}" class="form-label">{% trans "Contact Email" %}</label>
                                     {{ form.contact_email|add_class:"form-control" }}
                                     {% if form.contact_email.errors %}
                                         <div class="invalid-feedback d-block">
@@ -146,12 +147,12 @@
                                     </div>
                                 {% endif %}
                             </div>
-                            <div class="form-text">If unchecked, the community will be private and not visible in community searches.</div>
+                            <div class="form-text">{% trans "If unchecked, the community will be private and not visible in community searches." %}</div>
                         </div>
                         
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary">
-                                <i class="bi bi-save"></i> Save Changes
+                                <i class="bi bi-save"></i> {% trans "Save Changes" %}
                             </button>
                         </div>
                     </form>
