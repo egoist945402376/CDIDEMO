@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-19 16:28+0100\n"
+"POT-Creation-Date: 2025-04-19 16:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,7 +70,6 @@ msgstr "Toa taarifa zozote za ziada kuhusu cheti hiki."
 #: .\supplychain\templates\supplychain\add_company_certification.html:61
 #: .\supplychain\templates\supplychain\add_farm.html:60
 #: .\supplychain\templates\supplychain\add_product.html:81
-#: .\supplychain\templates\supplychain\add_product_need.html:58
 #: .\supplychain\templates\supplychain\edit_logistic_profile.html:98
 #: .\supplychain\templates\supplychain\update_logistic_logo.html:49
 msgid "Cancel"
@@ -96,7 +95,6 @@ msgstr "Vitendo"
 
 #: .\supplychain\templates\supplychain\add_farm.html:38
 #: .\supplychain\templates\supplychain\add_product.html:46
-#: .\supplychain\templates\supplychain\add_product_need.html:29
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:280
 msgid "Description"
 msgstr "Maelezo"
@@ -104,7 +102,9 @@ msgstr "Maelezo"
 #: .\supplychain\templates\supplychain\add_farm.html:45
 msgid ""
 "Describe your farm, including size, products grown, farming methods, etc."
-msgstr "Eleza shamba lako, ikijumuisha ukubwa, mazao yanayolimwa, mbinu za kilimo, n.k."
+msgstr ""
+"Eleza shamba lako, ikijumuisha ukubwa, mazao yanayolimwa, mbinu za kilimo, "
+"n.k."
 
 #: .\supplychain\templates\supplychain\add_farm.html:49
 msgid "Established Year"
@@ -157,6 +157,7 @@ msgstr "Sasisha Picha"
 
 #: .\supplychain\templates\supplychain\add_farm_photo.html:86
 #: .\supplychain\templates\supplychain\add_farm_photo.html:91
+#: .\supplychain\templates\supplychain\browse_communities.html:106
 msgid "Back to Dashboard"
 msgstr "Dashibodi"
 
@@ -165,7 +166,6 @@ msgid "Add New Product"
 msgstr "Ongeza Bidhaa"
 
 #: .\supplychain\templates\supplychain\add_product.html:26
-#: .\supplychain\templates\supplychain\add_product_need.html:18
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:277
 msgid "Product Name"
 msgstr "Jina la Bidhaa"
@@ -181,7 +181,8 @@ msgid ""
 "Describe your product including quality, specifications, available "
 "quantities, etc."
 msgstr ""
-"Eleza bidhaa yako ikiwa ni pamoja na ubora, vigezo, kiasi kinachopatikana, n.k."
+"Eleza bidhaa yako ikiwa ni pamoja na ubora, vigezo, kiasi kinachopatikana, "
+"n.k."
 
 #: .\supplychain\templates\supplychain\add_product.html:57
 msgid "Product Photo"
@@ -200,54 +201,80 @@ msgstr "Bidhaa hii inapatikana kwa sasa"
 msgid "Add Product"
 msgstr "Ongeza Bidhaa"
 
-#: .\supplychain\templates\supplychain\add_product_need.html:11
-msgid "Add New Product Need"
-msgstr "Ongeza Hitaji Jipya la Bidhaa"
+#: .\supplychain\templates\supplychain\browse_communities.html:10
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:430
+msgid "Browse Communities"
+msgstr "Vinjari Jamii"
 
-#: .\supplychain\templates\supplychain\add_product_need.html:20
-msgid "Specify the name of the product you need."
-msgstr "Taja jina la bidhaa unayohitaji."
-
-#: .\supplychain\templates\supplychain\add_product_need.html:24
-msgid "Product Category"
-msgstr "Kategoria ya Bidhaa"
-
-#: .\supplychain\templates\supplychain\add_product_need.html:31
+#: .\supplychain\templates\supplychain\browse_communities.html:11
 msgid ""
-"Provide details about the product quality, specifications, and any other "
-"requirements."
+"Find and join farmer communities to collaborate, share knowledge, and grow "
+"together."
 msgstr ""
-"Toa maelezo kuhusu ubora wa bidhaa, vigezo, na mahitaji mengine yoyote."
+"Hujaunda au kujiunga na jamii yoyote bado. Jamii husaidia wakulima "
+"kushirikiana, kubadilishana maarifa, na kuvutia wanunuzi kama kikundi."
 
-#: .\supplychain\templates\supplychain\add_product_need.html:36
-#: .\supplychain\templates\supplychain\buyer_order_history.html:77
-#: .\supplychain\templates\supplychain\order_history.html:136
-msgid "Quantity"
-msgstr "Kiasi"
+#: .\supplychain\templates\supplychain\browse_communities.html:17
+msgid "Search communities by name, description or location"
+msgstr ""
 
-#: .\supplychain\templates\supplychain\add_product_need.html:40
-msgid "Unit"
-msgstr "Kitengo"
+#: .\supplychain\templates\supplychain\browse_communities.html:18
+msgid "Search"
+msgstr ""
 
-#: .\supplychain\templates\supplychain\add_product_need.html:46
-msgid "Price per kg (USD)"
-msgstr "Bei kwa kilo (USD)"
+#: .\supplychain\templates\supplychain\browse_communities.html:49
+msgid "Members"
+msgstr "wanachama"
 
-#: .\supplychain\templates\supplychain\add_product_need.html:48
-msgid "Specify the price you're willing to pay per kilogram in USD."
-msgstr "Taja bei unayotaka kulipa kwa kilo moja kwa dola za Marekani."
+#: .\supplychain\templates\supplychain\browse_communities.html:53
+msgid "Created"
+msgstr "Muundaji"
 
-#: .\supplychain\templates\supplychain\add_product_need.html:52
-msgid "Needed By"
-msgstr "Inahitajika Ifikapo"
+#: .\supplychain\templates\supplychain\browse_communities.html:58
+#: .\supplychain\templates\supplychain\buyer_order_history.html:80
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:200
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:279
+#: .\supplychain\templates\supplychain\order_history.html:97
+#: .\supplychain\templates\supplychain\order_history.html:139
+msgid "Status"
+msgstr "Hali"
 
-#: .\supplychain\templates\supplychain\add_product_need.html:54
-msgid "When do you need this product by?"
-msgstr "Unahitaji bidhaa hii ifikapo lini?"
+#: .\supplychain\templates\supplychain\browse_communities.html:59
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:370
+msgid "Creator"
+msgstr "Muundaji"
 
-#: .\supplychain\templates\supplychain\add_product_need.html:59
-msgid "Add Product Need"
-msgstr "Ongeza Hitaji la Bidhaa"
+#: .\supplychain\templates\supplychain\browse_communities.html:66
+msgid "Focus Products:"
+msgstr "Vinjari Bidhaa"
+
+#: .\supplychain\templates\supplychain\browse_communities.html:75
+msgid "View Community"
+msgstr "Unda Jamii"
+
+#: .\supplychain\templates\supplychain\browse_communities.html:77
+msgid "Community Full"
+msgstr "Unda Jamii"
+
+#: .\supplychain\templates\supplychain\browse_communities.html:81
+msgid "Join Community"
+msgstr "Unda Jamii"
+
+#: .\supplychain\templates\supplychain\browse_communities.html:92
+msgid "No communities found matching"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\browse_communities.html:93
+msgid "Show All Communities"
+msgstr "Vinjari Jamii"
+
+#: .\supplychain\templates\supplychain\browse_communities.html:95
+msgid "There are no public communities available at the moment."
+msgstr ""
+
+#: .\supplychain\templates\supplychain\browse_communities.html:96
+msgid "Create Your Own Community"
+msgstr "Unda Jamii Yako ya Kwanza"
 
 #: .\supplychain\templates\supplychain\buyer_login.html:116
 #: .\supplychain\templates\supplychain\farmer_login.html:114
@@ -434,6 +461,11 @@ msgstr "Ingia kama Mkulima"
 msgid "Product"
 msgstr "Bidhaa:"
 
+#: .\supplychain\templates\supplychain\buyer_order_history.html:77
+#: .\supplychain\templates\supplychain\order_history.html:136
+msgid "Quantity"
+msgstr "Kiasi"
+
 #: .\supplychain\templates\supplychain\buyer_order_history.html:78
 #: .\supplychain\templates\supplychain\order_history.html:137
 #, fuzzy
@@ -446,14 +478,6 @@ msgstr "Bei:"
 #: .\supplychain\templates\supplychain\order_history.html:138
 msgid "Total"
 msgstr "Jumla"
-
-#: .\supplychain\templates\supplychain\buyer_order_history.html:80
-#: .\supplychain\templates\supplychain\farmer_dashboard.html:200
-#: .\supplychain\templates\supplychain\farmer_dashboard.html:279
-#: .\supplychain\templates\supplychain\order_history.html:97
-#: .\supplychain\templates\supplychain\order_history.html:139
-msgid "Status"
-msgstr "Hali"
 
 #: .\supplychain\templates\supplychain\buyer_order_history.html:221
 #: .\supplychain\templates\supplychain\order_history.html:323
@@ -706,10 +730,6 @@ msgstr "Unda Jamii"
 msgid "Communities I Created"
 msgstr "Jamii Nilizounda"
 
-#: .\supplychain\templates\supplychain\farmer_dashboard.html:370
-msgid "Creator"
-msgstr "Muundaji"
-
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:371
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:405
 msgid "members"
@@ -738,10 +758,6 @@ msgstr ""
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:429
 msgid "Create Your First Community"
 msgstr "Unda Jamii Yako ya Kwanza"
-
-#: .\supplychain\templates\supplychain\farmer_dashboard.html:430
-msgid "Browse Communities"
-msgstr "Vinjari Jamii"
 
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:444
 msgid "Buyer Reviews"
@@ -1568,6 +1584,39 @@ msgstr ""
 #: .\supplychain\views.py:31
 msgid "TropiConnect Home page"
 msgstr "Ukurasa wa Nyumbani wa TropiConnect"
+
+#~ msgid "Add New Product Need"
+#~ msgstr "Ongeza Hitaji Jipya la Bidhaa"
+
+#~ msgid "Specify the name of the product you need."
+#~ msgstr "Taja jina la bidhaa unayohitaji."
+
+#~ msgid "Product Category"
+#~ msgstr "Kategoria ya Bidhaa"
+
+#~ msgid ""
+#~ "Provide details about the product quality, specifications, and any other "
+#~ "requirements."
+#~ msgstr ""
+#~ "Toa maelezo kuhusu ubora wa bidhaa, vigezo, na mahitaji mengine yoyote."
+
+#~ msgid "Unit"
+#~ msgstr "Kitengo"
+
+#~ msgid "Price per kg (USD)"
+#~ msgstr "Bei kwa kilo (USD)"
+
+#~ msgid "Specify the price you're willing to pay per kilogram in USD."
+#~ msgstr "Taja bei unayotaka kulipa kwa kilo moja kwa dola za Marekani."
+
+#~ msgid "Needed By"
+#~ msgstr "Inahitajika Ifikapo"
+
+#~ msgid "When do you need this product by?"
+#~ msgstr "Unahitaji bidhaa hii ifikapo lini?"
+
+#~ msgid "Add Product Need"
+#~ msgstr "Ongeza Hitaji la Bidhaa"
 
 #~ msgid "Logout"
 #~ msgstr "Toka"
