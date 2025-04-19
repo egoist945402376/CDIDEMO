@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-19 16:45+0100\n"
+"POT-Creation-Date: 2025-04-19 16:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -211,24 +211,24 @@ msgid ""
 "Find and join farmer communities to collaborate, share knowledge, and grow "
 "together."
 msgstr ""
-"Hujaunda au kujiunga na jamii yoyote bado. Jamii husaidia wakulima "
-"kushirikiana, kubadilishana maarifa, na kuvutia wanunuzi kama kikundi."
+"Tafuta na jiunge na jamii za wakulima ili kushirikiana, kubadilishana "
+"maarifa, na kukua pamoja."
 
 #: .\supplychain\templates\supplychain\browse_communities.html:17
 msgid "Search communities by name, description or location"
-msgstr ""
+msgstr "Tafuta jamii kwa jina, maelezo au eneo"
 
 #: .\supplychain\templates\supplychain\browse_communities.html:18
 msgid "Search"
-msgstr ""
+msgstr "Tafuta"
 
 #: .\supplychain\templates\supplychain\browse_communities.html:49
 msgid "Members"
-msgstr "wanachama"
+msgstr "Wanachama"
 
 #: .\supplychain\templates\supplychain\browse_communities.html:53
 msgid "Created"
-msgstr "Muundaji"
+msgstr "Imeundwa"
 
 #: .\supplychain\templates\supplychain\browse_communities.html:58
 #: .\supplychain\templates\supplychain\buyer_order_history.html:80
@@ -246,37 +246,38 @@ msgstr "Muundaji"
 
 #: .\supplychain\templates\supplychain\browse_communities.html:66
 msgid "Focus Products:"
-msgstr "Vinjari Bidhaa"
+msgstr "Bidhaa za Mkazo:"
 
 #: .\supplychain\templates\supplychain\browse_communities.html:75
 msgid "View Community"
-msgstr "Unda Jamii"
+msgstr "Tazama Jamii"
 
 #: .\supplychain\templates\supplychain\browse_communities.html:77
 msgid "Community Full"
-msgstr "Unda Jamii"
+msgstr "Jamii Imejaa"
 
 #: .\supplychain\templates\supplychain\browse_communities.html:81
 msgid "Join Community"
-msgstr "Unda Jamii"
+msgstr "Jiunge na Jamii"
 
 #: .\supplychain\templates\supplychain\browse_communities.html:92
 msgid "No communities found matching"
-msgstr ""
+msgstr "Hakuna jamii zinazolingana zimepatikana"
 
 #: .\supplychain\templates\supplychain\browse_communities.html:93
 msgid "Show All Communities"
-msgstr "Vinjari Jamii"
+msgstr "Onyesha Jamii Zote"
 
 #: .\supplychain\templates\supplychain\browse_communities.html:95
 msgid "There are no public communities available at the moment."
-msgstr ""
+msgstr "Hakuna jamii za umma zinazopatikana kwa sasa."
 
 #: .\supplychain\templates\supplychain\browse_communities.html:96
 msgid "Create Your Own Community"
-msgstr "Unda Jamii Yako ya Kwanza"
+msgstr "Unda Jamii Yako Mwenyewe"
 
 #: .\supplychain\templates\supplychain\buyer_login.html:116
+#: .\supplychain\templates\supplychain\certification_help.html:13
 #: .\supplychain\templates\supplychain\farmer_login.html:114
 #: .\supplychain\templates\supplychain\home.html:215
 #: .\supplychain\templates\supplychain\logistic_login.html:114
@@ -488,6 +489,206 @@ msgstr ""
 #: .\supplychain\templates\supplychain\order_history.html:326
 msgid "Export to PDF"
 msgstr ""
+
+#: .\supplychain\templates\supplychain\certification_help.html:4
+#: .\supplychain\templates\supplychain\certification_help.html:9
+msgid "International Market Regulations and Resources"
+msgstr "Kanuni na Rasilimali za Soko la Kimataifa"
+
+#: .\supplychain\templates\supplychain\certification_help.html:10
+msgid ""
+"Essential regulations, tools, and training resources for accessing "
+"international agricultural markets."
+msgstr ""
+"Kanuni muhimu, zana, na rasilimali za mafunzo kwa ajili ya kufikia "
+"masoko ya kilimo ya kimataifa."
+
+#: .\supplychain\templates\supplychain\certification_help.html:14
+msgid "Market Regulations"
+msgstr "Kanuni za Soko"
+
+#: .\supplychain\templates\supplychain\certification_help.html:25
+msgid "Resource Categories"
+msgstr "Makundi ya Rasilimali"
+
+#: .\supplychain\templates\supplychain\certification_help.html:28
+#: .\supplychain\templates\supplychain\certification_help.html:47
+msgid "EU Regulations"
+msgstr "Kanuni za EU"
+
+#: .\supplychain\templates\supplychain\certification_help.html:29
+msgid "Practical Tools"
+msgstr "Zana za Vitendo"
+
+#: .\supplychain\templates\supplychain\certification_help.html:30
+msgid "Online Training"
+msgstr "Mafunzo ya Mtandaoni"
+
+#: .\supplychain\templates\supplychain\certification_help.html:39
+msgid ""
+"Welcome to our comprehensive collection of regulations, tools, and resources "
+"for farmers looking to export agricultural products to international "
+"markets. These resources will help you understand and comply with key "
+"requirements necessary for successful market access."
+msgstr ""
+"Karibu kwenye mkusanyiko wetu kamili wa kanuni, zana, na rasilimali "
+"kwa wakulima wanaotaka kusafirisha bidhaa za kilimo kwenda masoko ya kimataifa. "
+"Rasilimali hizi zitakusaidia kuelewa na kufuata mahitaji muhimu yanayohitajika "
+"kwa ufikiaji wa soko unaofanikiwa."
+
+#: .\supplychain\templates\supplychain\certification_help.html:54
+msgid "Food Safety Laws (General Food Law - EC 178/2002)"
+msgstr "Sheria za Usalama wa Chakula (Sheria ya Chakula ya Jumla - EC 178/2002)"
+
+#: .\supplychain\templates\supplychain\certification_help.html:55
+msgid "Ensuring product safety, traceability, and contamination prevention."
+msgstr "Kuhakikisha usalama wa bidhaa, ufuatiliaji, na kuzuia uchafu."
+
+#: .\supplychain\templates\supplychain\certification_help.html:62
+msgid "Pesticide Residue Standards (MRLs - EC 396/2005)"
+msgstr "Viwango vya Mabaki ya Viuatilifu (MRLs - EC 396/2005)"
+
+#: .\supplychain\templates\supplychain\certification_help.html:63
+msgid "Setting pesticide residue limits; non-compliance leads to import bans."
+msgstr "Kuweka vikomo vya mabaki ya viuatilifu; kutofuata husababisha marufuku ya uagizaji."
+
+#: .\supplychain\templates\supplychain\certification_help.html:70
+msgid "Labeling & Traceability (EU 1169/2011)"
+msgstr "Uwekaji Lebo & Ufuatiliaji (EU 1169/2011)"
+
+#: .\supplychain\templates\supplychain\certification_help.html:71
+msgid ""
+"Requiring full labeling, including product name, origin, ingredients, "
+"allergens, and nutrition facts."
+msgstr ""
+"Kuhitaji uwekaji lebo kamili, ikiwa ni pamoja na jina la bidhaa, chanzo, "
+"viambato, vitu vinavyosababisha mzio, na ukweli wa lishe."
+
+#: .\supplychain\templates\supplychain\certification_help.html:78
+msgid "Sustainability Requirements (EU Organic 2018/848)"
+msgstr "Mahitaji ya Uendelevu (EU Organic 2018/848)"
+
+#: .\supplychain\templates\supplychain\certification_help.html:79
+msgid "Demanding organic certification for organic imports."
+msgstr "Kuhitaji cheti cha kikaboni kwa uagizaji wa bidhaa za kikaboni."
+
+#: .\supplychain\templates\supplychain\certification_help.html:86
+msgid "Sanitary & Phytosanitary Measures (SPS Agreement)"
+msgstr "Hatua za Usafi & Afya ya Mimea (Makubaliano ya SPS)"
+
+#: .\supplychain\templates\supplychain\certification_help.html:87
+msgid ""
+"Requiring quarantine checks for fresh fruits, meat, and other sensitive "
+"products."
+msgstr ""
+"Kuhitaji ukaguzi wa karantini kwa matunda safi, nyama, na bidhaa "
+"nyingine nyeti."
+
+#: .\supplychain\templates\supplychain\certification_help.html:94
+msgid "Common Agricultural Policy (CAP)"
+msgstr "Sera ya Pamoja ya Kilimo (CAP)"
+
+#: .\supplychain\templates\supplychain\certification_help.html:95
+msgid ""
+"EU's agricultural policy framework that affects market access requirements."
+msgstr ""
+"Mfumo wa sera ya kilimo ya EU ambayo inaathiri mahitaji ya ufikiaji wa soko."
+
+#: .\supplychain\templates\supplychain\certification_help.html:109
+msgid "Practical Tools & Additional Resources"
+msgstr "Zana za Vitendo & Rasilimali za Ziada"
+
+#: .\supplychain\templates\supplychain\certification_help.html:115
+msgid "EU Food Regulations Database: EUR-Lex"
+msgstr "Kanzidata ya Kanuni za Chakula za EU: EUR-Lex"
+
+#: .\supplychain\templates\supplychain\certification_help.html:116
+msgid "Comprehensive database of all EU regulations and directives."
+msgstr "Kanzidata kamili ya kanuni na maelekezo yote ya EU."
+
+#: .\supplychain\templates\supplychain\certification_help.html:123
+msgid "RASFF Alert Portal"
+msgstr "Tovuti ya Tahadhari ya RASFF"
+
+#: .\supplychain\templates\supplychain\certification_help.html:124
+msgid "Track food safety alerts and notifications affecting imports."
+msgstr "Fuatilia tahadhari za usalama wa chakula na arifa zinazoathiri uagizaji."
+
+#: .\supplychain\templates\supplychain\certification_help.html:131
+msgid "Organic Certification Guidelines: EU Organic Logo User Guide"
+msgstr "Miongozo ya Uthibitishaji wa Kikaboni: Mwongozo wa Mtumiaji wa Nembo ya Kikaboni ya EU"
+
+#: .\supplychain\templates\supplychain\certification_help.html:132
+msgid "Official guidelines for using the EU organic logo on products."
+msgstr "Miongozo rasmi ya kutumia nembo ya kikaboni ya EU kwenye bidhaa."
+
+#: .\supplychain\templates\supplychain\certification_help.html:139
+msgid "EU Import Helpdesk: EU Trade Helpdesk"
+msgstr "Dawati la Msaada la Uagizaji wa EU: Dawati la Msaada la Biashara la EU"
+
+#: .\supplychain\templates\supplychain\certification_help.html:140
+msgid "Resource for tariff and quota inquiries when exporting to the EU."
+msgstr "Rasilimali ya maswali ya ushuru na kiwango cha juu wakati wa kusafirisha kwenda EU."
+
+#: .\supplychain\templates\supplychain\certification_help.html:147
+msgid "Official Kenyan Support: KEPHIS"
+msgstr "Msaada Rasmi wa Kenya: KEPHIS"
+
+#: .\supplychain\templates\supplychain\certification_help.html:148
+msgid "Kenya Plant Health Inspectorate Service for plant quarantine support."
+msgstr "Huduma ya Ukaguzi wa Afya ya Mimea ya Kenya kwa msaada wa karantini ya mimea."
+
+#: .\supplychain\templates\supplychain\certification_help.html:155
+msgid "Dutch Customs Assistance"
+msgstr "Msaada wa Forodha ya Uholanzi"
+
+#: .\supplychain\templates\supplychain\certification_help.html:156
+msgid ""
+"Information on importing goods to the Netherlands through Dutch Customs."
+msgstr ""
+"Taarifa kuhusu kuingiza bidhaa Uholanzi kupitia Forodha ya Uholanzi."
+
+#: .\supplychain\templates\supplychain\certification_help.html:169
+msgid "Online Training Resources"
+msgstr "Rasilimali za Mafunzo ya Mtandaoni"
+
+#: .\supplychain\templates\supplychain\certification_help.html:173
+msgid "BTSF and BTSF ACADEMY"
+msgstr "BTSF na AKADEMIA ya BTSF"
+
+#: .\supplychain\templates\supplychain\certification_help.html:174
+msgid ""
+"Better Training for Safer Food (BTSF) is a European Commission training "
+"initiative to improve the knowledge and implementation of EU rules covering "
+"food safety, plant, animal, and One Health."
+msgstr ""
+"Mafunzo Bora kwa Chakula Salama (BTSF) ni mpango wa mafunzo wa Tume ya Ulaya "
+"kuboresha maarifa na utekelezaji wa kanuni za EU zinazohusiana na usalama wa "
+"chakula, mimea, wanyama, na Afya Moja."
+
+#: .\supplychain\templates\supplychain\certification_help.html:175
+msgid "The courses address the following topics:"
+msgstr "Kozi hizi zinashughulikia mada zifuatazo:"
+
+#: .\supplychain\templates\supplychain\certification_help.html:177
+msgid "Plant Health"
+msgstr "Afya ya Mimea"
+
+#: .\supplychain\templates\supplychain\certification_help.html:178
+msgid "Pesticides"
+msgstr "Viuatilifu"
+
+#: .\supplychain\templates\supplychain\certification_help.html:179
+msgid "Food Safety"
+msgstr "Usalama wa Chakula"
+
+#: .\supplychain\templates\supplychain\certification_help.html:180
+msgid "Organic Farming"
+msgstr "Kilimo cha Kikaboni"
+
+#: .\supplychain\templates\supplychain\certification_help.html:184
+msgid "Access BTSF Training Resources"
+msgstr "Fikia Rasilimali za Mafunzo ya BTSF"
 
 #: .\supplychain\templates\supplychain\edit_logistic_profile.html:11
 msgid "Edit Company Profile"
@@ -1590,9 +1791,6 @@ msgstr "Ukurasa wa Nyumbani wa TropiConnect"
 
 #~ msgid "Specify the name of the product you need."
 #~ msgstr "Taja jina la bidhaa unayohitaji."
-
-#~ msgid "Product Category"
-#~ msgstr "Kategoria ya Bidhaa"
 
 #~ msgid ""
 #~ "Provide details about the product quality, specifications, and any other "
