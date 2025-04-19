@@ -201,60 +201,53 @@ msgid "Add Product"
 msgstr "Ongeza Bidhaa"
 
 #: .\supplychain\templates\supplychain\add_product_need.html:11
-#, fuzzy
-#| msgid "Add Product"
 msgid "Add New Product Need"
-msgstr "Ongeza Bidhaa"
+msgstr "Ongeza Hitaji Jipya la Bidhaa"
 
 #: .\supplychain\templates\supplychain\add_product_need.html:20
 msgid "Specify the name of the product you need."
-msgstr ""
+msgstr "Taja jina la bidhaa unayohitaji."
 
 #: .\supplychain\templates\supplychain\add_product_need.html:24
-#, fuzzy
-#| msgid "Product Name"
 msgid "Product Category"
-msgstr "Jina la Bidhaa"
+msgstr "Kategoria ya Bidhaa"
 
 #: .\supplychain\templates\supplychain\add_product_need.html:31
 msgid ""
 "Provide details about the product quality, specifications, and any other "
 "requirements."
 msgstr ""
+"Toa maelezo kuhusu ubora wa bidhaa, vigezo, na mahitaji mengine yoyote."
 
 #: .\supplychain\templates\supplychain\add_product_need.html:36
 #: .\supplychain\templates\supplychain\buyer_order_history.html:77
 #: .\supplychain\templates\supplychain\order_history.html:136
-#, fuzzy
-#| msgid "Quantity:"
 msgid "Quantity"
-msgstr "Kiasi:"
+msgstr "Kiasi"
 
 #: .\supplychain\templates\supplychain\add_product_need.html:40
 msgid "Unit"
-msgstr ""
+msgstr "Kitengo"
 
 #: .\supplychain\templates\supplychain\add_product_need.html:46
 msgid "Price per kg (USD)"
-msgstr ""
+msgstr "Bei kwa kilo (USD)"
 
 #: .\supplychain\templates\supplychain\add_product_need.html:48
 msgid "Specify the price you're willing to pay per kilogram in USD."
-msgstr ""
+msgstr "Taja bei unayotaka kulipa kwa kilo moja kwa dola za Marekani."
 
 #: .\supplychain\templates\supplychain\add_product_need.html:52
 msgid "Needed By"
-msgstr ""
+msgstr "Inahitajika Ifikapo"
 
 #: .\supplychain\templates\supplychain\add_product_need.html:54
 msgid "When do you need this product by?"
-msgstr ""
+msgstr "Unahitaji bidhaa hii ifikapo lini?"
 
 #: .\supplychain\templates\supplychain\add_product_need.html:59
-#, fuzzy
-#| msgid "Add Product"
 msgid "Add Product Need"
-msgstr "Ongeza Bidhaa"
+msgstr "Ongeza Hitaji la Bidhaa"
 
 #: .\supplychain\templates\supplychain\buyer_login.html:116
 #: .\supplychain\templates\supplychain\farmer_login.html:114
