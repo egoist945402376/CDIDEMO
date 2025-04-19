@@ -1,5 +1,6 @@
 {% extends "supplychain/base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <div class="container py-5">
@@ -7,55 +8,55 @@
         <div class="col-md-8">
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0"><i class="bi bi-cart-plus me-2"></i>Add New Product Need</h4>
+                    <h4 class="mb-0"><i class="bi bi-cart-plus me-2"></i>{% trans "Add New Product Need" %}</h4>
                 </div>
                 <div class="card-body">
                     <form method="post">
                         {% csrf_token %}
                         
                         <div class="mb-3">
-                            <label for="{{ form.product_name.id_for_label }}" class="form-label">Product Name</label>
+                            <label for="{{ form.product_name.id_for_label }}" class="form-label">{% trans "Product Name" %}</label>
                             {{ form.product_name }}
-                            <div class="form-text">Specify the name of the product you need.</div>
+                            <div class="form-text">{% trans "Specify the name of the product you need." %}</div>
                         </div>
                         
-                        <div class="mb-3">
-                            <label for="{{ form.product_category.id_for_label }}" class="form-label">Product Category</label>
+                        <div class="mb-3"></div>
+                            <label for="{{ form.product_category.id_for_label }}" class="form-label">{% trans "Product Category" %}</label>
                             {{ form.product_category }}
                         </div>
                         
                         <div class="mb-3">
-                            <label for="{{ form.description.id_for_label }}" class="form-label">Description</label>
+                            <label for="{{ form.description.id_for_label }}" class="form-label">{% trans "Description" %}</label>
                             {{ form.description }}
-                            <div class="form-text">Provide details about the product quality, specifications, and any other requirements.</div>
+                            <div class="form-text">{% trans "Provide details about the product quality, specifications, and any other requirements." %}</div>
                         </div>
                         
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="{{ form.quantity.id_for_label }}" class="form-label">Quantity</label>
+                                <label for="{{ form.quantity.id_for_label }}" class="form-label">{% trans "Quantity" %}</label>
                                 {{ form.quantity }}
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="{{ form.unit.id_for_label }}" class="form-label">Unit</label>
+                                <label for="{{ form.unit.id_for_label }}" class="form-label">{% trans "Unit" %}</label>
                                 {{ form.unit }}
                             </div>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="{{ form.price_per_kg.id_for_label }}" class="form-label">Price per kg (USD)</label>
+                            <label for="{{ form.price_per_kg.id_for_label }}" class="form-label">{% trans "Price per kg (USD)" %}</label>
                             {{ form.price_per_kg }}
-                            <div class="form-text">Specify the price you're willing to pay per kilogram in USD.</div>
+                            <div class="form-text">{% trans "Specify the price you're willing to pay per kilogram in USD." %}</div>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="{{ form.date_needed_by.id_for_label }}" class="form-label">Needed By</label>
+                            <label for="{{ form.date_needed_by.id_for_label }}" class="form-label">{% trans "Needed By" %}</label>
                             {{ form.date_needed_by }}
-                            <div class="form-text">When do you need this product by?</div>
+                            <div class="form-text">{% trans "When do you need this product by?" %}</div>
                         </div>
                         
                         <div class="d-flex justify-content-between">
-                            <a href="{% url 'buyer_dashboard' %}" class="btn btn-outline-secondary">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Add Product Need</button>
+                            <a href="{% url 'buyer_dashboard' %}" class="btn btn-outline-secondary">{% trans "Cancel" %}</a>
+                            <button type="submit" class="btn btn-primary">{% trans "Add Product Need" %}</button>
                         </div>
                     </form>
                 </div>
