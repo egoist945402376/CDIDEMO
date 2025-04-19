@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load i18n %}
+{% load static %}
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,36 +35,61 @@
                                 <li class="nav-item">
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'home' %}">Logout</a>
+                                    <a class="nav-link" href="{% url 'home' %}">{% trans "Logout" %}</a>
                                 </li>
                             {% elif user.buyer_profile %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'buyer_dashboard' %}">Dashboard</a>
+                                    <a class="nav-link" href="{% url 'buyer_dashboard' %}">{% trans "Dashboard" %}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'home' %}">Logout</a>
+                                    <a class="nav-link" href="{% url 'home' %}">{% trans "Logout" %}</a>
                                 </li>
                             {% endif %}
                         {% else %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                    Register
+                                    {% trans "Register" %}
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{% url 'register_farmer' %}">As Farmer</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'register_buyer' %}">As Buyer</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'register_farmer' %}">{% trans "As Farmer" %}</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'register_buyer' %}">{% trans "As Buyer" %}</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                    Login
+                                    {% trans "Login" %}
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{% url 'farmer_login' %}">As Farmer</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'buyer_login' %}">As Buyer</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'farmer_login' %}">{% trans "As Farmer" %}</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'buyer_login' %}">{% trans "As Buyer" %}</a></li>
                                 </ul>
                             </li>
                         {% endif %}
+                        
+                        <!-- Language Selector -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="bi bi-globe"></i> {% trans "Language" %}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <form action="{% url 'set_language' %}" method="post" id="language-form">
+                                    {% csrf_token %}
+                                    <input name="next" type="hidden" value="{{ request.path }}">
+                                    <li>
+                                        <button type="submit" name="language" value="en" class="dropdown-item {% if LANGUAGE_CODE == 'en' %}active{% endif %}">
+                                            <i class="bi bi-check2 me-2 {% if LANGUAGE_CODE == 'en' %}visible{% else %}invisible{% endif %}"></i>
+                                            English
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button type="submit" name="language" value="sw" class="dropdown-item {% if LANGUAGE_CODE == 'sw' %}active{% endif %}">
+                                            <i class="bi bi-check2 me-2 {% if LANGUAGE_CODE == 'sw' %}visible{% else %}invisible{% endif %}"></i>
+                                            Kiswahili
+                                        </button>
+                                    </li>
+                                </form>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -88,7 +115,7 @@
 
     <footer class="bg-light py-4 mt-5">
         <div class="container text-center">
-            <p class="mb-0">&copy; {% now "Y" %} TropiConnect. All rights reserved.</p>
+            <p class="mb-0">&copy; {% now "Y" %} TropiConnect. {% trans "All rights reserved." %}</p>
         </div>
     </footer>
 
