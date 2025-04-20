@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-20 10:07+0100\n"
+"POT-Creation-Date: 2025-04-20 10:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -369,6 +369,7 @@ msgstr "Unda Jamii Yako Mwenyewe"
 #: .\supplychain\templates\supplychain\farmer_login.html:114
 #: .\supplychain\templates\supplychain\home.html:215
 #: .\supplychain\templates\supplychain\logistic_login.html:114
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:15
 #: .\supplychain\templates\supplychain\register_buyer.html:161
 #: .\supplychain\templates\supplychain\register_farmer.html:133
 #: .\supplychain\templates\supplychain\register_logistic.html:133
@@ -1344,7 +1345,9 @@ msgstr "Msaada wa Forodha ya Uholanzi"
 #: .\supplychain\templates\supplychain\farmer_home_page.html:61
 msgid ""
 "Need help with growing tips, market information, or other farming issues?"
-msgstr "Unahitaji usaidizi kuhusu vidokezo vya ukuzaji, habari za soko, au masuala mengine ya kilimo?"
+msgstr ""
+"Unahitaji usaidizi kuhusu vidokezo vya ukuzaji, habari za soko, au masuala "
+"mengine ya kilimo?"
 
 #: .\supplychain\templates\supplychain\farmer_home_page.html:63
 msgid "Start Chat"
@@ -1377,7 +1380,9 @@ msgstr "Hadithi za Mafanikio"
 msgid ""
 "Stay informed with the latest agricultural news, market trends, and policy "
 "changes from around the world"
-msgstr "Endelea kupata habari za kilimo za hivi karibuni, mitindo ya soko, na mabadiliko ya sera kutoka ulimwenguni kote"
+msgstr ""
+"Endelea kupata habari za kilimo za hivi karibuni, mitindo ya soko, na "
+"mabadiliko ya sera kutoka ulimwenguni kote"
 
 #: .\supplychain\templates\supplychain\farmer_home_page.html:124
 msgid "Market Trends"
@@ -1434,14 +1439,19 @@ msgstr "Kakao"
 #: .\supplychain\templates\supplychain\farmer_home_page.html:165
 msgid ""
 "West African Cocoa Production Hits Record High Despite Climate Challenges"
-msgstr "Uzalishaji wa Kakao wa Afrika Magharibi Unafikia Kiwango cha Juu Licha ya Changamoto za Hali ya Hewa"
+msgstr ""
+"Uzalishaji wa Kakao wa Afrika Magharibi Unafikia Kiwango cha Juu Licha ya "
+"Changamoto za Hali ya Hewa"
 
 #: .\supplychain\templates\supplychain\farmer_home_page.html:166
 msgid ""
 "Despite early predictions of lower yields due to changing rainfall patterns, "
 "innovative farming techniques have helped West African farmers achieve "
 "record cocoa harvests."
-msgstr "Licha ya utabiri wa awali wa mavuno madogo kutokana na mabadiliko ya mifumo ya mvua, mbinu bunifu za kilimo zimesaidia wakulima wa Afrika Magharibi kuvuna kakao kwa kiwango kikubwa zaidi."
+msgstr ""
+"Licha ya utabiri wa awali wa mavuno madogo kutokana na mabadiliko ya mifumo "
+"ya mvua, mbinu bunifu za kilimo zimesaidia wakulima wa Afrika Magharibi "
+"kuvuna kakao kwa kiwango kikubwa zaidi."
 
 #: .\supplychain\templates\supplychain\farmer_home_page.html:173
 msgid "Tropical Fruits Market"
@@ -1461,7 +1471,10 @@ msgid ""
 "Market research indicates a 22%% increase in European imports of tropical "
 "fruits like dragon fruit, jackfruit, and passion fruit compared to the "
 "previous year."
-msgstr "Utafiti wa soko unaonyesha ongezeko la 22%% katika uagizaji wa matunda ya tropiki kama vile tunda la dragoni, jackfruit, na passion ukilinganisha na mwaka uliopita."
+msgstr ""
+"Utafiti wa soko unaonyesha ongezeko la 22%% katika uagizaji wa matunda ya "
+"tropiki kama vile tunda la dragoni, jackfruit, na passion ukilinganisha na "
+"mwaka uliopita."
 
 #: .\supplychain\templates\supplychain\farmer_home_page.html:193
 msgid "EU Agricultural Policy"
@@ -1481,7 +1494,10 @@ msgid ""
 "The European Commission has finalized new regulations reducing allowed "
 "pesticide residues on imported tropical fruits by 30%%, effective June 1, "
 "2025."
-msgstr "Tume ya Ulaya imekamilisha kanuni mpya zinazopunguza viuatilifu vinavyoruhusiwa kwenye matunda ya tropiki yanayoagizwa kwa 30%%, kuanzia Juni 1, 2025."
+msgstr ""
+"Tume ya Ulaya imekamilisha kanuni mpya zinazopunguza viuatilifu "
+"vinavyoruhusiwa kwenye matunda ya tropiki yanayoagizwa kwa 30%%, kuanzia "
+"Juni 1, 2025."
 
 #: .\supplychain\templates\supplychain\farmer_home_page.html:207
 msgid "African Agricultural Policy"
@@ -1493,14 +1509,18 @@ msgstr "Afrika"
 
 #: .\supplychain\templates\supplychain\farmer_home_page.html:213
 msgid "African Continental Free Trade Agreement Opens New Markets for Farmers"
-msgstr "Mkataba wa Biashara Huru wa Bara la Afrika Unafungua Masoko Mapya kwa Wakulima"
+msgstr ""
+"Mkataba wa Biashara Huru wa Bara la Afrika Unafungua Masoko Mapya kwa "
+"Wakulima"
 
 #: .\supplychain\templates\supplychain\farmer_home_page.html:214
 #, python-format
 msgid ""
 "The implementation of phase two of the AfCFTA is expected to reduce tariffs "
 "on agricultural exports by up to 90%% across participating African nations."
-msgstr "Utekelezaji wa awamu ya pili ya AfCFTA unatarajiwa kupunguza ushuru wa mauzo ya mazao ya kilimo hadi 90%% katika mataifa ya Afrika yanayoshiriki."
+msgstr ""
+"Utekelezaji wa awamu ya pili ya AfCFTA unatarajiwa kupunguza ushuru wa mauzo "
+"ya mazao ya kilimo hadi 90%% katika mataifa ya Afrika yanayoshiriki."
 
 #: .\supplychain\templates\supplychain\farmer_home_page.html:221
 msgid "US Agricultural Policy"
@@ -1519,7 +1539,10 @@ msgid ""
 "The USDA announces new incentives for importers sourcing from farms with "
 "certified sustainable practices, creating opportunities for eco-conscious "
 "tropical farmers."
-msgstr "USDA inatangaza vivutio vipya kwa waagizaji wanaotoka mashamba yenye ithibati ya mbinu endelevu, na kuunda fursa kwa wakulima wa tropiki wanaozingatia mazingira."
+msgstr ""
+"USDA inatangaza vivutio vipya kwa waagizaji wanaotoka mashamba yenye "
+"ithibati ya mbinu endelevu, na kuunda fursa kwa wakulima wa tropiki "
+"wanaozingatia mazingira."
 
 #: .\supplychain\templates\supplychain\farmer_home_page.html:253
 msgid "View All Insights"
@@ -1529,7 +1552,8 @@ msgstr "Angalia Tathmini Zote"
 msgid ""
 "Filter buyers based on product categories and discover new market "
 "opportunities"
-msgstr "Chuja wanunuzi kulingana na makundi ya bidhaa na gundua fursa mpya za soko"
+msgstr ""
+"Chuja wanunuzi kulingana na makundi ya bidhaa na gundua fursa mpya za soko"
 
 #: .\supplychain\templates\supplychain\farmer_home_page.html:277
 msgid "Product Category"
@@ -1575,7 +1599,9 @@ msgstr "Hakuna maagizo yanayolingana yaliyopatikana"
 msgid ""
 "Currently, there are no active product needs for the selected category. "
 "Please check back later or try a different category."
-msgstr "Kwa sasa, hakuna mahitaji ya bidhaa yanayotumika kwa kategoria iliyochaguliwa. Tafadhali angalia tena baadaye au jaribu kategoria tofauti."
+msgstr ""
+"Kwa sasa, hakuna mahitaji ya bidhaa yanayotumika kwa kategoria "
+"iliyochaguliwa. Tafadhali angalia tena baadaye au jaribu kategoria tofauti."
 
 #: .\supplychain\templates\supplychain\farmer_home_page.html:373
 msgid "Contact These Buyers"
@@ -1851,6 +1877,167 @@ msgstr "Fikia akaunti yako ya mkulima ya TropiConnect"
 msgid "Enter your company name"
 msgstr "Jina lako la mwisho"
 
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:5
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:11
+msgid "International Market Preparation Guides"
+msgstr "Kanuni na Rasilimali za Soko la Kimataifa"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:12
+msgid ""
+"Step-by-step resources to help you prepare your agricultural products for "
+"international markets."
+msgstr ""
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:16
+msgid "Market Preparation Guides"
+msgstr "Kanuni za Soko"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:28
+msgid "Guide Categories"
+msgstr "Makundi ya Rasilimali"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:31
+msgid "Sustainable Agriculture"
+msgstr "Mbinu Endelevu"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:32
+msgid "GAP Certification"
+msgstr "Ongeza Cheti"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:33
+msgid "Carbon Certification"
+msgstr "Ongeza Cheti"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:34
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:140
+msgid "Organic Certification"
+msgstr "Ongeza Cheti"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:35
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:158
+msgid "Specialty Certifications"
+msgstr "Vyeti Vyangu"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:44
+msgid ""
+"Welcome to our comprehensive collection of guides and resources for farmers "
+"looking to enter international markets. These guides will help you "
+"understand certification requirements, standards, and processes necessary to "
+"sell your products globally."
+msgstr ""
+"Karibu kwenye mkusanyiko wetu kamili wa kanuni, zana, na rasilimali kwa "
+"wakulima wanaotaka kusafirisha bidhaa za kilimo kwenda masoko ya kimataifa. "
+"Rasilimali hizi zitakusaidia kuelewa na kufuata mahitaji muhimu "
+"yanayohitajika kwa ufikiaji wa soko unaofanikiwa."
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:52
+msgid "Sustainable Agriculture Standards"
+msgstr "Viwango vya Kilimo Endelevu"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:56
+msgid "Rainforest Alliance Certification"
+msgstr "Cheti cha Rainforest Alliance"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:57
+msgid ""
+"The Rainforest Alliance certification helps farmers produce better crops, "
+"adapt to climate change, increase productivity, and reduce costs."
+msgstr ""
+"Cheti cha Rainforest Alliance husaidia wakulima kuzalisha mazao bora, "
+"kukabiliana na mabadiliko ya hali ya hewa, kuongeza uzalishaji, na kupunguza gharama."
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:60
+msgid "Certification Guide for Farmers"
+msgstr "Mwongozo wa Uthibitishaji kwa Wakulima"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:64
+msgid "Online Training Course"
+msgstr "Kozi ya Mafunzo ya Mtandaoni"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:68
+msgid "2020 Certification Program"
+msgstr "Programu ya Uthibitishaji ya 2020"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:81
+msgid "GLOBALG.A.P. Certification"
+msgstr "Cheti cha GLOBALG.A.P."
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:84
+msgid ""
+"GLOBALG.A.P. is a farm assurance program that translates consumer "
+"requirements into Good Agricultural Practice."
+msgstr ""
+"GLOBALG.A.P. ni programu ya uhakiki wa shamba inayotafsiri mahitaji ya "
+"watumiaji kuwa Mazoea Mazuri ya Kilimo."
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:87
+msgid "GLOBALG.A.P for Producers"
+msgstr "GLOBALG.A.P kwa Wazalishaji"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:91
+msgid "How to Get Certified"
+msgstr "Jinsi ya Kupata Cheti"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:95
+msgid "Find Certification Bodies"
+msgstr "Pata Vyombo vya Uthibitishaji"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:107
+msgid "Carbon Certification Programs"
+msgstr "Programu za Uthibitishaji wa Kaboni"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:111
+msgid "AgriCarbon & Verified Carbon Standard"
+msgstr "AgriCarbon & Kiwango cha Kaboni Kilichothibitishwa"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:112
+msgid ""
+"Carbon certification programs that help farmers monetize sustainable "
+"practices that reduce greenhouse gas emissions."
+msgstr ""
+"Programu za uthibitishaji wa kaboni zinazosaidia wakulima kufaidika kifedha "
+"kutoka kwa mazoea endelevu yanayopunguza utoaji wa gesi za sera ya joto."
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:115
+msgid "AgriCarbon Regenerative Agriculture"
+msgstr "Kilimo cha Urejeshaji cha AgriCarbon"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:119
+msgid "Verra Carbon Information"
+msgstr "Taarifa za Kaboni za Verra"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:123
+msgid "VCS Program Details"
+msgstr "Maelezo ya Programu ya VCS"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:127
+msgid "Verified Carbon Sellers (ICROA)"
+msgstr "Wauzaji wa Kaboni Waliothibitishwa (ICROA)"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:143
+msgid ""
+"Organic certification ensures your farming practices meet strict ecological "
+"standards."
+msgstr ""
+"Uthibitishaji wa kikaboni unahakikisha mazoea yako ya kilimo yanakidhi "
+"viwango vikali vya ikolojia."
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:146
+msgid "Soil Association Certification"
+msgstr "Cheti cha Chama cha Udongo"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:162
+msgid "Regional & Commodity-Specific Certifications"
+msgstr "Vyeti vya Kikanda & Mahususi kwa Bidhaa"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:165
+msgid "Africert Certification"
+msgstr "Cheti cha Africert"
+
+#: .\supplychain\templates\supplychain\market_preparation_guides.html:169
+msgid "4C Coffee Certification"
+msgstr "Cheti cha Kahawa cha 4C"
+
 #: .\supplychain\templates\supplychain\order_history.html:17
 msgid "Track your past sales and transactions"
 msgstr ""
@@ -1860,8 +2047,6 @@ msgid "Total Revenue"
 msgstr ""
 
 #: .\supplychain\templates\supplychain\order_history.html:46
-#, fuzzy
-#| msgid "African Countries"
 msgid "Buyer Countries"
 msgstr "Nchi za Afrika"
 
