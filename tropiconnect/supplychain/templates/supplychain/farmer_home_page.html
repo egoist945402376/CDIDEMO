@@ -1,5 +1,6 @@
 {% extends "supplychain/base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <style>
@@ -39,11 +40,11 @@
     <div class="container" style="height: 400px; position: relative; z-index: 1;">
         <div class="row h-100">
             <div class="col-lg-8 mx-auto text-center text-white d-flex flex-column justify-content-center">
-                <h1 class="display-4 fw-bold mb-4">Welcome to TropiConnect Farmer Hub</h1>
-                <p class="lead mb-4">Your gateway to global agricultural markets and resources</p>
+                <h1 class="display-4 fw-bold mb-4">{% trans "Welcome to TropiConnect Farmer Hub" %}</h1>
+                <p class="lead mb-4">{% trans "Your gateway to global agricultural markets and resources" %}</p>
                 <div class="d-flex justify-content-center gap-3">
-                    <a href="{% url 'farmer_dashboard' %}" class="btn btn-primary btn-lg">My Dashboard</a>
-                    <a href="{% url 'order_history' %}" class="btn btn-primary btn-lg">Order History</a>
+                    <a href="{% url 'farmer_dashboard' %}" class="btn btn-primary btn-lg">{% trans "My Dashboard" %}</a>
+                    <a href="{% url 'order_history' %}" class="btn btn-primary btn-lg">{% trans "Order History" %}</a>
                 </div>
             </div>
         </div>
@@ -55,11 +56,11 @@
         <div class="card-body p-3">
             <div class="d-flex align-items-center mb-3">
                 <i class="bi bi-robot fs-3 text-success me-2"></i>
-                <h5 class="mb-0">Chatbot Assistance</h5>
+                <h5 class="mb-0">{% trans "Chatbot Assistance" %}</h5>
             </div>
-            <p class="small mb-3">Need help with growing tips, market information, or other farming issues?？</p>
+            <p class="small mb-3">{% trans "Need help with growing tips, market information, or other farming issues?" %}</p>
             <a href="http://localhost:3000/" class="btn btn-success w-100" target="_blank">
-                <i class="bi bi-chat-dots-fill me-2"></i>Start Chat
+                <i class="bi bi-chat-dots-fill me-2"></i>{% trans "Start Chat" %}
             </a>
         </div>
     </div>
@@ -73,27 +74,27 @@
                 <ul class="nav nav-pills nav-justified main-content-tabs mb-4" id="contentTabs" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active py-3" id="insights-tab" data-bs-toggle="pill" data-bs-target="#insights-content" type="button" role="tab" aria-controls="insights-content" aria-selected="true">
-                            <i class="bi bi-graph-up me-2"></i>Global Agricultural Insights
+                            <i class="bi bi-graph-up me-2"></i>{% trans "Global Agricultural Insights" %}
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link py-3" id="buyers-tab" data-bs-toggle="pill" data-bs-target="#buyers-content" type="button" role="tab" aria-controls="buyers-content" aria-selected="false">
-                            <i class="bi bi-people me-2"></i>Find Potential Buyers
+                            <i class="bi bi-people me-2"></i>{% trans "Find Potential Buyers" %}
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link py-3" id="logistics-tab" data-bs-toggle="pill" data-bs-target="#logistics-content" type="button" role="tab" aria-controls="logistics-content" aria-selected="false">
-                            <i class="bi bi-truck me-2"></i>Find Logistics Companies
+                            <i class="bi bi-truck me-2"></i>{% trans "Find Logistics Companies" %}
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link py-3" id="training-tab" data-bs-toggle="pill" data-bs-target="#training-content" type="button" role="tab" aria-controls="training-content" aria-selected="false">
-                            <i class="bi bi-book me-2"></i>Training & Resources
+                            <i class="bi bi-book me-2"></i>{% trans "Training & Resources" %}
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link py-3" id="success-tab" data-bs-toggle="pill" data-bs-target="#success-content" type="button" role="tab" aria-controls="success-content" aria-selected="false">
-                            <i class="bi bi-trophy me-2"></i>Success Stories
+                            <i class="bi bi-trophy me-2"></i>{% trans "Success Stories" %}
                         </button>
                     </li>
                 </ul>
@@ -111,8 +112,8 @@
             <div class="container">
                 <div class="row mb-4">
                     <div class="col-lg-8 mx-auto text-center">
-                        <h2 class="fw-bold mb-3">Global Agricultural Insights</h2>
-                        <p class="text-muted">Stay informed with the latest agricultural news, market trends, and policy changes from around the world</p>
+                        <h2 class="fw-bold mb-3">{% trans "Global Agricultural Insights" %}</h2>
+                        <p class="text-muted">{% trans "Stay informed with the latest agricultural news, market trends, and policy changes from around the world" %}</p>
                     </div>
                 </div>
                 
@@ -120,16 +121,16 @@
                     <div class="col-12">
                         <ul class="nav nav-pills justify-content-center mb-4" id="insightTabs" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="market-tab" data-bs-toggle="pill" data-bs-target="#market" type="button" role="tab" aria-controls="market" aria-selected="true">Market Trends</button>
+                                <button class="nav-link active" id="market-tab" data-bs-toggle="pill" data-bs-target="#market" type="button" role="tab" aria-controls="market" aria-selected="true">{% trans "Market Trends" %}</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="policy-tab" data-bs-toggle="pill" data-bs-target="#policy" type="button" role="tab" aria-controls="policy" aria-selected="false">Policy Updates</button>
+                                <button class="nav-link" id="policy-tab" data-bs-toggle="pill" data-bs-target="#policy" type="button" role="tab" aria-controls="policy" aria-selected="false">{% trans "Policy Updates" %}</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="tech-tab" data-bs-toggle="pill" data-bs-target="#tech" type="button" role="tab" aria-controls="tech" aria-selected="false">Agri-Tech</button>
+                                <button class="nav-link" id="tech-tab" data-bs-toggle="pill" data-bs-target="#tech" type="button" role="tab" aria-controls="tech" aria-selected="false">{% trans "Agri-Tech" %}</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="sustainable-tab" data-bs-toggle="pill" data-bs-target="#sustainable" type="button" role="tab" aria-controls="sustainable" aria-selected="false">Sustainability</button>
+                                <button class="nav-link" id="sustainable-tab" data-bs-toggle="pill" data-bs-target="#sustainable" type="button" role="tab" aria-controls="sustainable" aria-selected="false">{% trans "Sustainability" %}</button>
                             </li>
                         </ul>
                     </div>
@@ -141,91 +142,91 @@
                         <div class="row g-4">
                             <div class="col-lg-4">
                                 <div class="card h-100 border-0 shadow-sm">
-                                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Coffee Market" style="height: 200px; object-fit: cover;">
+                                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="{% trans "Coffee Market" %}" style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between mb-2">
-                                            <span class="badge bg-primary">Coffee</span>
+                                            <span class="badge bg-primary">{% trans "Coffee" %}</span>
                                             <small class="text-muted">March 15, 2025</small>
                                         </div>
-                                        <h5 class="card-title">Global Coffee Prices Expected to Rise Due to Supply Chain Disruptions</h5>
-                                        <p class="card-text">Recent logistical challenges in major coffee producing regions have led analysts to predict a 15% increase in global coffee prices by mid-2025.</p>
-                                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                                        <h5 class="card-title">{% trans "Global Coffee Prices Expected to Rise Due to Supply Chain Disruptions" %}</h5>
+                                        <p class="card-text">{% trans "Recent logistical challenges in major coffee producing regions have led analysts to predict a 15% increase in global coffee prices by mid-2025." %}</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">{% trans "Read More" %}</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="card h-100 border-0 shadow-sm">
-                                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Cocoa Market" style="height: 200px; object-fit: cover;">
+                                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="{% trans "Cocoa Market" %}" style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between mb-2">
-                                            <span class="badge bg-success">Cocoa</span>
+                                            <span class="badge bg-success">{% trans "Cocoa" %}</span>
                                             <small class="text-muted">March 18, 2025</small>
                                         </div>
-                                        <h5 class="card-title">West African Cocoa Production Hits Record High Despite Climate Challenges</h5>
-                                        <p class="card-text">Despite early predictions of lower yields due to changing rainfall patterns, innovative farming techniques have helped West African farmers achieve record cocoa harvests.</p>
-                                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                                        <h5 class="card-title">{% trans "West African Cocoa Production Hits Record High Despite Climate Challenges" %}</h5>
+                                        <p class="card-text">{% trans "Despite early predictions of lower yields due to changing rainfall patterns, innovative farming techniques have helped West African farmers achieve record cocoa harvests." %}</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">{% trans "Read More" %}</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="card h-100 border-0 shadow-sm">
-                                    <img src="{% static 'img/fruit-market.jpg' %}" class="card-img-top" alt="Tropical Fruits Market" style="height: 200px; object-fit: cover;">
+                                    <img src="{% static 'img/fruit-market.jpg' %}" class="card-img-top" alt="{% trans "Tropical Fruits Market" %}" style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between mb-2">
-                                            <span class="badge bg-danger">Tropical Fruits</span>
+                                            <span class="badge bg-danger">{% trans "Tropical Fruits" %}</span>
                                             <small class="text-muted">March 20, 2025</small>
                                         </div>
-                                        <h5 class="card-title">European Demand for Exotic Tropical Fruits Continues to Grow</h5>
-                                        <p class="card-text">Market research indicates a 22% increase in European imports of tropical fruits like dragon fruit, jackfruit, and passion fruit compared to the previous year.</p>
-                                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                                        <h5 class="card-title">{% trans "European Demand for Exotic Tropical Fruits Continues to Grow" %}</h5>
+                                        <p class="card-text">{% trans "Market research indicates a 22% increase in European imports of tropical fruits like dragon fruit, jackfruit, and passion fruit compared to the previous year." %}</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">{% trans "Read More" %}</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Policy Updates Tab -->
+<!-- Policy Updates Tab -->
                     <div class="tab-pane fade" id="policy" role="tabpanel" aria-labelledby="policy-tab">
                         <div class="row g-4">
                             <div class="col-lg-4">
                                 <div class="card h-100 border-0 shadow-sm">
-                                    <img src="{% static 'img/eu-policy.jpg' %}" class="card-img-top" alt="EU Agricultural Policy" style="height: 200px; object-fit: cover;">
+                                    <img src="{% static 'img/eu-policy.jpg' %}" class="card-img-top" alt="{% trans "EU Agricultural Policy" %}" style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between mb-2">
-                                            <span class="badge bg-primary">European Union</span>
+                                            <span class="badge bg-primary">{% trans "European Union" %}</span>
                                             <small class="text-muted">March 10, 2025</small>
                                         </div>
-                                        <h5 class="card-title">New EU Regulations on Pesticide Use to Take Effect in June</h5>
-                                        <p class="card-text">The European Commission has finalized new regulations reducing allowed pesticide residues on imported tropical fruits by 30%, effective June 1, 2025.</p>
-                                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                                        <h5 class="card-title">{% trans "New EU Regulations on Pesticide Use to Take Effect in June" %}</h5>
+                                        <p class="card-text">{% trans "The European Commission has finalized new regulations reducing allowed pesticide residues on imported tropical fruits by 30%, effective June 1, 2025." %}</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">{% trans "Read More" %}</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="card h-100 border-0 shadow-sm">
-                                    <img src="{% static 'img/africa-policy.jpg' %}" class="card-img-top" alt="African Agricultural Policy" style="height: 200px; object-fit: cover;">
+                                    <img src="{% static 'img/africa-policy.jpg' %}" class="card-img-top" alt="{% trans "African Agricultural Policy" %}" style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between mb-2">
-                                            <span class="badge bg-success">Africa</span>
+                                            <span class="badge bg-success">{% trans "Africa" %}</span>
                                             <small class="text-muted">March 14, 2025</small>
                                         </div>
-                                        <h5 class="card-title">African Continental Free Trade Agreement Opens New Markets for Farmers</h5>
-                                        <p class="card-text">The implementation of phase two of the AfCFTA is expected to reduce tariffs on agricultural exports by up to 90% across participating African nations.</p>
-                                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                                        <h5 class="card-title">{% trans "African Continental Free Trade Agreement Opens New Markets for Farmers" %}</h5>
+                                        <p class="card-text">{% trans "The implementation of phase two of the AfCFTA is expected to reduce tariffs on agricultural exports by up to 90% across participating African nations." %}</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">{% trans "Read More" %}</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="card h-100 border-0 shadow-sm">
-                                    <img src="{% static 'img/us-policy.jpg' %}" class="card-img-top" alt="US Agricultural Policy" style="height: 200px; object-fit: cover;">
+                                    <img src="{% static 'img/us-policy.jpg' %}" class="card-img-top" alt="{% trans "US Agricultural Policy" %}" style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between mb-2">
-                                            <span class="badge bg-danger">United States</span>
+                                            <span class="badge bg-danger">{% trans "United States" %}</span>
                                             <small class="text-muted">March 19, 2025</small>
                                         </div>
-                                        <h5 class="card-title">US Introduces New Subsidies for Sustainable Import Partners</h5>
-                                        <p class="card-text">The USDA announces new incentives for importers sourcing from farms with certified sustainable practices, creating opportunities for eco-conscious tropical farmers.</p>
-                                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                                        <h5 class="card-title">{% trans "US Introduces New Subsidies for Sustainable Import Partners" %}</h5>
+                                        <p class="card-text">{% trans "The USDA announces new incentives for importers sourcing from farms with certified sustainable practices, creating opportunities for eco-conscious tropical farmers." %}</p>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">{% trans "Read More" %}</a>
                                     </div>
                                 </div>
                             </div>
@@ -249,7 +250,7 @@
                 </div>
                 
                 <div class="text-center mt-4">
-                    <a href="#" class="btn btn-primary">View All Insights</a>
+                    <a href="#" class="btn btn-primary">{% trans "View All Insights" %}</a>
                 </div>
             </div>
         </section>
@@ -262,8 +263,8 @@
             <div class="container">
                 <div class="row mb-4">
                     <div class="col-lg-8 mx-auto text-center">
-                        <h2 class="fw-bold mb-3">Find Potential Buyers</h2>
-                        <p class="text-muted">Filter buyers based on product categories and discover new market opportunities</p>
+                        <h2 class="fw-bold mb-3">{% trans "Find Potential Buyers" %}</h2>
+                        <p class="text-muted">{% trans "Filter buyers based on product categories and discover new market opportunities" %}</p>
                     </div>
                 </div>
                 
@@ -273,17 +274,17 @@
                             <div class="card-body p-4">
                                 <form id="buyerFilterForm" class="row g-3" method="get" action="{% url 'farmer_home' %}">
                                     <div class="col-md-8 mx-auto">
-                                        <label for="category" class="form-label">Product Category</label>
+                                        <label for="category" class="form-label">{% trans "Product Category" %}</label>
                                         <select id="category" name="category" class="form-select">
-                                            <option value="" {% if not selected_category %}selected{% endif %}>All Categories</option>
+                                            <option value="" {% if not selected_category %}selected{% endif %}>{% trans "All Categories" %}</option>
                                             {% for category in product_categories %}
                                                 <option value="{{ category.id }}" {% if selected_category == category.id|stringformat:"s" %}selected{% endif %}>{{ category.name }}</option>
                                             {% endfor %}
                                         </select>
                                     </div>
                                     <div class="col-12 text-center mt-4">
-                                        <button type="submit" class="btn btn-primary px-4 py-2">Find Buyer Needs</button>
-                                        <a href="{% url 'farmer_home' %}" class="btn btn-outline-secondary px-4 py-2 ms-2">Reset Filter</a>
+                                        <button type="submit" class="btn btn-primary px-4 py-2">{% trans "Find Buyer Needs" %}</button>
+                                        <a href="{% url 'farmer_home' %}" class="btn btn-outline-secondary px-4 py-2 ms-2">{% trans "Reset Filter" %}</a>
                                     </div>
                                 </form>
                             </div>
@@ -299,15 +300,15 @@
                             {% if selected_category %}
                                 {% for category in product_categories %}
                                     {% if selected_category == category.id|stringformat:"s" %}
-                                        {{ category.name }} Buyer Needs
+                                        {{ category.name }} {% trans "Buyer Needs" %}
                                     {% endif %}
                                 {% endfor %}
                             {% else %}
-                                Latest Buyer Needs
+                                {% trans "Latest Buyer Needs" %}
                             {% endif %}
                         </h4>
                         <a href="{% url 'farmer_home' %}?category={{ selected_category }}&random=true" class="btn btn-outline-primary">
-                            <i class="bi bi-shuffle me-2"></i>Refresh Results
+                            <i class="bi bi-shuffle me-2"></i>{% trans "Refresh Results" %}
                         </a>
                     </div>
                 </div>
@@ -342,16 +343,16 @@
                                             <span class="badge bg-success me-1">{{ need.product_name }}</span>
                                         </div>
                                         <div class="mb-3">
-                                            <p class="mb-1"><strong>Quantity:</strong> {{ need.quantity }} {{ need.get_unit_display }}</p>
-                                            <p class="mb-1"><strong>Price:</strong> ${{ need.price_per_kg }}/kg</p>
-                                            <p class="mb-1"><strong>Needed by:</strong> {{ need.date_needed_by|date:"M d, Y" }}</p>
+                                            <p class="mb-1"><strong>{% trans "Quantity:" %}</strong> {{ need.quantity }} {{ need.get_unit_display }}</p>
+                                            <p class="mb-1"><strong>{% trans "Price:" %}</strong> ${{ need.price_per_kg }}/kg</p>
+                                            <p class="mb-1"><strong>{% trans "Needed by:" %}</strong> {{ need.date_needed_by|date:"M d, Y" }}</p>
                                         </div>
                                         <p class="card-text">{{ need.description|truncatechars:100 }}</p>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <span class="text-success">
-                                                <i class="bi bi-clock"></i> Posted: {{ need.date_posted|date:"M d, Y" }}
+                                                <i class="bi bi-clock"></i> {% trans "Posted:" %} {{ need.date_posted|date:"M d, Y" }}
                                             </span>
-                                            <a href="{% url 'view_buyer_profile' need.buyer.id %}" class="btn btn-sm btn-outline-primary">View Buyer</a>
+                                            <a href="{% url 'view_buyer_profile' need.buyer.id %}" class="btn btn-sm btn-outline-primary">{% trans "View Buyer" %}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -360,8 +361,8 @@
                     {% else %}
                         <div class="col-12">
                             <div class="alert alert-info text-center">
-                                <h4 class="alert-heading">No matching orders found</h4>
-                                <p>Currently, there are no active product needs for the selected category. Please check back later or try a different category.</p>
+                                <h4 class="alert-heading">{% trans "No matching orders found" %}</h4>
+                                <p>{% trans "Currently, there are no active product needs for the selected category. Please check back later or try a different category." %}</p>
                             </div>
                         </div>
                     {% endif %}
@@ -369,7 +370,7 @@
                 
                 {% if product_needs %}
                     <div class="text-center mt-4">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactBuyerModal">Contact These Buyers</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactBuyerModal">{% trans "Contact These Buyers" %}</button>
                     </div>
                 {% endif %}
             </div>

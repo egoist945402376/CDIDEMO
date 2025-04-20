@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-20 09:57+0100\n"
+"POT-Creation-Date: 2025-04-20 10:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1282,14 +1282,17 @@ msgid "Product:"
 msgstr "Bidhaa:"
 
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:496
+#: .\supplychain\templates\supplychain\farmer_home_page.html:346
 msgid "Quantity:"
 msgstr "Kiasi:"
 
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:503
+#: .\supplychain\templates\supplychain\farmer_home_page.html:347
 msgid "Price:"
 msgstr "Bei:"
 
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:520
+#: .\supplychain\templates\supplychain\farmer_home_page.html:355
 msgid "View Buyer"
 msgstr "Angalia Mnunuzi"
 
@@ -1316,6 +1319,267 @@ msgstr "Cheti"
 #: .\supplychain\templates\supplychain\farmer_edit_certification.html:56
 msgid "Update Certification"
 msgstr "Ongeza Cheti"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:43
+msgid "Welcome to TropiConnect Farmer Hub"
+msgstr "Karibu tena kwenye TropiConnect!"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:44
+msgid "Your gateway to global agricultural markets and resources"
+msgstr "Jiunge na Soko Letu la Kilimo la Dunia"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:46
+msgid "My Dashboard"
+msgstr "Dashibodi"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:47
+#: .\supplychain\templates\supplychain\order_history.html:16
+msgid "Order History"
+msgstr "Historia ya Agizo"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:59
+msgid "Chatbot Assistance"
+msgstr "Msaada wa Forodha ya Uholanzi"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:61
+msgid ""
+"Need help with growing tips, market information, or other farming issues?"
+msgstr "Unahitaji usaidizi kuhusu vidokezo vya ukuzaji, habari za soko, au masuala mengine ya kilimo?"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:63
+msgid "Start Chat"
+msgstr "Anza Mazungumzo"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:77
+#: .\supplychain\templates\supplychain\farmer_home_page.html:115
+msgid "Global Agricultural Insights"
+msgstr "Jiunge na Soko Letu la Kilimo la Dunia"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:82
+#: .\supplychain\templates\supplychain\farmer_home_page.html:266
+msgid "Find Potential Buyers"
+msgstr "Tafuta Wanunuzi Watarajiwa"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:87
+msgid "Find Logistics Companies"
+msgstr "Ingia kama Mkulima"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:92
+msgid "Training & Resources"
+msgstr "Rasilimali za Mafunzo"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:97
+#: .\supplychain\templates\supplychain\home.html:377
+msgid "Success Stories"
+msgstr "Hadithi za Mafanikio"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:116
+msgid ""
+"Stay informed with the latest agricultural news, market trends, and policy "
+"changes from around the world"
+msgstr "Endelea kupata habari za kilimo za hivi karibuni, mitindo ya soko, na mabadiliko ya sera kutoka ulimwenguni kote"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:124
+msgid "Market Trends"
+msgstr "Kanuni za Soko"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:127
+msgid "Policy Updates"
+msgstr "Masasisho ya Sera"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:130
+msgid "Agri-Tech"
+msgstr "Teknolojia ya Kilimo"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:133
+msgid "Sustainability"
+msgstr "Mbinu Endelevu"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:145
+msgid "Coffee Market"
+msgstr "Soko la Kahawa"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:148
+msgid "Coffee"
+msgstr ""
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:151
+msgid "Global Coffee Prices Expected to Rise Due to Supply Chain Disruptions"
+msgstr "Kahawa"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:152
+#, python-format
+msgid ""
+"Recent logistical challenges in major coffee producing regions have led "
+"analysts to predict a 15%% increase in global coffee prices by mid-2025."
+msgstr ""
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:153
+#: .\supplychain\templates\supplychain\farmer_home_page.html:167
+#: .\supplychain\templates\supplychain\farmer_home_page.html:181
+#: .\supplychain\templates\supplychain\farmer_home_page.html:201
+#: .\supplychain\templates\supplychain\farmer_home_page.html:215
+#: .\supplychain\templates\supplychain\farmer_home_page.html:229
+msgid "Read More"
+msgstr "Soma Zaidi"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:159
+msgid "Cocoa Market"
+msgstr "Soko la Dunia"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:162
+msgid "Cocoa"
+msgstr "Kakao"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:165
+msgid ""
+"West African Cocoa Production Hits Record High Despite Climate Challenges"
+msgstr "Uzalishaji wa Kakao wa Afrika Magharibi Unafikia Kiwango cha Juu Licha ya Changamoto za Hali ya Hewa"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:166
+msgid ""
+"Despite early predictions of lower yields due to changing rainfall patterns, "
+"innovative farming techniques have helped West African farmers achieve "
+"record cocoa harvests."
+msgstr "Licha ya utabiri wa awali wa mavuno madogo kutokana na mabadiliko ya mifumo ya mvua, mbinu bunifu za kilimo zimesaidia wakulima wa Afrika Magharibi kuvuna kakao kwa kiwango kikubwa zaidi."
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:173
+msgid "Tropical Fruits Market"
+msgstr "Soko la Matunda ya Tropiki"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:176
+msgid "Tropical Fruits"
+msgstr "Matunda ya Tropiki"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:179
+msgid "European Demand for Exotic Tropical Fruits Continues to Grow"
+msgstr "Mahitaji ya Ulaya ya Matunda ya Tropiki Yaendelea Kuongezeka"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:180
+#, python-format
+msgid ""
+"Market research indicates a 22%% increase in European imports of tropical "
+"fruits like dragon fruit, jackfruit, and passion fruit compared to the "
+"previous year."
+msgstr "Utafiti wa soko unaonyesha ongezeko la 22%% katika uagizaji wa matunda ya tropiki kama vile tunda la dragoni, jackfruit, na passion ukilinganisha na mwaka uliopita."
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:193
+msgid "EU Agricultural Policy"
+msgstr "Sera ya Pamoja ya Kilimo (CAP)"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:196
+msgid "European Union"
+msgstr "Umoja wa Ulaya"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:199
+msgid "New EU Regulations on Pesticide Use to Take Effect in June"
+msgstr "Kanuni Mpya za EU kuhusu Matumizi ya Viuatilifu Kuanza Kutumika Juni"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:200
+#, python-format
+msgid ""
+"The European Commission has finalized new regulations reducing allowed "
+"pesticide residues on imported tropical fruits by 30%%, effective June 1, "
+"2025."
+msgstr "Tume ya Ulaya imekamilisha kanuni mpya zinazopunguza viuatilifu vinavyoruhusiwa kwenye matunda ya tropiki yanayoagizwa kwa 30%%, kuanzia Juni 1, 2025."
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:207
+msgid "African Agricultural Policy"
+msgstr "Sera ya Pamoja ya Kilimo (CAP)"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:210
+msgid "Africa"
+msgstr "Afrika"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:213
+msgid "African Continental Free Trade Agreement Opens New Markets for Farmers"
+msgstr "Mkataba wa Biashara Huru wa Bara la Afrika Unafungua Masoko Mapya kwa Wakulima"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:214
+#, python-format
+msgid ""
+"The implementation of phase two of the AfCFTA is expected to reduce tariffs "
+"on agricultural exports by up to 90%% across participating African nations."
+msgstr "Utekelezaji wa awamu ya pili ya AfCFTA unatarajiwa kupunguza ushuru wa mauzo ya mazao ya kilimo hadi 90%% katika mataifa ya Afrika yanayoshiriki."
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:221
+msgid "US Agricultural Policy"
+msgstr "Sera ya Pamoja ya Kilimo (CAP)"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:224
+msgid "United States"
+msgstr "Takwimu za Jamii"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:227
+msgid "US Introduces New Subsidies for Sustainable Import Partners"
+msgstr "Marekani Yaanzisha Ruzuku Mpya kwa Washirika wa Uagizaji Endelevu"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:228
+msgid ""
+"The USDA announces new incentives for importers sourcing from farms with "
+"certified sustainable practices, creating opportunities for eco-conscious "
+"tropical farmers."
+msgstr "USDA inatangaza vivutio vipya kwa waagizaji wanaotoka mashamba yenye ithibati ya mbinu endelevu, na kuunda fursa kwa wakulima wa tropiki wanaozingatia mazingira."
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:253
+msgid "View All Insights"
+msgstr "Angalia Tathmini Zote"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:267
+msgid ""
+"Filter buyers based on product categories and discover new market "
+"opportunities"
+msgstr "Chuja wanunuzi kulingana na makundi ya bidhaa na gundua fursa mpya za soko"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:277
+msgid "Product Category"
+msgstr "Jina la Bidhaa"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:279
+msgid "All Categories"
+msgstr "Makundi ya Rasilimali"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:286
+msgid "Find Buyer Needs"
+msgstr "Tathmini za Wanunuzi"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:287
+msgid "Reset Filter"
+msgstr "Weka Upya Kichujio"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:303
+msgid "Buyer Needs"
+msgstr "Tathmini za Wanunuzi"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:307
+msgid "Latest Buyer Needs"
+msgstr "Mahitaji ya Hivi Karibuni ya Wanunuzi"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:311
+msgid "Refresh Results"
+msgstr "Onyesha Upya Matokeo"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:348
+msgid "Needed by:"
+msgstr "Inahitajika Ifikapo"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:353
+msgid "Posted:"
+msgstr "Imechapishwa:"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:364
+msgid "No matching orders found"
+msgstr "Hakuna maagizo yanayolingana yaliyopatikana"
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:365
+msgid ""
+"Currently, there are no active product needs for the selected category. "
+"Please check back later or try a different category."
+msgstr "Kwa sasa, hakuna mahitaji ya bidhaa yanayotumika kwa kategoria iliyochaguliwa. Tafadhali angalia tena baadaye au jaribu kategoria tofauti."
+
+#: .\supplychain\templates\supplychain\farmer_home_page.html:373
+msgid "Contact These Buyers"
+msgstr "Barua pepe ya Mawasiliano"
 
 #: .\supplychain\templates\supplychain\farmer_login.html:159
 msgid "Farmer Login"
@@ -1491,10 +1755,6 @@ msgstr "Rasilimali za Mafunzo"
 msgid "Certification Help"
 msgstr "Msaada wa Uthibitisho"
 
-#: .\supplychain\templates\supplychain\home.html:377
-msgid "Success Stories"
-msgstr "Hadithi za Mafanikio"
-
 #: .\supplychain\templates\supplychain\home.html:381
 msgid "Contact Us"
 msgstr "Wasiliana Nasi"
@@ -1590,10 +1850,6 @@ msgstr "Fikia akaunti yako ya mkulima ya TropiConnect"
 #| msgid "Your company name"
 msgid "Enter your company name"
 msgstr "Jina lako la mwisho"
-
-#: .\supplychain\templates\supplychain\order_history.html:16
-msgid "Order History"
-msgstr ""
 
 #: .\supplychain\templates\supplychain\order_history.html:17
 msgid "Track your past sales and transactions"
@@ -2107,9 +2363,6 @@ msgstr "Ukurasa wa Nyumbani wa TropiConnect"
 
 #~ msgid "Specify the price you're willing to pay per kilogram in USD."
 #~ msgstr "Taja bei unayotaka kulipa kwa kilo moja kwa dola za Marekani."
-
-#~ msgid "Needed By"
-#~ msgstr "Inahitajika Ifikapo"
 
 #~ msgid "When do you need this product by?"
 #~ msgstr "Unahitaji bidhaa hii ifikapo lini?"
