@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-20 09:51+0100\n"
+"POT-Creation-Date: 2025-04-20 09:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,7 @@ msgid "Add New Company Certification"
 msgstr "Ongeza Cheti Kipya cha Kampuni"
 
 #: .\supplychain\templates\supplychain\add_company_certification.html:18
+#: .\supplychain\templates\supplychain\farmer_add_certification.html:19
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:196
 msgid "Certification Name"
 msgstr "Jina la Cheti"
@@ -38,6 +39,7 @@ msgstr ""
 "Ubora, n.k."
 
 #: .\supplychain\templates\supplychain\add_company_certification.html:29
+#: .\supplychain\templates\supplychain\farmer_add_certification.html:24
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:197
 msgid "Issuing Organization"
 msgstr "Shirika Lililoitoa"
@@ -47,23 +49,28 @@ msgid "Certification Number (Optional)"
 msgstr "Namba ya Cheti (Hiari)"
 
 #: .\supplychain\templates\supplychain\add_company_certification.html:40
+#: .\supplychain\templates\supplychain\farmer_add_certification.html:30
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:198
 msgid "Issue Date"
 msgstr "Tarehe ya Kutolewa"
 
 #: .\supplychain\templates\supplychain\add_company_certification.html:44
+#: .\supplychain\templates\supplychain\farmer_add_certification.html:34
 msgid "Expiry Date (Optional)"
 msgstr "Tarehe ya Kuisha (Hiari)"
 
 #: .\supplychain\templates\supplychain\add_company_certification.html:50
+#: .\supplychain\templates\supplychain\farmer_add_certification.html:40
 msgid "Certificate Image (Optional)"
 msgstr "Picha ya Cheti (Hiari)"
 
 #: .\supplychain\templates\supplychain\add_company_certification.html:55
+#: .\supplychain\templates\supplychain\farmer_add_certification.html:45
 msgid "Description (Optional)"
 msgstr "Maelezo (Hiari)"
 
 #: .\supplychain\templates\supplychain\add_company_certification.html:57
+#: .\supplychain\templates\supplychain\farmer_add_certification.html:47
 msgid "Provide any additional information about this certification."
 msgstr "Toa taarifa zozote za ziada kuhusu cheti hiki."
 
@@ -73,11 +80,13 @@ msgstr "Toa taarifa zozote za ziada kuhusu cheti hiki."
 #: .\supplychain\templates\supplychain\edit_farmer_profile.html:69
 #: .\supplychain\templates\supplychain\edit_logistic_profile.html:98
 #: .\supplychain\templates\supplychain\edit_product.html:89
+#: .\supplychain\templates\supplychain\farmer_add_certification.html:51
 #: .\supplychain\templates\supplychain\update_logistic_logo.html:49
 msgid "Cancel"
 msgstr "Ghairi"
 
 #: .\supplychain\templates\supplychain\add_company_certification.html:62
+#: .\supplychain\templates\supplychain\farmer_add_certification.html:52
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:186
 msgid "Add Certification"
 msgstr "Ongeza Cheti"
@@ -1040,6 +1049,10 @@ msgstr "Bidhaa:"
 #: .\supplychain\templates\supplychain\edit_product.html:62
 msgid "Current photo. Upload a new one to replace it."
 msgstr "Picha ya jalada ya sasa. Pakia mpya ili kuibadilisha."
+
+#: .\supplychain\templates\supplychain\farmer_add_certification.html:12
+msgid "Add New Certification"
+msgstr "Ongeza Cheti"
 
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:13
 msgid "Farmer Home"
