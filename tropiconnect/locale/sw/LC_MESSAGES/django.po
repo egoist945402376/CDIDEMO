@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-19 17:42+0100\n"
+"POT-Creation-Date: 2025-04-20 09:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,6 +72,7 @@ msgstr "Toa taarifa zozote za ziada kuhusu cheti hiki."
 #: .\supplychain\templates\supplychain\add_product.html:81
 #: .\supplychain\templates\supplychain\edit_farmer_profile.html:69
 #: .\supplychain\templates\supplychain\edit_logistic_profile.html:98
+#: .\supplychain\templates\supplychain\edit_product.html:89
 #: .\supplychain\templates\supplychain\update_logistic_logo.html:49
 msgid "Cancel"
 msgstr "Ghairi"
@@ -99,6 +100,7 @@ msgstr "Vitendo"
 #: .\supplychain\templates\supplychain\add_product.html:46
 #: .\supplychain\templates\supplychain\create_community.html:37
 #: .\supplychain\templates\supplychain\edit_community.html:47
+#: .\supplychain\templates\supplychain\edit_product.html:46
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:280
 msgid "Description"
 msgstr "Maelezo"
@@ -172,17 +174,20 @@ msgid "Add New Product"
 msgstr "Ongeza Bidhaa"
 
 #: .\supplychain\templates\supplychain\add_product.html:26
+#: .\supplychain\templates\supplychain\edit_product.html:26
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:277
 msgid "Product Name"
 msgstr "Jina la Bidhaa"
 
 #: .\supplychain\templates\supplychain\add_product.html:36
+#: .\supplychain\templates\supplychain\edit_product.html:36
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:278
 #: .\supplychain\templates\supplychain\video_tutorials.html:262
 msgid "Category"
 msgstr "Kategoria"
 
 #: .\supplychain\templates\supplychain\add_product.html:53
+#: .\supplychain\templates\supplychain\edit_product.html:53
 msgid ""
 "Describe your product including quality, specifications, available "
 "quantities, etc."
@@ -191,14 +196,17 @@ msgstr ""
 "n.k."
 
 #: .\supplychain\templates\supplychain\add_product.html:57
+#: .\supplychain\templates\supplychain\edit_product.html:57
 msgid "Product Photo"
 msgstr "Picha ya Bidhaa"
 
 #: .\supplychain\templates\supplychain\add_product.html:64
+#: .\supplychain\templates\supplychain\edit_product.html:72
 msgid "Upload a clear image of your product. Max size: 2MB."
 msgstr "Pakia picha iliyo wazi ya bidhaa yako. Ukubwa wa juu: 2MB."
 
 #: .\supplychain\templates\supplychain\add_product.html:70
+#: .\supplychain\templates\supplychain\edit_product.html:78
 msgid "This product is currently available"
 msgstr "Bidhaa hii inapatikana kwa sasa"
 
@@ -206,6 +214,57 @@ msgstr "Bidhaa hii inapatikana kwa sasa"
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:267
 msgid "Add Product"
 msgstr "Ongeza Bidhaa"
+
+#: .\supplychain\templates\supplychain\base.html:38
+#: .\supplychain\templates\supplychain\base.html:45
+msgid "Logout"
+msgstr "Toka"
+
+#: .\supplychain\templates\supplychain\base.html:42
+#: .\supplychain\templates\supplychain\farmer_dashboard.html:37
+#: .\supplychain\templates\supplychain\logistic_dashboard.html:24
+msgid "Dashboard"
+msgstr "Dashibodi"
+
+#: .\supplychain\templates\supplychain\base.html:51
+#: .\supplychain\templates\supplychain\register_farmer.html:263
+#: .\supplychain\templates\supplychain\register_logistic.html:288
+msgid "Register"
+msgstr "Jisajili hapa"
+
+#: .\supplychain\templates\supplychain\base.html:54
+#: .\supplychain\templates\supplychain\base.html:63
+#, fuzzy
+#| msgid "For Farmers"
+msgid "As Farmer"
+msgstr "Ingia kama Mkulima"
+
+#: .\supplychain\templates\supplychain\base.html:55
+#: .\supplychain\templates\supplychain\base.html:64
+#, fuzzy
+#| msgid "Global Buyers"
+msgid "As Buyer"
+msgstr "Wanunuzi wa Dunia"
+
+#: .\supplychain\templates\supplychain\base.html:60
+#: .\supplychain\templates\supplychain\buyer_login.html:175
+#: .\supplychain\templates\supplychain\farmer_login.html:190
+#: .\supplychain\templates\supplychain\logistic_login.html:198
+msgid "Login"
+msgstr "Ingia"
+
+#: .\supplychain\templates\supplychain\base.html:72
+#: .\supplychain\templates\supplychain\farmer_login.html:131
+#: .\supplychain\templates\supplychain\home.html:235
+#: .\supplychain\templates\supplychain\logistic_login.html:134
+msgid "Language"
+msgstr "Lugha"
+
+#: .\supplychain\templates\supplychain\base.html:118
+#, fuzzy
+#| msgid "All Rights Reserved"
+msgid "All rights reserved."
+msgstr "Haki Zote Zimehifadhiwa"
 
 #: .\supplychain\templates\supplychain\browse_communities.html:10
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:430
@@ -394,12 +453,6 @@ msgstr "Jina lako la mwisho"
 #: .\supplychain\templates\supplychain\logistic_login.html:194
 msgid "Remember me"
 msgstr "Nikumbuke"
-
-#: .\supplychain\templates\supplychain\buyer_login.html:175
-#: .\supplychain\templates\supplychain\farmer_login.html:190
-#: .\supplychain\templates\supplychain\logistic_login.html:198
-msgid "Login"
-msgstr "Ingia"
 
 #: .\supplychain\templates\supplychain\buyer_login.html:179
 #: .\supplychain\templates\supplychain\farmer_login.html:194
@@ -909,6 +962,7 @@ msgstr ""
 #: .\supplychain\templates\supplychain\edit_community.html:155
 #: .\supplychain\templates\supplychain\edit_farmer_profile.html:68
 #: .\supplychain\templates\supplychain\edit_logistic_profile.html:99
+#: .\supplychain\templates\supplychain\edit_product.html:88
 msgid "Save Changes"
 msgstr "Hifadhi Mabadiliko"
 
@@ -979,6 +1033,14 @@ msgstr ""
 msgid "Company Bio"
 msgstr "Jina la Kampuni"
 
+#: .\supplychain\templates\supplychain\edit_product.html:11
+msgid "Edit Product:"
+msgstr "Bidhaa:"
+
+#: .\supplychain\templates\supplychain\edit_product.html:62
+msgid "Current photo. Upload a new one to replace it."
+msgstr "Picha ya jalada ya sasa. Pakia mpya ili kuibadilisha."
+
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:13
 msgid "Farmer Home"
 msgstr "Nyumbani kwa Mkulima"
@@ -986,11 +1048,6 @@ msgstr "Nyumbani kwa Mkulima"
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:26
 msgid "Update Photo"
 msgstr "Sasisha Picha"
-
-#: .\supplychain\templates\supplychain\farmer_dashboard.html:37
-#: .\supplychain\templates\supplychain\logistic_dashboard.html:24
-msgid "Dashboard"
-msgstr "Dashibodi"
 
 #: .\supplychain\templates\supplychain\farmer_dashboard.html:38
 #: .\supplychain\templates\supplychain\logistic_dashboard.html:25
@@ -1227,12 +1284,6 @@ msgid ""
 msgstr ""
 "Hujapokea tathmini zozote kutoka kwa wanunuzi bado. Tathmini zitaonekana "
 "hapa mara tu wanunuzi watakapopima bidhaa na huduma zako."
-
-#: .\supplychain\templates\supplychain\farmer_login.html:131
-#: .\supplychain\templates\supplychain\home.html:235
-#: .\supplychain\templates\supplychain\logistic_login.html:134
-msgid "Language"
-msgstr "Lugha"
 
 #: .\supplychain\templates\supplychain\farmer_login.html:159
 msgid "Farmer Login"
@@ -1748,11 +1799,6 @@ msgstr "Jina la Kwanza"
 msgid "Last Name"
 msgstr "Jina la Mwisho"
 
-#: .\supplychain\templates\supplychain\register_farmer.html:263
-#: .\supplychain\templates\supplychain\register_logistic.html:288
-msgid "Register"
-msgstr "Jisajili hapa"
-
 #: .\supplychain\templates\supplychain\register_logistic.html:161
 msgid "Logistics Company Registration"
 msgstr ""
@@ -2038,9 +2084,6 @@ msgstr "Ukurasa wa Nyumbani wa TropiConnect"
 
 #~ msgid "Add Product Need"
 #~ msgstr "Ongeza Hitaji la Bidhaa"
-
-#~ msgid "Logout"
-#~ msgstr "Toka"
 
 #~ msgid "Your first name"
 #~ msgstr "Jina lako la kwanza"
