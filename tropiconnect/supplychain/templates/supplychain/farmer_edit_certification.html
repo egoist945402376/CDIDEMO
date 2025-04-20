@@ -1,5 +1,6 @@
 {% extends "supplychain/base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <div class="container py-5">
@@ -7,35 +8,35 @@
         <div class="col-md-8">
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0"><i class="bi bi-award me-2"></i>Edit Certification</h4>
+                    <h4 class="mb-0"><i class="bi bi-award me-2"></i>{% trans "Edit Certification" %}</h4>
                 </div>
                 <div class="card-body">
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         
                         <div class="mb-3">
-                            <label for="{{ form.certification_name.id_for_label }}" class="form-label">Certification Name</label>
+                            <label for="{{ form.certification_name.id_for_label }}" class="form-label">{% trans "Certification Name" %}</label>
                             {{ form.certification_name }}
                         </div>
                         
                         <div class="mb-3">
-                            <label for="{{ form.issuing_organization.id_for_label }}" class="form-label">Issuing Organization</label>
+                            <label for="{{ form.issuing_organization.id_for_label }}" class="form-label">{% trans "Issuing Organization" %}</label>
                             {{ form.issuing_organization }}
                         </div>
                         
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="{{ form.issue_date.id_for_label }}" class="form-label">Issue Date</label>
+                                <label for="{{ form.issue_date.id_for_label }}" class="form-label">{% trans "Issue Date" %}</label>
                                 {{ form.issue_date }}
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="{{ form.expiry_date.id_for_label }}" class="form-label">Expiry Date (Optional)</label>
+                                <label for="{{ form.expiry_date.id_for_label }}" class="form-label">{% trans "Expiry Date (Optional)" %}</label>
                                 {{ form.expiry_date }}
                             </div>
                         </div>
                         
                         <div class="mb-3">
-                            <label for="{{ form.certificate_image.id_for_label }}" class="form-label">Certificate Image</label>
+                            <label for="{{ form.certificate_image.id_for_label }}" class="form-label">{% trans "Certificate Image" %}</label>
                             {% if certification.certificate_image %}
                                 <div class="mb-2">
                                     <img src="{{ certification.certificate_image.url }}" alt="{{ certification.certification_name }}" class="img-thumbnail" style="max-height: 200px;">
@@ -45,14 +46,14 @@
                         </div>
                         
                         <div class="mb-3">
-                            <label for="{{ form.description.id_for_label }}" class="form-label">Description (Optional)</label>
+                            <label for="{{ form.description.id_for_label }}" class="form-label">{% trans "Description (Optional)" %}</label>
                             {{ form.description }}
-                            <div class="form-text">Provide any additional information about this certification.</div>
+                            <div class="form-text">{% trans "Provide any additional information about this certification." %}</div>
                         </div>
                         
                         <div class="d-flex justify-content-between">
-                            <a href="{% url 'farmer_dashboard' %}" class="btn btn-outline-secondary">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Update Certification</button>
+                            <a href="{% url 'farmer_dashboard' %}" class="btn btn-outline-secondary">{% trans "Cancel" %}</a>
+                            <button type="submit" class="btn btn-primary">{% trans "Update Certification" %}</button>
                         </div>
                     </form>
                 </div>
